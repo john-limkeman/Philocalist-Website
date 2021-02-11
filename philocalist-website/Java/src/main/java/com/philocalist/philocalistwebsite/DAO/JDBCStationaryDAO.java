@@ -20,7 +20,9 @@ public class JDBCStationaryDAO implements StationaryDAO{
 
     @Override
     public void addStationary(Stationary stationary) {
-
+        jdbc.update("Insert INTO Stationaries (category, price, theme, color, printType, imgURL) VALUES (?, ?, ?, ?, ?, ?)"),
+        stationary.getCategory(), stationary.getPrice(), stationary.getTheme(), stationary.getColor(), stationary.getPrintType(),
+        stationary.getImgURL());
     }
 
     @Override

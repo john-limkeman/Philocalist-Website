@@ -9,7 +9,7 @@ public class Stationary {
         private String category; //weddingInvite, inviteAddOn, engageInvite, showerInvite, bachInvite, rehearsalInvite,
                                 // thankYou, saveTheDate, {program, menu, placeCard, tableNumbers, welcomeSign, favor}, addressLabels
                                 // bracketed = {day of items}
-        private BigDecimal price; //cost ... may need to become a map quantity: price 
+        private BigDecimal price; //cost ... may need to become a map quantity: price
         private String theme; //design theme
         private String color; // color choice within theme
         private String printType; // digital, foilPress, or letterPress
