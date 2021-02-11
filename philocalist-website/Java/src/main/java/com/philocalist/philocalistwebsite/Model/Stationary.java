@@ -1,13 +1,15 @@
 package com.philocalist.philocalistwebsite.Model;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 public class Stationary {
 
+        private int id; //essentially an item number
         private String category; //weddingInvite, inviteAddOn, engageInvite, showerInvite, bachInvite, rehearsalInvite,
                                 // thankYou, saveTheDate, {program, menu, placeCard, tableNumbers, welcomeSign, favor}, addressLabels
                                 // bracketed = {day of items}
-        private BigDecimal price; //cost ... may need to become a map quantity: price
+        private Map<Integer, BigDecimal> price; //cost ... may need to become a map quantity: price
         private String theme; //design theme
         private String color; // color choice within theme
         private String printType; // digital, foilPress, or letterPress
@@ -20,7 +22,12 @@ public class Stationary {
 
         }
 
-
+        public int getId() {
+                return id;
+        }
+        public void setId(int id) {
+                this.id = id;
+        }
         public String getImgURL() {
                 return imgURL;
         }
