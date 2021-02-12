@@ -11,10 +11,10 @@ public interface StationaryDAO {
     public void addStationary(Stationary stationary);
 
     //Delete Stationary Item
-    public void deleteStationary(Stationary stationary);
+    public void deleteStationary(int id);
 
     //Update Stationary Item
-    public void updateStationary(Stationary stationary);
+    public void updateStationary(Stationary stationary, int id);
 
     //Get all
     public List<Stationary> getAllStationary();
