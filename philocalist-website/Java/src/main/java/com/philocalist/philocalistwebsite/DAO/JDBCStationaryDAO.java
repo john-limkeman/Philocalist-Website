@@ -2,9 +2,10 @@ package com.philocalist.philocalistwebsite.DAO;
 
 import com.philocalist.philocalistwebsite.Model.Stationary;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-import org.springframework.jdbc.core.JdbcTemplate;
+
 
 import java.util.ArrayList;
 import java.util.List;
