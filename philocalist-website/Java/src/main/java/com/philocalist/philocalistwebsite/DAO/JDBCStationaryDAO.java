@@ -7,17 +7,19 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 
+import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class JDBCStationaryDAO implements StationaryDAO{
 
-    @Autowired
+
     private JdbcTemplate jdbc;
 
-    public JDBCStationaryDAO (JdbcTemplate jdbc){
-        this.jdbc = jdbc;
+    @Autowired
+    public JDBCStationaryDAO (DataSource datasource){
+        this.jdbc = new JdbcTemplate(datasource);
     }
 
 
