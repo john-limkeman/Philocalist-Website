@@ -1,7 +1,7 @@
-package com.philocalist.philocalistwebsite.Controller;
+package com.philocalist.philocalistwebsite.controller;
 
-import com.philocalist.philocalistwebsite.DAO.StationaryDAO;
-import com.philocalist.philocalistwebsite.Model.Stationary;
+import com.philocalist.philocalistwebsite.dao.StationaryDAO;
+import com.philocalist.philocalistwebsite.model.Stationary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,9 @@ public class StationaryController {
 
     @RequestMapping(path = "/allStationary", method = RequestMethod.GET)
     public List<Stationary> getAllStationary(){
+        System.out.println("hi");
         return dao.getAllStationary();
+
     }
 
 

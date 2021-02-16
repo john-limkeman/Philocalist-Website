@@ -1,33 +1,30 @@
-package com.philocalist.philocalistwebsite.DAO;
+package com.philocalist.philocalistwebsite.dao;
 
-import com.philocalist.philocalistwebsite.Model.Stationary;
+import com.philocalist.philocalistwebsite.model.Stationary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JDBCStationaryDAO implements StationaryDAO{
+public class JdbcStationaryDAO implements StationaryDAO {
 
 
     private JdbcTemplate jdbc;
 
-    @Autowired
-    public JDBCStationaryDAO (DataSource datasource){
+    public JdbcStationaryDAO(DataSource datasource) {
         this.jdbc = new JdbcTemplate(datasource);
     }
-
 
     @Override
     public void addStationary(Stationary stationary) {
         jdbc.update("Insert INTO Stationaries (category, price, theme, color, printType, imgURL) VALUES (?, ?, ?, ?, ?, ?)",
-        stationary.getCategory(), stationary.getPrice(), stationary.getTheme(), stationary.getColor(), stationary.getPrintType(),
-        stationary.getImgURL());
+                stationary.getCategory(), stationary.getPrice(), stationary.getTheme(), stationary.getColor(), stationary.getPrintType(),
+                stationary.getImgURL());
     }
 
     @Override

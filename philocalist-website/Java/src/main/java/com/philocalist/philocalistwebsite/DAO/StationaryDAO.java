@@ -1,33 +1,35 @@
-package com.philocalist.philocalistwebsite.DAO;
+package com.philocalist.philocalistwebsite.dao;
 
-import com.philocalist.philocalistwebsite.Model.Stationary;
 
-import java.math.BigDecimal;
+import com.philocalist.philocalistwebsite.model.Stationary;
+
 import java.util.List;
 
 public interface StationaryDAO {
 
-    //Add a Stationary Item
-    public void addStationary(Stationary stationary);
+        //Add a Stationary Item
+        public void addStationary(Stationary stationary);
 
-    //Delete Stationary Item
-    public void deleteStationary(int id);
+        //Delete Stationary Item
+        public void deleteStationary(int id);
 
-    //Update Stationary Item
-    public void updateStationary(Stationary stationary, int id);
+        //Update Stationary Item
+        public void updateStationary(Stationary stationary, int id);
 
-    //Get all
-    public List<Stationary> getAllStationary();
+        //Get all
+        public List<Stationary> getAllStationary();
 
-    //Get all by category
-    public List<Stationary> getStationaryByCategory(String category);
+        //Get all by category
+        public List<Stationary> getStationaryByCategory(String category);
 
-    //Get all by theme
-    public List<Stationary> getStationaryByTheme(String theme);
+        //Get all by theme
+        public List<Stationary> getStationaryByTheme(String theme);
 
-    //Get all by printType
-    public List<Stationary> getStationaryByPrintType(String printType);
+        //Get all by printType
+        public List<Stationary> getStationaryByPrintType(String printType);
 
-    //Get Stationary by id
-    public Stationary getStationaryById(int id);
-}
+        //Get Stationary by id
+        public Stationary getStationaryById(int id);
+    }
+
+
