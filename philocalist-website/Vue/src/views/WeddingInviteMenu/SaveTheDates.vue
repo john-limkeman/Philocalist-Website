@@ -2,15 +2,15 @@
   <div>
     <h1>Save The Dates</h1>
     <!-- replace this with component that reads in an arg from parent to determine which sql query to run -->
-    <div v-for="invite in stationaries" v-bind:key="invite.id" >
+    <!-- <div v-for="invite in stationaries" v-bind:key="invite.id" >
         <h2>{{invite.theme}}</h2>
-        <img src="invite.imgURL" alt="error">
-    </div>
+        <img src="invite.imgURL" alt="error"> -->
+    <!-- </div> -->
   </div>
 </template>
 
 <script>
-import StationaryService from "../services/StationaryService.js";
+// import StationaryService from "../services/StationaryService.js";
 export default {
   data() {
     return{
@@ -18,11 +18,11 @@ export default {
     }
   },
   computed: {},
-  created() {
-    StationaryService.getAllStationary().then((response) => {
-      this.stationaries = response.data;
-    });
-  },
+  // created() {
+  //   StationaryService.getAllStationary().then((response) => {
+  //     this.stationaries = response.data;
+  //   });
+  // },
 };
 </script>
 

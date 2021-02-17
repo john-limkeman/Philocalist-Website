@@ -7,6 +7,7 @@ public class Stationary {
     private String category; //weddingInvite, inviteAddOn, engageInvite, showerInvite, bachInvite, rehearsalInvite,
     // thankYou, saveTheDate, {program, menu, placeCard, tableNumbers, welcomeSign, favor}, addressLabels
     // bracketed = {day of items}
+    private String title; //name of product for site
     private BigDecimal price; //cost ... may need to become a map quantity: price
     private String theme; //design theme
     private String color; // color choice within theme
@@ -14,6 +15,14 @@ public class Stationary {
     private String imgURL; //url for display image
     private boolean isActive; //currently available for purchase?
 
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
     public boolean isActive() {
         return isActive;
     }

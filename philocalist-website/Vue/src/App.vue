@@ -3,45 +3,48 @@
     <div id="nav">
       <button>Home</button>
       <button>About</button>
-      <button v-on:click=toggleWedding()>Wedding Invitations</button>
-      <div v-if=weddingStatus()>
-      <router-link class="navlink" v-bind:to= "{ name: 'WeddingInvites'}"> Wedding Invites </router-link> &nbsp;|&nbsp;
-      <router-link class="navlink" v-bind:to= "{ name: 'SaveTheDates'}"> Save the Dates</router-link> &nbsp;|&nbsp;
+      <button v-on:click="toggleWedding" >Wedding Invitations</button>
+      <div id="weddingMenu" v-if="this.openWeddingMenu">
+        <router-link class="navlink" v-bind:to="{ name: 'WeddingInvites' }">
+          Wedding Invites
+        </router-link>
+        &nbsp;|&nbsp;
+        <router-link class="navlink" v-bind:to="{ name: 'SaveTheDates' }">
+          Save the Dates</router-link
+        >
+        &nbsp;|&nbsp;
       </div>
       <button>Party Invitations</button>
       <button>Day Of Materials</button>
       <button>Thank You Cards</button>
       <router-link class="navlink" to="/"> Home </router-link> &nbsp;|&nbsp;
       <router-link class="navlink" to="/about">About</router-link> &nbsp;|&nbsp;
-
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return{
-          openWeddingMenu: false,
-          
-    }
+  data() {
+    return {
+      openWeddingMenu: false,
+    };
   },
-  Methods: {
-    toggleWedding(){
-      if(this.openWeddingMenu == false){
+  methods: {
+    toggleWedding() {
+      if (this.openWeddingMenu == false) {
         this.openWeddingMenu = true;
       } else {
         this.openWeddingMenu = false;
       }
     },
-    Computed: {
-      weddingStatus(){
-        return this.openWeddingMenu;
-      }
-    }
-  }
-}
+    // weddingStatus(){
+    //   return this.openWeddingMenu;
+    // }
+  },
+  Computed: {},
+};
 </script>
 <style>
 #app {
@@ -65,5 +68,8 @@ export default {
   color: #42b983;
 }
 
-
+#weddingMenu {
+  position: absolute;
+  top: 100px;
+}
 </style>
