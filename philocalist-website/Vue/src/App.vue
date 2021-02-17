@@ -1,24 +1,37 @@
 <template>
   <div id="app">
     <div id="nav">
-      <button>Home</button>
-      <button>About</button>
-      <button v-on:click="toggleWedding" >Wedding Invitations</button>
-      <div id="weddingMenu" v-if="this.openWeddingMenu">
-        <router-link class="navlink" v-bind:to="{ name: 'WeddingInvites' }">
+   
+      <router-link tag="button" class="navlink" to="/"> Home </router-link> &nbsp;|&nbsp;
+      <router-link tag="button" class="navlink" to="/about">About</router-link> &nbsp;|&nbsp;
+
+      <button v-on:click="toggleWedding" >Wedding Invitations </button>
+      <div id="weddingMenu" v-if="this.isWeddingMenuOpen">
+        <router-link tag="button" class="navlink" v-bind:to="{ name: 'WeddingInvites' }">
           Wedding Invites
         </router-link>
         &nbsp;|&nbsp;
-        <router-link class="navlink" v-bind:to="{ name: 'SaveTheDates' }">
-          Save the Dates</router-link
-        >
+        <router-link tag="button" class="navlink" v-bind:to="{ name: 'SaveTheDates' }">
+          Save the Dates</router-link>
         &nbsp;|&nbsp;
+        <button v-on:click="toggleAddOns" >Add Ons</button>
+        <div id="addOnMenu" v-if="this.isAddOnMenuOpen">
+          <router-link tag="button" class="navlink" v-bind:to="{ name: 'AddressLabels' }"> Address Labels </router-link>    &nbsp;|&nbsp;
+          <router-link tag="button" class="navlink" v-bind:to="{ name: 'DirectionsCards' }"> Directions Cards </router-link>    &nbsp;|&nbsp;
+          <router-link tag="button" class="navlink" v-bind:to="{ name: 'Envelopes' }"> Envelopes </router-link>    &nbsp;|&nbsp;
+          <router-link  tag="button" class="navlink" v-bind:to="{ name: 'EventsCards' }"> Events Cards </router-link>  
+        </div>
       </div>
-      <button>Party Invitations</button>
+
+      <button v-on:click="toggleParty">Party Invitations</button>
+        <div id="partyMenu" v-if="this.isPartyMenuOpen">
+          <router-link  tag="button" class="navlink" v-bind:to="{ name: 'BachelorInvites' }"> Bachelor & Bachelorette </router-link>  &nbsp;|&nbsp;
+          <router-link  tag="button" class="navlink" v-bind:to="{ name: 'BridalShowerInvites' }"> Bridal Shower </router-link>  &nbsp;|&nbsp;
+          <router-link  tag="button" class="navlink" v-bind:to="{ name: 'EngagementInvites' }"> Engagement </router-link>  &nbsp;|&nbsp;
+          <router-link  tag="button" class="navlink" v-bind:to="{ name: 'RehearsalDinnerInvites' }"> Rehearsal Dinner </router-link>  
+        </div>
       <button>Day Of Materials</button>
       <button>Thank You Cards</button>
-      <router-link class="navlink" to="/"> Home </router-link> &nbsp;|&nbsp;
-      <router-link class="navlink" to="/about">About</router-link> &nbsp;|&nbsp;
     </div>
     <router-view />
   </div>
@@ -28,20 +41,36 @@
 export default {
   data() {
     return {
-      openWeddingMenu: false,
+      isWeddingMenuOpen: false,
+      isAddOnMenuOpen: false,
+      isPartyMenuOpen: false,
     };
   },
   methods: {
     toggleWedding() {
-      if (this.openWeddingMenu == false) {
-        this.openWeddingMenu = true;
+      if (this.isWeddingMenuOpen == false) {
+        this.isWeddingMenuOpen = true;
+        this.isPartyMenuOpen = false;
       } else {
-        this.openWeddingMenu = false;
+        this.isWeddingMenuOpen = false;
+        this.isAddOnMenuOpen = false;
       }
     },
-    // weddingStatus(){
-    //   return this.openWeddingMenu;
-    // }
+    toggleAddOns() {
+      if (this.isAddOnMenuOpen == false) {
+        this.isAddOnMenuOpen = true;
+      } else {
+        this.isAddOnMenuOpen = false;
+      }
+    },
+    toggleParty() {
+      if (this.isPartyMenuOpen == false) {
+        this.isPartyMenuOpen = true;
+        this.isWeddingMenuOpen = false;
+      } else {
+        this.isPartyMenuOpen = false;
+      }
+    },
   },
   Computed: {},
 };

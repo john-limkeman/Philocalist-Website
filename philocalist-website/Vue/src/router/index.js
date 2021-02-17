@@ -3,6 +3,15 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import WeddingInvites from '../views/WeddingInviteMenu/WeddingInvites.vue'
 import SaveTheDates from '../views/WeddingInviteMenu/SaveTheDates.vue'
+import AddressLabels from '../views/WeddingInviteMenu/Add-Ons/AddressLabels.vue'
+import DirectionsCards from '../views/WeddingInviteMenu/Add-Ons/DirectionsCards.vue'
+import Envelopes from '../views/WeddingInviteMenu/Add-Ons/Envelopes.vue'
+import EventsCards from '../views/WeddingInviteMenu/Add-Ons/EventsCards.vue'
+import BachelorInvites from '../views/PartyInviteMenu/BachelorInvites.vue'
+import BridalShowerInvites from '../views/PartyInviteMenu/BridalShowerInvites.vue'
+import EngagementInvites from '../views/PartyInviteMenu/EngagementInvites.vue'
+import RehearsalDinnerInvites from '../views/PartyInviteMenu/RehearsalDinnerInvites.vue'
+
 
 Vue.use(VueRouter)
 
@@ -21,7 +30,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/wedding-invites',
+    path: '/wedding',
     name: 'WeddingInvites',
     component: WeddingInvites,
     meta: {
@@ -35,7 +44,71 @@ const routes = [
     meta: {
         requiresAuth: false
     }
-}
+},
+{
+  path: '/address-labels',
+  name: 'AddressLabels',
+  component: AddressLabels,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/directions',
+  name: 'DirectionsCards',
+  component: DirectionsCards,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/envelopes',
+  name: 'Envelopes',
+  component: Envelopes,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/events-cards',
+  name: 'EventsCards',
+  component: EventsCards,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/bachelor',
+  name: 'BachelorInvites',
+  component: BachelorInvites,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/bridal-shower',
+  name: 'BridalShowerInvites',
+  component: BridalShowerInvites,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/engagement',
+  name: 'EngagementInvites',
+  component: EngagementInvites,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/rehearsal-dinner',
+  name: 'RehearsalDinnerInvites',
+  component: RehearsalDinnerInvites,
+  meta: {
+      requiresAuth: false
+  }
+},
 ]
 
 const router = new VueRouter({
