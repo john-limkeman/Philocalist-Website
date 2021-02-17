@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import WeddingInvites from '../views/WeddingInvites.vue'
-import SaveTheDates from '../views/SaveTheDates.vue'
+import WeddingInvites from '../views/WeddingInviteMenu/WeddingInvites.vue'
+import SaveTheDates from '../views/WeddingInviteMenu/SaveTheDates.vue'
 
 Vue.use(VueRouter)
 

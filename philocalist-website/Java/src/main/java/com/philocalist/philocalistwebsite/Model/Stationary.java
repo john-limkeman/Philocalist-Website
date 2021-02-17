@@ -12,6 +12,16 @@ public class Stationary {
     private String color; // color choice within theme
     private String printType; // digital, foilPress, or letterPress
     private String imgURL; //url for display image
+    private boolean isActive; //currently available for purchase?
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
 
     public int getId() {
         return id;

@@ -22,9 +22,9 @@ public class JdbcStationaryDAO implements StationaryDAO {
 
     @Override
     public void addStationary(Stationary stationary) {
-        jdbc.update("Insert INTO Stationaries (category, price, theme, color, printType, imgURL) VALUES (?, ?, ?, ?, ?, ?)",
+        jdbc.update("Insert INTO Stationaries (category, price, theme, color, printType, imgURL, isActive) VALUES (?, ?, ?, ?, ?, ?, ?)",
                 stationary.getCategory(), stationary.getPrice(), stationary.getTheme(), stationary.getColor(), stationary.getPrintType(),
-                stationary.getImgURL());
+                stationary.getImgURL(), stationary.isActive());
     }
 
     @Override
@@ -35,10 +35,10 @@ public class JdbcStationaryDAO implements StationaryDAO {
     @Override
     public void updateStationary(Stationary stationary, int id) {
         String sql = "UPDATE Stationaries SET (category = ?, price = ?, theme = ?," +
-                " color = ?, printType = ?, imgURL = ?) WHERE id = ?";
+                " color = ?, printType = ?, imgURL = ?, isActive = ?) WHERE id = ?";
         jdbc.update(sql, stationary.getCategory(), stationary.getPrice(),
                 stationary.getTheme(), stationary.getColor(), stationary.getPrintType(),
-                stationary.getImgURL(), id);
+                stationary.getImgURL(), stationary.isActive(), id);
     }
 
     @Override
@@ -114,6 +114,7 @@ public class JdbcStationaryDAO implements StationaryDAO {
         stationary.setTheme(row.getString("theme"));
         stationary.setPrintType(row.getString("printType"));
         stationary.setImgURL(row.getString("imgURL"));
+        stationary.setActive(row.getBoolean("isActive"));
 
         return stationary;
     }
