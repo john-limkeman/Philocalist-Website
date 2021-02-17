@@ -19,7 +19,6 @@ public class StationaryController {
 
     @RequestMapping(path = "/allStationary", method = RequestMethod.GET)
     public List<Stationary> getAllStationary(){
-        System.out.println("hi");
         return dao.getAllStationary();
 
     }
