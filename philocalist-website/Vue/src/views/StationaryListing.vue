@@ -2,7 +2,8 @@
   <div>
     <h1>Listing</h1>
     <div v-for="item in stationaries" v-bind:key="item.id" >
-
+        <h2>{{item.theme}}</h2>
+        <img src="item.imgURL" alt="item.theme">
     </div>
   </div>
 </template>
