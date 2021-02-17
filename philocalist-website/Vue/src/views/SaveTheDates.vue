@@ -1,9 +1,10 @@
 <template>
   <div>
-    <h1>Listing</h1>
-    <div v-for="item in stationaries" v-bind:key="item.id" >
-        <h2>{{item.theme}}</h2>
-        <img src="item.imgURL" alt="item.theme">
+    <h1>Save The Dates</h1>
+    <!-- replace this with component that reads in an arg from parent to determine which sql query to run -->
+    <div v-for="invite in stationaries" v-bind:key="invite.id" >
+        <h2>{{invite.theme}}</h2>
+        <img src="invite.imgURL" alt="error">
     </div>
   </div>
 </template>

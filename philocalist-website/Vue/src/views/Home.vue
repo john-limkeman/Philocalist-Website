@@ -1,17 +1,16 @@
 <template>
-  <div>
-      <h1>Philocalist Stationary</h1>
+  <div class="home">
+<h1>Philocalist Stationary</h1>
   </div>
 </template>
 
 <script>
+
 export default {
 
 }
 </script>
 
 <style scoped>
-h1{
-  font-size: 64;
-}
+
 </style>

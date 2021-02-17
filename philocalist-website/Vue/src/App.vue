@@ -1,20 +1,34 @@
 <template>
   <div id="app">
-      <div id="nav">
-        <router-link class="navlink" v-bind:to= "{ name: 'home'}"> Home </router-link> &nbsp;|&nbsp;
-        <router-link class="navlink" v-bind:to= "{ name: 'wedding-invites'}"> Wedding Invites </router-link> &nbsp;|&nbsp;
-        <router-link class="navlink" v-bind:to= "{ name: 'save-the-dates'}"> Save the Dates</router-link> &nbsp;|&nbsp;
-        </div>
-        <router-view />
+    <div id="nav">
+      <router-link class="navlink" to="/"> Home </router-link> &nbsp;|&nbsp;
+      <router-link class="navlink" to="/about">About</router-link> &nbsp;|&nbsp;
+        <router-link class="navlink" v-bind:to= "{ name: 'WeddingInvites'}"> Wedding Invites </router-link> &nbsp;|&nbsp;
+        <router-link class="navlink" v-bind:to= "{ name: 'SaveTheDates'}"> Save the Dates</router-link> &nbsp;|&nbsp;
     </div>
+    <router-view/>
+  </div>
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
 <style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>

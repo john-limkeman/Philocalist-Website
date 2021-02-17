@@ -1,43 +1,45 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '../Views/Home.vue'
-import StationaryListing from '../Views/StationaryListing.vue'
-import StationaryDetails from '../Views/StationaryDetails.vue'
+import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
+import WeddingInvites from '../views/WeddingInvites.vue'
+import SaveTheDates from '../views/SaveTheDates.vue'
 
+Vue.use(VueRouter)
 
-Vue.use(Router)
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/about',
+    name: 'About',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path: '/wedding-invites',
+    name: 'WeddingInvites',
+    component: WeddingInvites,
+    meta: {
+        requiresAuth: false
+    }
+},
+{
+    path: '/save-the-dates',
+    name: 'SaveTheDates',
+    component: SaveTheDates,
+    meta: {
+        requiresAuth: false
+    }
+}
+]
 
-const router = new Router({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes: [
-        {
-            path: '/',
-            name: 'Home',
-            component: Home,
-            meta: {
-                requiresAuth: false
-              }
-
-        },
-        {
-            path: '/Stationary',
-            name: 'StationaryListing',
-            component: StationaryListing,
-            meta: {
-                requiresAuth: false
-            }
-        },
-        {
-            path: '/Details',
-            name: 'StationaryDetails',
-            component: StationaryDetails,
-            meta: {
-                requiresAuth: false
-            }
-        }
-
-    ]
+const router = new VueRouter({
+  routes
 })
 
 //used for AUTH once we get that up and running
@@ -54,5 +56,4 @@ const router = new Router({
 //       next();
 //     }
 //   });
-
-  export default router;
+export default router
