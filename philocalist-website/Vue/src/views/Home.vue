@@ -1,13 +1,26 @@
 <template>
   <div class="home">
 <h1>Philocalist Stationary</h1>
+  <div v-for="invite in stationaries" v-bind:key="invite.id" >
+        <h2>{{invite.theme}}</h2>
+        <img v-bind:src="invite.imgURL" alt="error">
+    </div>
   </div>
 </template>
 
 <script>
-
+import StationaryService from "../services/StationaryService.js";
 export default {
-
+data() {
+    return{
+      stationaries: []
+    }
+  },
+    created() {
+    StationaryService.getAllStationary().then((response) => {
+      this.stationaries = response.data;
+    });
+  },
 }
 </script>
 

@@ -1,11 +1,20 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div id="primaryNav">
    
       <router-link tag="button" class="navlink" to="/"> Home </router-link> &nbsp;|&nbsp;
       <router-link tag="button" class="navlink" to="/about">About</router-link> &nbsp;|&nbsp;
+      <button v-on:click="toggleWedding" >Wedding Invitations </button> &nbsp;|&nbsp;
+      <button v-on:click="toggleParty">Party Invitations</button> &nbsp;|&nbsp;
+      <button v-on:click="toggleDayOf">Day Of Materials</button> &nbsp;|&nbsp;
+      <router-link tag="button" class="navlink" to="/thank-you"> Thank You Cards </router-link>
 
-      <button v-on:click="toggleWedding" >Wedding Invitations </button>
+</div>
+
+
+
+
+    <div id="secondaryNav">
       <div id="weddingMenu" v-if="this.isWeddingMenuOpen">
         <router-link tag="button" class="navlink" v-bind:to="{ name: 'WeddingInvites' }">
           Wedding Invites
@@ -23,15 +32,21 @@
         </div>
       </div>
 
-      <button v-on:click="toggleParty">Party Invitations</button>
         <div id="partyMenu" v-if="this.isPartyMenuOpen">
           <router-link  tag="button" class="navlink" v-bind:to="{ name: 'BachelorInvites' }"> Bachelor & Bachelorette </router-link>  &nbsp;|&nbsp;
           <router-link  tag="button" class="navlink" v-bind:to="{ name: 'BridalShowerInvites' }"> Bridal Shower </router-link>  &nbsp;|&nbsp;
           <router-link  tag="button" class="navlink" v-bind:to="{ name: 'EngagementInvites' }"> Engagement </router-link>  &nbsp;|&nbsp;
           <router-link  tag="button" class="navlink" v-bind:to="{ name: 'RehearsalDinnerInvites' }"> Rehearsal Dinner </router-link>  
         </div>
-      <button>Day Of Materials</button>
-      <button>Thank You Cards</button>
+
+          <div id="dayOfMenu" v-if="this.isDayOfMenuOpen">
+          <router-link  tag="button" class="navlink" v-bind:to="{ name: 'FavorTags' }"> Favor Tags </router-link>  &nbsp;|&nbsp;
+          <router-link  tag="button" class="navlink" v-bind:to="{ name: 'Menus' }"> Menus </router-link>  &nbsp;|&nbsp;
+          <router-link  tag="button" class="navlink" v-bind:to="{ name: 'Placecards' }"> Placecards </router-link>  &nbsp;|&nbsp;
+          <router-link  tag="button" class="navlink" v-bind:to="{ name: 'Programs' }"> Programs </router-link>   &nbsp;|&nbsp;
+          <router-link  tag="button" class="navlink" v-bind:to="{ name: 'TableNumbers' }"> Table Numbers </router-link>   &nbsp;|&nbsp;
+          <router-link  tag="button" class="navlink" v-bind:to="{ name: 'WelcomeSigns' }"> Welcome Signs </router-link>  
+        </div>
     </div>
     <router-view />
   </div>
@@ -44,6 +59,7 @@ export default {
       isWeddingMenuOpen: false,
       isAddOnMenuOpen: false,
       isPartyMenuOpen: false,
+      isDayOfMenuOpen: false,
     };
   },
   methods: {
@@ -51,6 +67,7 @@ export default {
       if (this.isWeddingMenuOpen == false) {
         this.isWeddingMenuOpen = true;
         this.isPartyMenuOpen = false;
+        this.isDayOfMenuOpen = false
       } else {
         this.isWeddingMenuOpen = false;
         this.isAddOnMenuOpen = false;
@@ -67,10 +84,20 @@ export default {
       if (this.isPartyMenuOpen == false) {
         this.isPartyMenuOpen = true;
         this.isWeddingMenuOpen = false;
+        this.isDayOfMenuOpen = false;
       } else {
         this.isPartyMenuOpen = false;
       }
     },
+    toggleDayOf(){
+      if (this.isDayOfMenuOpen == false){
+        this.isDayOfMenuOpen = true;
+        this.isPartyMenuOpen = false;
+        this.isWeddingMenuOpen = false;
+      } else {
+        this.isDayOfMenuOpen = false;
+      }
+    }
   },
   Computed: {},
 };
@@ -84,21 +111,17 @@ export default {
   color: #2c3e50;
 }
 
-#nav {
+#primaryNav {
   padding: 30px;
 }
 
-#nav a {
+#primaryNav a {
   font-weight: bold;
   color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
+#primaryNav a.router-link-exact-active {
   color: #42b983;
 }
 
-#weddingMenu {
-  position: absolute;
-  top: 100px;
-}
 </style>

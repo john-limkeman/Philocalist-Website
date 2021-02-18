@@ -11,6 +11,13 @@ import BachelorInvites from '../views/PartyInviteMenu/BachelorInvites.vue'
 import BridalShowerInvites from '../views/PartyInviteMenu/BridalShowerInvites.vue'
 import EngagementInvites from '../views/PartyInviteMenu/EngagementInvites.vue'
 import RehearsalDinnerInvites from '../views/PartyInviteMenu/RehearsalDinnerInvites.vue'
+import FavorTags from '../views/DayOfMenu/FavorTags.vue'
+import Menus from '../views/DayOfMenu/Menus.vue'
+import Placecards from '../views/DayOfMenu/Placecards.vue'
+import Programs from '../views/DayOfMenu/Programs.vue'
+import TableNumbers from '../views/DayOfMenu/TableNumbers.vue'
+import WelcomeSigns from '../views/DayOfMenu/WelcomeSigns.vue'
+import ThankYouCards from '../views/ThankYouCards.vue'
 
 
 Vue.use(VueRouter)
@@ -105,6 +112,62 @@ const routes = [
   path: '/rehearsal-dinner',
   name: 'RehearsalDinnerInvites',
   component: RehearsalDinnerInvites,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/favor-tags',
+  name: 'FavorTags',
+  component: FavorTags,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/menus',
+  name: 'Menus',
+  component: Menus,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/placecards',
+  name: 'Placecards',
+  component: Placecards,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/programs',
+  name: 'Programs',
+  component: Programs,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/table-numbers',
+  name: 'TableNumbers',
+  component: TableNumbers,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/welcome-signs',
+  name: 'WelcomeSigns',
+  component: WelcomeSigns,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/thank-you',
+  name: 'ThankYouCards',
+  component: ThankYouCards,
   meta: {
       requiresAuth: false
   }
