@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 public class Stationary {
     private int id; //essentially an item number
-    private String category; //weddingInvite, inviteAddOn, engageInvite, showerInvite, bachInvite, rehearsalInvite,
-    // thankYou, saveTheDate, {program, menu, placeCard, tableNumbers, welcomeSign, favor}, addressLabels
+    private String category; //weddingInvite, eventCard, envelope, directionCard, addressLabel, engageInvite, showerInvite, bachInvite, rehearsalInvite,
+    // thankYou, saveTheDate, {program, menu, placeCard, tableNumber, welcomeSign, favor},
     // bracketed = {day of items}
     private String title; //name of product for site
     private BigDecimal price; //cost ... may need to become a map quantity: price

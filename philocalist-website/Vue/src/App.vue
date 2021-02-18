@@ -112,7 +112,7 @@
           class="navlink"
           v-bind:to="{ name: 'Placecards' }"
         >
-          Placecards
+          Place Cards
         </router-link>
         &nbsp;|&nbsp;
         <router-link

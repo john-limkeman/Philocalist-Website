@@ -1,12 +1,26 @@
 <template>
   <div>
-      <h1>Placecards</h1>
-      </div>
+      <h1>Place Cards</h1>
+      <StationaryListing v-bind:StationaryType="this.category" />
+  </div>
 </template>
 
 <script>
+//needs additional '../' due to menu folder
+import StationaryListing from '../../components/StationaryListing.vue';
 export default {
+data(){
+  return{
+    category: 'placeCard', //category naming convention from the DB
+  }
+},
+computed: {},
+components: {
+  StationaryListing,
+},
+created(){
 
+}
 }
 </script>
 
