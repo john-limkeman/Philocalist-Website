@@ -7,6 +7,10 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import javax.sql.RowSet;
+import java.sql.Array;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,7 +109,7 @@ public class JdbcStationaryDAO implements StationaryDAO {
 
     //methods for parsing data from DB
 
-    private Stationary mapRowToStationary(SqlRowSet row){
+    private Stationary mapRowToStationary(SqlRowSet row) {
         Stationary stationary = new Stationary();
         stationary.setId(row.getInt("id"));
         stationary.setTitle(row.getString("title"));
@@ -114,7 +118,8 @@ public class JdbcStationaryDAO implements StationaryDAO {
         stationary.setPrice(row.getBigDecimal("price"));
         stationary.setTheme(row.getString("theme"));
         stationary.setPrintType(row.getString("printType"));
-        stationary.setImgURL(row.getString("imgURL"));
+        Object photos = row.getObject("imgURL"); //need to figure out how to map an array
+        System.out.println(photos);
         stationary.setActive(row.getBoolean("isActive"));
 
         return stationary;
