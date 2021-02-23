@@ -17,7 +17,6 @@ import java.util.List;
 @Component
 public class JdbcStationaryDAO implements StationaryDAO {
 
-
     private JdbcTemplate jdbc;
 
     public JdbcStationaryDAO(DataSource datasource) {
@@ -33,7 +32,7 @@ public class JdbcStationaryDAO implements StationaryDAO {
 
     @Override
     public void deleteStationary(int id) {
-        jdbc.update("DELETE FROM Stationary WHERE id = ?", id);
+        jdbc.update("DELETE FROM Stationaries WHERE id = ?", id);
     }
 
     @Override
