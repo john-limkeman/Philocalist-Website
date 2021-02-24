@@ -88,24 +88,51 @@ class JdbcStationaryDAOTest {
         //check to see if stationary ID = 1 changed to sample data
         assertEquals("Sample Title", stationary.getTitle());
     }
-//
-//    @Test
-//    void getAllStationary() {
-//    }
-//
-//    @Test
-//    void getStationaryByCategory() {
-//    }
-//
-//    @Test
-//    void getStationaryByTheme() {
-//    }
-//
-//    @Test
-//    void getStationaryByPrintType() {
-//    }
-//
-//    @Test
-//    void getStationaryById() {
-//    }
+
+    @Test
+    void getAllStationary() {
+       List<Stationary> returned =  dao.getAllStationary();
+
+       //check size of list
+       assertEquals(16, returned.size());
+       //check content of first item in list
+       assertEquals("Sand and Sun", returned.get(0).getTheme());
+    }
+
+    @Test
+    void getStationaryByCategory() {
+        List<Stationary> returned = dao.getStationaryByCategory("saveTheDate");
+
+        //check to see only one item returned
+        assertEquals(1, returned.size());
+        //check that it is a saveTheDate
+        assertEquals("saveTheDate", returned.get(0).getCategory());
+    }
+
+    @Test
+    void getStationaryByTheme() {
+        List<Stationary> returned = dao.getStationaryByTheme("Sand and Sun");
+
+        assertEquals(10, returned.size());
+        assertEquals("Sand & Sun Wedding Bundle", returned.get(0).getTitle());
+        assertEquals("Sand and Sun", returned.get(returned.size() - 1).getTheme());
+    }
+
+    @Test
+    void getStationaryByPrintType() {
+        List<Stationary> returned = dao.getStationaryByPrintType("digital");
+
+        assertEquals(16, returned.size());
+
+    }
+
+    @Test
+    void getStationaryById() {
+
+        Stationary stationary = dao.getStationaryById(10);
+
+        assertEquals("program", stationary.getCategory());
+        assertEquals("Sand & Sun Programs", stationary.getTitle());
+        assertEquals(10, stationary.getId());
+    }
 }

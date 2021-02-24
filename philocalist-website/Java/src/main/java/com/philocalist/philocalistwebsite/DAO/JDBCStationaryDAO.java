@@ -37,8 +37,8 @@ public class JdbcStationaryDAO implements StationaryDAO {
 
     @Override
     public void updateStationary(Stationary stationary, int id) {
-        String sql = "UPDATE Stationaries SET (title = ?, category = ?, price = ?, theme = ?," +
-                " color = ?, printType = ?, imgURL = ?, isActive = ?) WHERE id = ?";
+        String sql = "UPDATE Stationaries SET title = ?, category = ?, price = ?, theme = ?," +
+                " color = ?, printType = ?, imgURL = ?, isActive = ? WHERE id = ?";
         jdbc.update(sql, stationary.getTitle(), stationary.getCategory(), stationary.getPrice(),
                 stationary.getTheme(), stationary.getColor(), stationary.getPrintType(),
                 stationary.getImgURL(), stationary.isActive(), id);
