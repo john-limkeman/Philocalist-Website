@@ -20,7 +20,7 @@ class StationaryTest {
         stationary.setTitle("Sample Title");
         stationary.setPrintType("foil press");
         stationary.setActive(true);
-        stationary.setImgURL("sample url");
+//        stationary.setImgURL("sample url");
 
         int BDCompare = pricey.compareTo(stationary.getPrice());
 
@@ -31,7 +31,7 @@ class StationaryTest {
         assertEquals("Sample Title", stationary.getTitle());
         assertEquals("foil press", stationary.getPrintType());
         assertEquals(true, stationary.isActive());
-        assertEquals("sample url", stationary.getImgURL());
+//        assertEquals("sample url", stationary.getImgURL());
 
     }
 

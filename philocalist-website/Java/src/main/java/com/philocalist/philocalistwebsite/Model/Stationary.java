@@ -1,6 +1,7 @@
 package com.philocalist.philocalistwebsite.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Stationary {
     private int id; //essentially an item number
@@ -12,7 +13,7 @@ public class Stationary {
     private String theme; //design theme
     private String color; // color choice within theme
     private String printType; // digital, foilPress, or letterPress
-    private String imgURL; //url for display image
+    private List<String> imgURL; //url for display image
     private boolean isActive; //currently available for purchase?
 
 
@@ -80,11 +81,11 @@ public class Stationary {
         this.printType = printType;
     }
 
-    public String getImgURL() {
+    public List<String> getImgURL() {
         return imgURL;
     }
 
-    public void setImgURL(String imgURL) {
+    public void setImgURL(List<String> imgURL) {
         this.imgURL = imgURL;
     }
 }

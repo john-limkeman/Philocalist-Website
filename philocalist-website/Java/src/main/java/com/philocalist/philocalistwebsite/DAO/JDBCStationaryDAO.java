@@ -8,11 +8,15 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import javax.sql.RowSet;
+import javax.sql.rowset.serial.SerialArray;
+import javax.sql.rowset.serial.SerialException;
 import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class JdbcStationaryDAO implements StationaryDAO {
@@ -51,7 +55,9 @@ public class JdbcStationaryDAO implements StationaryDAO {
         List<Stationary> stationaries = new ArrayList<>();
         SqlRowSet result = jdbc.queryForRowSet(sql);
         while (result.next()){
-            stationaries.add(mapRowToStationary(result));
+            Stationary stationary = mapRowToStationary(result);
+//            stationary.setImgURL(getImagesById(stationary.getId()));
+            stationaries.add(stationary);
         }
         return stationaries;
     }
@@ -108,7 +114,7 @@ public class JdbcStationaryDAO implements StationaryDAO {
 
     //methods for parsing data from DB
 
-    private Stationary mapRowToStationary(SqlRowSet row) {
+    private Stationary mapRowToStationary(SqlRowSet row) throws SerialException {
         Stationary stationary = new Stationary();
         stationary.setId(row.getInt("id"));
         stationary.setTitle(row.getString("title"));
@@ -117,10 +123,25 @@ public class JdbcStationaryDAO implements StationaryDAO {
         stationary.setPrice(row.getBigDecimal("price"));
         stationary.setTheme(row.getString("theme"));
         stationary.setPrintType(row.getString("printType"));
-        Object photos = row.getObject("imgURL"); //need to figure out how to map an array
-        System.out.println(photos);
+
+        Object photos = row.getObject("imgURL");
+        photos
+
+        SerialArray stuff = ((SerialArray) photos);
+        String[] hjkm = stuff.getArray();
+        List<String> photoList = Arrays.asList(stuff);
+        stationary.setImgURL(photoList);
+
         stationary.setActive(row.getBoolean("isActive"));
 
         return stationary;
     }
+    @Override
+    public List<String> getImagesById(int id){
+//        String sql = "SELECT imgURL FROM Stationaries WHERE id = ?";
+//        List<Map<String, Object>> result = jdbc.queryForObject(sql, id, String.class);
+//        System.out.println(result.toString());
+        return null;
+    }
+
 }

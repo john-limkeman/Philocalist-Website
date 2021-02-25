@@ -30,6 +30,9 @@ public interface StationaryDAO {
 
         //Get Stationary by id
         public Stationary getStationaryById(int id);
-    }
+
+        //Get images via different jdbc call
+        List<String> getImagesById(int id);
+}
 
 
