@@ -18,6 +18,7 @@ import Programs from '../views/DayOfMenu/Programs.vue'
 import TableNumbers from '../views/DayOfMenu/TableNumbers.vue'
 import WelcomeSigns from '../views/DayOfMenu/WelcomeSigns.vue'
 import ThankYouCards from '../views/ThankYouCards.vue'
+import Cart from '../views/Cart.vue'
 
 
 Vue.use(VueRouter)
@@ -168,6 +169,14 @@ const routes = [
   path: '/thank-you',
   name: 'ThankYouCards',
   component: ThankYouCards,
+  meta: {
+      requiresAuth: false
+  }
+},
+{
+  path: '/cart',
+  name: 'Cart',
+  component: Cart,
   meta: {
       requiresAuth: false
   }

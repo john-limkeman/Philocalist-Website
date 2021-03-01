@@ -1,20 +1,30 @@
 <template>
   <div id="app">
+    <div id="nav">
     <div id="primaryNav">
       <span v-on:click="toggleAllOff">
-      <router-link class="navlink" to="/" v-on:click="toggleAllOff"> Home </router-link>
+      <router-link class="navlink" to="/"> Home </router-link>
       &nbsp;|&nbsp;
-      <router-link class="navlink" to="/about" v-on:click="toggleAllOff">About</router-link>
+      <router-link class="navlink" to="/about">About</router-link>
       &nbsp;|&nbsp;
       </span>
-      <span v-on:click="toggleWedding" class="navlink" id="weddingMenuName">Weddings</span>
-      &nbsp;|&nbsp;
-      <span v-on:click="toggleParty" class="navlink">Parties</span> &nbsp;|&nbsp;
-      <span v-on:click="toggleDayOf" class="navlink">Day Of</span> &nbsp;|&nbsp;
+      <span v-on:click="toggleWedding" class="navlink" id="weddingMenuName">Weddings &nbsp;|&nbsp;</span>
+
+      <span v-on:click="toggleParty" class="navlink">Parties &nbsp;|&nbsp;</span> 
+      <span v-on:click="toggleDayOf" class="navlink">Day Of &nbsp;|&nbsp;</span>
       <span v-on:click="toggleAllOff">
       <router-link class="navlink" to="/thank-you">
         Thank You
       </router-link>
+    <span id='rightNav'>
+       <span v-on:click="toggleAllOff" v-if='isAdmin'>
+         <router-link class="navlink" to="/admin" v-on:click="toggleAllOff"> Admin </router-link>
+         </span>
+       <span v-on:click="toggleAllOff" v-else>
+         <router-link class="navlink" to="/cart" v-on:click="toggleAllOff"> Cart </router-link>
+         </span>
+
+    </span>
       </span>
     </div>
 
@@ -24,14 +34,14 @@
           class="navlink"
           v-bind:to="{ name: 'WeddingInvites' }"
         >
-          Wedding Invites
+          Invitation
         </router-link>
         &nbsp;|&nbsp;
         <router-link
           class="navlink"
           v-bind:to="{ name: 'SaveTheDates' }"
         >
-          Save the Dates</router-link
+          Save the Date</router-link
         >
         &nbsp;|&nbsp;
         <span v-on:click="toggleAddOns">Add Ons</span>
@@ -137,6 +147,9 @@
         </router-link>
       </div>
     </div>
+
+
+    </div>
     <router-view />
   </div>
 </template>
@@ -149,6 +162,7 @@ export default {
       isAddOnMenuOpen: false,
       isPartyMenuOpen: false,
       isDayOfMenuOpen: false,
+      isAdmin: false
     };
   },
   methods: {
@@ -212,8 +226,23 @@ export default {
   color: #2c3e50;
 }
 
-/* Navigation Bar */
 
+/*  NAVIGATION BAR  */
+
+#nav{
+  /* display: flex;
+  flex-direction: row; */
+  width: 100%;
+  background-color: rgba(255, 215, 0, 0.1);
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+}
+
+#rightNav{
+  position: absolute;
+  right: 25px;
+}
 #primaryNav {
   padding: 10px;
   font-size: 20px;
@@ -221,7 +250,7 @@ export default {
 #secondaryNav{
   padding: 10px;
   font-size:18px;
-  background-color: #6AB155;
+  background-color: #FFD700;
   color: white;
 }
 
@@ -238,7 +267,7 @@ export default {
 }
 
 #secondaryNav a.router-link-exact-active{
-  color: #FFD700;
+  color: black;
 }
 
 

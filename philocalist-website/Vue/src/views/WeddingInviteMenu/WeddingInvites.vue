@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>Wedding Invitations</h1>
+      <h1>Wedding Bundles</h1>
       <StationaryListing v-bind:StationaryType="this.category" />
   </div>
 </template>
