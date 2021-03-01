@@ -114,7 +114,7 @@ public class JdbcStationaryDAO implements StationaryDAO {
 
     //methods for parsing data from DB
 
-    private Stationary mapRowToStationary(SqlRowSet row) throws SerialException {
+    private Stationary mapRowToStationary(SqlRowSet row) {
         Stationary stationary = new Stationary();
         stationary.setId(row.getInt("id"));
         stationary.setTitle(row.getString("title"));
@@ -123,15 +123,7 @@ public class JdbcStationaryDAO implements StationaryDAO {
         stationary.setPrice(row.getBigDecimal("price"));
         stationary.setTheme(row.getString("theme"));
         stationary.setPrintType(row.getString("printType"));
-
-        Object photos = row.getObject("imgURL");
-        photos
-
-        SerialArray stuff = ((SerialArray) photos);
-        String[] hjkm = stuff.getArray();
-        List<String> photoList = Arrays.asList(stuff);
-        stationary.setImgURL(photoList);
-
+        stationary.setImgURL(row.getString("imgURL"));
         stationary.setActive(row.getBoolean("isActive"));
 
         return stationary;

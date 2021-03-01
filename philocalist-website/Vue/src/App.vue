@@ -215,7 +215,11 @@ export default {
   color: #2c3e50;
 }
 
-#primaryNav a.router-link-exact-active {
+a.router-link-exact-active{
+  color: #42b983;
+}
+
+#primaryNav a.router-link-exact-active{
   color: #42b983;
 }
 </style>
