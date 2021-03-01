@@ -7,19 +7,19 @@
       <router-link class="navlink" to="/about" v-on:click="toggleAllOff">About</router-link>
       &nbsp;|&nbsp;
       </span>
-      <span v-on:click="toggleWedding">Wedding Invitations</span>
+      <span v-on:click="toggleWedding" class="navlink" id="weddingMenuName">Weddings</span>
       &nbsp;|&nbsp;
-      <span v-on:click="toggleParty">Party Invitations</span> &nbsp;|&nbsp;
-      <span v-on:click="toggleDayOf">Day Of Materials</span> &nbsp;|&nbsp;
+      <span v-on:click="toggleParty" class="navlink">Parties</span> &nbsp;|&nbsp;
+      <span v-on:click="toggleDayOf" class="navlink">Day Of</span> &nbsp;|&nbsp;
       <span v-on:click="toggleAllOff">
       <router-link class="navlink" to="/thank-you">
-        Thank You Cards
+        Thank You
       </router-link>
       </span>
     </div>
 
     <div id="secondaryNav">
-      <div id="weddingMenu" v-if="this.isWeddingMenuOpen">
+      <div  v-if="this.isWeddingMenuOpen">
         <router-link
           class="navlink"
           v-bind:to="{ name: 'WeddingInvites' }"
@@ -157,6 +157,8 @@ export default {
         this.isWeddingMenuOpen = true;
         this.isPartyMenuOpen = false;
         this.isDayOfMenuOpen = false;
+
+        Document.getElementById('weddingMenuName').style.color = '#42b983';
       } else {
         this.isWeddingMenuOpen = false;
         this.isAddOnMenuOpen = false;
@@ -197,7 +199,11 @@ export default {
   Computed: {},
 };
 </script>
+
+
 <style>
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -206,20 +212,41 @@ export default {
   color: #2c3e50;
 }
 
+/* Navigation Bar */
+
 #primaryNav {
-  padding: 30px;
+  padding: 10px;
+  font-size: 20px;
+}
+#secondaryNav{
+  padding: 10px;
+  font-size:18px;
+  background-color: #6AB155;
+  color: white;
 }
 
-#primaryNav a {
+#primaryNav a, #primaryNav span, #primaryNav a:visited {
   font-weight: bold;
   color: #2c3e50;
 }
-
-a.router-link-exact-active{
-  color: #42b983;
+#secondaryNav a, #secondaryNav span, #secondaryNav a:visited{
+  font-weight: bold;
+  color: white;
 }
-
 #primaryNav a.router-link-exact-active{
-  color: #42b983;
+  color: #FFD700;
 }
+
+#secondaryNav a.router-link-exact-active{
+  color: #FFD700;
+}
+
+
+#primaryNav span, #secondaryNav span, .navlink{
+  text-decoration: none;
+}
+
+
+/*Second/Third Level Navigation Bar */
+
 </style>
