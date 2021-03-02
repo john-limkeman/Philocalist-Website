@@ -43,7 +43,28 @@ if (currentToken != null) {
         state.logIn = false;
       },
       ADD_TO_CART(state, stationary){
-        state.cart.setItem = stationary;
+        state.cart.push = stationary;
+      },
+      REMOVE_FROM_CART(state, stationary){
+        let index = state.cart.indexOf(stationary);
+        state.cart.splice(index, 1);
       }
+      // ADD_NEW_STATIONARY(state, stationary){
+      //   state.
+      // }
+    },
+    actions: {
+        // addNewStationary({commit}, stationary){
+        //   commit('ADD_NEW_STATIONARY', stationary)
+        // },
+        addStationaryToCart({commit}, stationary){
+          commit('ADD_TO_CART', stationary);
+        },
+        removeStationaryFromCart({commit}, stationary){
+          commit('REMOVE_FROM_CART', stationary);
+        }
+    },
+    getters: {
+
     }
   })

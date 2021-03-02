@@ -8,9 +8,9 @@
       <router-link class="navlink" to="/about">About</router-link>
       &nbsp;|&nbsp;
       </span>
-      <span v-on:click="toggleWedding" class="navlink" id="weddingMenuName">Weddings &nbsp;|&nbsp;</span>
+      <span v-on:click="toggleWedding" class="navlink">Weddings &nbsp;|&nbsp;</span>
 
-      <span v-on:click="toggleParty" class="navlink">Parties &nbsp;|&nbsp;</span> 
+      <span v-on:click="toggleParty"  class="navlink" >Parties &nbsp;|&nbsp;</span> 
       <span v-on:click="toggleDayOf" class="navlink">Day Of &nbsp;|&nbsp;</span>
       <span v-on:click="toggleAllOff">
       <router-link class="navlink" to="/thank-you">
@@ -171,8 +171,6 @@ export default {
         this.isWeddingMenuOpen = true;
         this.isPartyMenuOpen = false;
         this.isDayOfMenuOpen = false;
-
-        Document.getElementById('weddingMenuName').style.color = '#42b983';
       } else {
         this.isWeddingMenuOpen = false;
         this.isAddOnMenuOpen = false;
@@ -275,6 +273,9 @@ export default {
   text-decoration: none;
 }
 
+/* .navlink:hover{
+   color: #FFD700;
+} */
 
 /*Second/Third Level Navigation Bar */
 

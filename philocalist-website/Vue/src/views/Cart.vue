@@ -7,7 +7,7 @@
 
 <script>
 export default {
-
+//this.$store.dispatch('action name', payload)
 }
 </script>
 
