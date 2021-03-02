@@ -19,11 +19,11 @@ export default {
   computed: {},
   methods: {
       addToCart(){
-        this.$store.dispatch('addStationaryToCart', this.stationary);
+        this.$store.dispatch('addStationaryToCart', this.stationary.id);
         console.log(this.$store.getters.getCartSize);
       },
       removeFromCart(){
-          this.$store.dispatch('removeStationaryFromCart', this.stationary);
+          this.$store.dispatch('removeStationaryFromCart', this.stationary.id);
       }
   },
   props: ["id", "isCart"],
@@ -53,7 +53,7 @@ export default {
 }
 
 #cardContainer img{
-    height: 60%;
+    height: 120px;
     margin: 5px;
 }
 #cardContainer h2{

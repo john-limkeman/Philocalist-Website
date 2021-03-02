@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
+
 Vue.use(Vuex)
 
 /*
@@ -21,7 +22,17 @@ if (currentToken != null) {
       token: currentToken || '',
       user: currentUser || {},
       logIn: false,
-      cart: []
+      cart: [
+      {
+        id: 1,
+      },
+      {
+        id: 2,
+      },
+      {
+        id: 1,
+      }
+      ]
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
@@ -42,11 +53,15 @@ if (currentToken != null) {
         axios.defaults.headers.common = {};
         state.logIn = false;
       },
-      ADD_TO_CART(state, stationary){
-        state.cart.push = stationary;
+      ADD_TO_CART(state, id){
+        state.cart.push(
+          {
+            id: id
+          }
+        )
       },
-      REMOVE_FROM_CART(state, stationary){
-        let index = state.cart.indexOf(stationary);
+      REMOVE_FROM_CART(state, id){
+        let index = state.cart.indexOf(id);
         state.cart.splice(index, 1);
       }
       // ADD_NEW_STATIONARY(state, stationary){
@@ -57,11 +72,11 @@ if (currentToken != null) {
         // addNewStationary({commit}, stationary){
         //   commit('ADD_NEW_STATIONARY', stationary)
         // },
-        addStationaryToCart({commit}, stationary){
-          commit('ADD_TO_CART', stationary);
+        addStationaryToCart({commit}, id){
+          commit('ADD_TO_CART', id);
         },
-        removeStationaryFromCart({commit}, stationary){
-          commit('REMOVE_FROM_CART', stationary);
+        removeStationaryFromCart({commit}, id){
+          commit('REMOVE_FROM_CART', id);
         }
     },
     getters: {

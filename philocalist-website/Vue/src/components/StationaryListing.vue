@@ -1,17 +1,18 @@
 <template>
   <div>
-      <!--should be replaced with a card component?  At the very least create a pop-out for the details-->
+      <!-- 
+        Lists StationaryCards based on category prop passed to it from views
+        NOT USED FOR CART, as it sets that parameter to false (use CartListing for that)
+      -->
   <div v-for="invite in stationaries" v-bind:key="invite.id" >
       <StationaryCard  v-bind:id="invite.id" v-bind:isCart="false"/>
-        <!-- <h2>{{invite.theme}}</h2>
-        <img v-bind:src="invite.imgURL" alt="error"> -->
     </div>
   </div>
 </template>
 
 <script>
 import StationaryService from '../services/StationaryService.js';
-import StationaryCard from '../components/StationaryCard.vue';
+import StationaryCard from '../components/StationaryCard.vue'; //why this error?
 export default {
     data(){
         return{
