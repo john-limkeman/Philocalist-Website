@@ -65,6 +65,8 @@ if (currentToken != null) {
         }
     },
     getters: {
-
+        getCartSize(state){
+          return state.cart.length;
+        }
     }
   })

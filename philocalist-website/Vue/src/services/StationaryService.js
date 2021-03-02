@@ -10,5 +10,8 @@ export default {
     },
     getAllStationaryByCategory(category){
         return http.get(`/allStationary/${category}`)
+    },
+    getStationaryById(id){
+        return http.get(`/stationary/${id}`)
     }
 }
