@@ -1,7 +1,7 @@
 <template>
   <div>
 <h2>cart items</h2>  
-<div v-for="item in retrieveStationaryFromCart" v-bind:key="item.id">
+<div v-for="item in Cart" v-bind:key="item.id">
 <StationaryCard v-bind:isCart="true" v-bind:id="item.id"/>
 </div>
 </div>
@@ -19,13 +19,9 @@ components: {
     StationaryCard,
 },
 computed: {
-    retrieveStationaryFromCart(){
-        let stationaries= [];
-        let cartArray = this.$store.getters.getCart;
-        cartArray.forEach((item) => {
-            stationaries.push(item.product)
-        });
-        return stationaries;
+    Cart(){
+    
+        return this.$store.state.cart;
     }
 }
 }

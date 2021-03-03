@@ -31,7 +31,6 @@ export default {
       created() {
     StationaryService.getAllStationaryByCategory(this.pageCategory).then((response) => {
       this.stationaries = response.data;
-      console.log(this.stationaries);
     });
   },
 }

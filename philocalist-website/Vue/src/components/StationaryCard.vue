@@ -1,4 +1,6 @@
 <template>
+
+<!-- Visual display of each product when listed on pages. Will add pop out for details of each product-->
   <div id="cardContainer"> <!-- add on click to create pop out -->
     <img v-bind:src="this.stationary.imgURL" alt="error"/>
     <h2>{{this.stationary.title}}</h2>
@@ -19,11 +21,7 @@ export default {
   computed: {},
   methods: {
       addToCart(){
-        this.$store.dispatch('addStationaryToCart', {
-          product: this.stationary,
-          quantity: 1
-        });
-        console.log(this.$store.getters.getCartSize);
+        this.$store.dispatch('addStationaryToCart', this.stationary);
       },
       removeFromCart(){
           this.$store.dispatch('removeStationaryFromCart', this.stationary);

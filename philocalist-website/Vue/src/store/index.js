@@ -45,19 +45,16 @@ if (currentToken != null) {
         axios.defaults.headers.common = {};
         state.logIn = false;
       },
-      ADD_TO_CART(state, {stationary, quantity}){
-        let foundItem = state.cart.find(item => {
-          return item.product.id === stationary.id;
+      ADD_TO_CART(state, stationary){
+        let foundItem = state.cart.find((item) => {
+          return item.id === stationary.id;
       });
-
-      if (foundItem) {
-        foundItem.quantity += quantity;
-        return;
-    }
-        state.cart.push({
-          stationary,
-          quantity
-        });
+      if(!foundItem){ /* check to ensure item does not already exist in cart before adding it */
+        state.cart.push(stationary)
+        console.log("cart size: " + state.cart.length);
+      }else{
+        console.log("Avoiding multiple entries into cart");
+      }
       },
       REMOVE_FROM_CART(state, stationary){
       state.cart = state.cart.filter(item => {
@@ -67,11 +64,11 @@ if (currentToken != null) {
       }
     },
     actions: {
-        addStationaryToCart({commit}, {stationary, quantity}){
-          commit('ADD_TO_CART', {stationary, quantity});
+        addStationaryToCart({commit}, stationary){
+          commit('ADD_TO_CART', stationary);
         },
-        removeStationaryFromCart({commit}, {stationary, quantity}){
-          commit('REMOVE_FROM_CART', {stationary, quantity});
+        removeStationaryFromCart({commit}, stationary){
+          commit('REMOVE_FROM_CART', stationary);
         }
     },
     getters: {
