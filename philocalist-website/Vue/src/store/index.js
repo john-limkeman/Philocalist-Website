@@ -61,19 +61,19 @@ if (currentToken != null) {
         return item.id !== stationary.id;
       })
       },
-      UPDATE_CART_QUANTITY(state, payload){
-          let foundItem = state.quantities.find(item => {
-            return item.id == payload.id;
-          })
+      // UPDATE_CART_QUANTITY(state, payload){
+      //     let foundItem = state.quantities.find(item => {
+      //       return item.id == payload.id;
+      //     })
 
-          if(foundItem){
-            foundItem.quantity = payload.quantity;
-          } else {
-            state.quantities.push(payload
-            )
-          }
-          console.log(state.quantities);
-      }
+      //     if(foundItem){
+      //       foundItem.quantity = payload.quantity;
+      //     } else {
+      //       state.quantities.push(payload
+      //       )
+      //     }
+      //     console.log(state.quantities);
+      // }
     },
     actions: {
         addStationaryToCart({commit}, stationary){
@@ -82,9 +82,9 @@ if (currentToken != null) {
         removeStationaryFromCart({commit}, stationary){
           commit('REMOVE_FROM_CART', stationary);
         },
-        updateQuantity({commit}, payload){
-          commit('UPDATE_CART_QUANTITY', payload)
-        },
+        // updateQuantity({commit}, payload){
+        //   commit('UPDATE_CART_QUANTITY', payload)
+        // },
     },
     getters: {
         getCartSize(state){

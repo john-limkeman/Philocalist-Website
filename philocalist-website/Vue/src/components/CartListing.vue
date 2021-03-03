@@ -15,10 +15,10 @@ import StationaryCard from '../components/StationaryCard.vue'
 export default {
 data(){
     return{
-        changeNum: {
-            id: 0,
-            quantity: 0
-        }
+        // changeNum: {
+        //     id: 0,
+        //     quantity: 0
+        // }
     }
 },
 components: {
@@ -31,13 +31,13 @@ computed: {
     }
 },
 methods : {
-    updateQuantity(id){
-        let quantityPayload = {
-            id: id,
-            quantity: this.changeNum
-        }
-        this.$store.dispatch('updateQuantity', {quantityPayload})
-    }
+    // updateQuantity(id){
+    //     let quantityPayload = {
+    //         id: id,
+    //         quantity: this.changeNum
+    //     }
+    //     this.$store.dispatch('updateQuantity', {quantityPayload})
+    // }
 }
 }
 </script>
