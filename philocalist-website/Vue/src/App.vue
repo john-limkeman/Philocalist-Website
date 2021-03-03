@@ -21,7 +21,7 @@
          <router-link class="navlink" to="/admin" v-on:click="toggleAllOff"> Admin </router-link>
          </span>
        <span v-on:click="toggleAllOff" v-else>
-         <router-link class="navlink" to="/cart" v-on:click="toggleAllOff"> Cart </router-link>
+         <router-link class="navlink" to="/cart" v-on:click="toggleAllOff"> {{cartCount}} Cart </router-link>
          </span>
 
     </span>
@@ -208,7 +208,11 @@ export default {
       this.isDayOfMenuOpen = false;
     }
   },
-  Computed: {},
+  computed: {
+    cartCount(){
+      return this.$store.getters.getCartSize;
+    }
+  },
 };
 </script>
 

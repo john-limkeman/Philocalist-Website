@@ -19,7 +19,10 @@ export default {
   computed: {},
   methods: {
       addToCart(){
-        this.$store.dispatch('addStationaryToCart', this.stationary);
+        this.$store.dispatch('addStationaryToCart', {
+          product: this.stationary,
+          quantity: 1
+        });
         console.log(this.$store.getters.getCartSize);
       },
       removeFromCart(){

@@ -45,26 +45,33 @@ if (currentToken != null) {
         axios.defaults.headers.common = {};
         state.logIn = false;
       },
-      ADD_TO_CART(state, stationary){
-        state.cart.push(stationary);
+      ADD_TO_CART(state, {stationary, quantity}){
+        let foundItem = state.cart.find(item => {
+          return item.product.id === stationary.id;
+      });
+
+      if (foundItem) {
+        foundItem.quantity += quantity;
+        return;
+    }
+        state.cart.push({
+          stationary,
+          quantity
+        });
       },
       REMOVE_FROM_CART(state, stationary){
-        let index = state.cart.push(stationary);
-        state.cart.splice(index, 1); //this is currently removing the last item, not the selected one
+      state.cart = state.cart.filter(item => {
+        console.log(stationary.id);
+        return item.id !== stationary.id;
+      })
       }
-      // ADD_NEW_STATIONARY(state, stationary){
-      //   state.
-      // }
     },
     actions: {
-        // addNewStationary({commit}, stationary){
-        //   commit('ADD_NEW_STATIONARY', stationary)
-        // },
-        addStationaryToCart({commit}, stationary){
-          commit('ADD_TO_CART', stationary);
+        addStationaryToCart({commit}, {stationary, quantity}){
+          commit('ADD_TO_CART', {stationary, quantity});
         },
-        removeStationaryFromCart({commit}, stationary){
-          commit('REMOVE_FROM_CART', stationary);
+        removeStationaryFromCart({commit}, {stationary, quantity}){
+          commit('REMOVE_FROM_CART', {stationary, quantity});
         }
     },
     getters: {
