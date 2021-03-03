@@ -23,15 +23,7 @@ if (currentToken != null) {
       user: currentUser || {},
       logIn: false,
       cart: [
-      {
-        id: 1,
-      },
-      {
-        id: 2,
-      },
-      {
-        id: 1,
-      }
+
       ]
     },
     mutations: {
@@ -53,16 +45,12 @@ if (currentToken != null) {
         axios.defaults.headers.common = {};
         state.logIn = false;
       },
-      ADD_TO_CART(state, id){
-        state.cart.push(
-          {
-            id: id
-          }
-        )
+      ADD_TO_CART(state, stationary){
+        state.cart.push(stationary);
       },
-      REMOVE_FROM_CART(state, id){
-        let index = state.cart.indexOf(id);
-        state.cart.splice(index, 1);
+      REMOVE_FROM_CART(state, stationary){
+        let index = state.cart.push(stationary);
+        state.cart.splice(index, 1); //this is currently removing the last item, not the selected one
       }
       // ADD_NEW_STATIONARY(state, stationary){
       //   state.
@@ -72,16 +60,19 @@ if (currentToken != null) {
         // addNewStationary({commit}, stationary){
         //   commit('ADD_NEW_STATIONARY', stationary)
         // },
-        addStationaryToCart({commit}, id){
-          commit('ADD_TO_CART', id);
+        addStationaryToCart({commit}, stationary){
+          commit('ADD_TO_CART', stationary);
         },
-        removeStationaryFromCart({commit}, id){
-          commit('REMOVE_FROM_CART', id);
+        removeStationaryFromCart({commit}, stationary){
+          commit('REMOVE_FROM_CART', stationary);
         }
     },
     getters: {
         getCartSize(state){
           return state.cart.length;
+        },
+        getCart(state){
+          return state.cart;
         }
     }
   })

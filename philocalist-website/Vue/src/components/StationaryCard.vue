@@ -19,11 +19,11 @@ export default {
   computed: {},
   methods: {
       addToCart(){
-        this.$store.dispatch('addStationaryToCart', this.stationary.id);
+        this.$store.dispatch('addStationaryToCart', this.stationary);
         console.log(this.$store.getters.getCartSize);
       },
       removeFromCart(){
-          this.$store.dispatch('removeStationaryFromCart', this.stationary.id);
+          this.$store.dispatch('removeStationaryFromCart', this.stationary);
       }
   },
   props: ["id", "isCart"],

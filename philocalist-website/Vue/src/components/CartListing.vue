@@ -9,7 +9,6 @@
 
 <script>
 import StationaryCard from '../components/StationaryCard.vue'
-import StationaryService from '../services/StationaryService.js'
 export default {
 data(){
     return{
@@ -22,16 +21,7 @@ components: {
 computed: {
     retrieveStationaryFromCart(){
         let stationaries= [];
-        let ids;
-        ids = this.$store.state.cart;
-        console.log(this.$store.state.cart);
-       ids.forEach((num) => { //data not being processed correctly? Cart grows, data hard to understand
-           StationaryService.getStationaryById(num.id).then((response) => {
-               stationaries.push(response.data);
-           }
-           )
-       })
-
+        stationaries = this.$store.getters.getCart;
         return stationaries;
     }
 }
@@ -41,4 +31,3 @@ computed: {
 <style>
 
 </style>
-Use this file to list isCart = true StationaryCards
