@@ -93,20 +93,19 @@ if (currentToken != null) {
         getCart(state){
           return state.cart;
         },
-        getCartItemById(state, id){
-          return state.cart.filter(item => {
-            return item.id === id
-          })
+        getQuantities(state){
+        return state.quantities
         },
-        getQuantityById(state, id){
-          let foundItem =  state.quantities.filter(item => {
-            return item.id === id
+        cartTotal(state){
+          let total = 0;
+
+          state.cart.forEach(item => {
+            let quantity = state.quantities.filter(q => {
+              return q.id === item.id})
+              quantity = quantity.quantity;
+            total += item.price * quantity
           })
-          if (foundItem){
-            return foundItem.quantity;
-          } else {
-            return 0;
-          }
-        },
+          return total;
+        }
     }
   })
