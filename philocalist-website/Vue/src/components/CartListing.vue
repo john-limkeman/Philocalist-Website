@@ -6,8 +6,8 @@
     <input class="quantityInput" name="itemQuantity" type="number" min="0" max="1000" v-bind:id='item.id'>
     <button class="updateButton" v-on:click="updateQuantity(item.id)">Update</button>
 </div>
-
-<!-- <h3>Total Price: {{CartTotal}}</h3> -->
+<!-- 
+<h3>Total Price: {{$store.getters.cartTotal}}</h3> -->
 </div>
 </template>
 

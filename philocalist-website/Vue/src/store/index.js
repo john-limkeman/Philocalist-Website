@@ -100,10 +100,10 @@ if (currentToken != null) {
           let total = 0;
 
           state.cart.forEach(item => {
-            let quantity = state.quantities.filter(q => {
-              return q.id === item.id})
-              quantity = quantity.quantity;
-            total += item.price * quantity
+            let quan = state.quantities.filter(q => {
+              return q.id === item.id});
+              console.log(quan.quantity);
+            total += item.price * quan.quantity
           })
           return total;
         }
