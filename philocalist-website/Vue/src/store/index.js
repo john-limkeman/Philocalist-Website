@@ -92,6 +92,21 @@ if (currentToken != null) {
         },
         getCart(state){
           return state.cart;
-        }
+        },
+        getCartItemById(state, id){
+          return state.cart.filter(item => {
+            return item.id === id
+          })
+        },
+        getQuantityById(state, id){
+          let foundItem =  state.quantities.filter(item => {
+            return item.id === id
+          })
+          if (foundItem){
+            return foundItem.quantity;
+          } else {
+            return 0;
+          }
+        },
     }
   })
