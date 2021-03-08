@@ -7,6 +7,8 @@
       &nbsp;|&nbsp;
       <router-link class="navlink" to="/about">About</router-link>
       &nbsp;|&nbsp;
+      <router-link class="navlink" to="/contact">Contact</router-link>
+      &nbsp;|&nbsp;
       </span>
       <span v-on:click="toggleWedding" class="navlink">Weddings &nbsp;|&nbsp;</span>
 
@@ -150,6 +152,9 @@
 
 
     </div>
+    <div id="hiddenNav">
+          <router-link class="navlink" to="/admin">Admin</router-link>
+    </div>
     <router-view />
   </div>
 </template>
@@ -277,10 +282,9 @@ export default {
   text-decoration: none;
 }
 
-/* .navlink:hover{
-   color: #FFD700;
-} */
-
-/*Second/Third Level Navigation Bar */
+#hiddenNav{
+  position: absolute;
+  bottom: 5px;
+}
 
 </style>

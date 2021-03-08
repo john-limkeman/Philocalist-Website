@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Contact from '../views/Contact.vue'
 import WeddingInvites from '../views/WeddingInviteMenu/WeddingInvites.vue'
 import SaveTheDates from '../views/WeddingInviteMenu/SaveTheDates.vue'
 import AddressLabels from '../views/WeddingInviteMenu/Add-Ons/AddressLabels.vue'
@@ -19,7 +20,7 @@ import TableNumbers from '../views/DayOfMenu/TableNumbers.vue'
 import WelcomeSigns from '../views/DayOfMenu/WelcomeSigns.vue'
 import ThankYouCards from '../views/ThankYouCards.vue'
 import Cart from '../views/Cart.vue'
-
+import Admin from '../views/Admin.vue'
 
 Vue.use(VueRouter)
 
@@ -37,6 +38,14 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
+  {
+    path: '/contact',
+    name: 'Contact Me',
+    component: Contact,
+    meta: {
+        requiresAuth: false
+    }
+},
   {
     path: '/wedding',
     name: 'Wedding Invites',
@@ -179,6 +188,14 @@ const routes = [
   component: Cart,
   meta: {
       requiresAuth: false
+  }
+},
+{
+  path: '/admin',
+  name: 'Admin',
+  component: Admin,
+  meta: {
+      requiresAuth: false //will be true
   }
 },
 ]
