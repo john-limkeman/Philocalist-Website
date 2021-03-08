@@ -23,7 +23,7 @@ if (currentToken != null) {
       user: currentUser || {},
       logIn: false,
       cart: [],
-      quantities: [],
+      adminChoice: [],
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
