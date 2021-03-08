@@ -47,8 +47,8 @@
             <label for="isActive">Active?: </label>
             <input type="checkbox" name="isActive" v-model="stationary.isActive"/>
         <br/>
-            <!-- Buttons use the prop's price value to determine if the prop being passed is an existing product -->
-            <button type="submit" v-on:click="updateStationary(stationary)" v-if="this.selected.price > 0">Update Stationary</button>
+            <!-- Buttons use the prop's id value to determine if the prop being passed is an existing product -->
+            <button type="submit" v-on:click="updateStationary(stationary)" v-if="this.selected.id > 0">Update Stationary</button>
             <button type="submit" v-on:click="createStationary(stationary)" v-else >Create Stationary</button>
 
         </form>
@@ -73,6 +73,7 @@ methods: {
         StationaryService.createStationary(stationary);
         this.$emit("submitted");
     },
+
 },
 created(){
     if(this.selected != null){
