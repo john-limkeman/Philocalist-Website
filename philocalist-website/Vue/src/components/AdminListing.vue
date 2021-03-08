@@ -3,7 +3,7 @@
       <div id="listAllStationariesContainer">
           <div v-for="item in stationaries" v-bind:key="item.id">
               <span>{{item.id}} &nbsp;|&nbsp; {{item.title}}</span>
-              <button>Edit</button>
+              <button v-on:click="toggleMenu(item)">Edit</button>
               <button>Delete</button>
           </div>
           <button>Add New Stationary</button>
@@ -31,6 +31,14 @@ computed: {
 },
 components: {
     StationaryForm,
+},
+methods: {
+    toggleMenu(stationary){
+        //change store adminChoice
+        this.$store.dispatch('setAdminChoice', stationary);
+        //make form visible
+        this.formVisible = true;
+    }
 },
 created(){
     StationaryService.getAllStationary().then(response => {

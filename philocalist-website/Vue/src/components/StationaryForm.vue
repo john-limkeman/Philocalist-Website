@@ -3,7 +3,7 @@
         <form action="">
             <label for="Title">Title: </label>
             <input type="text" name="Title" v-model="stationary.title">
-
+        <br/>
             <label for="Category">Category: </label>
             <select name="Category" v-model="stationary.category">
                 <option value="weddingInvite">Wedding Invitation</option>
@@ -24,8 +24,30 @@
                 <option value="welcomeSign">Welcome Sign</option>
                 <option value="favor">Favor Tag/Sticker</option>
             </select>
+        <br/>
             <label for="Price">Price: </label>
-            <input type="number" name="Price">
+            <input type="number" name="Price" v-model="stationary.price"/>
+        <br/>
+            <label for="Theme">Theme: </label>
+            <input type="text" name="Theme" v-model="stationary.theme"/>
+        <br/>
+            <label for="Color">Color: </label>
+            <input type="text" name="Color" v-model="stationary.color"/>
+         <br/>
+            <label for="PrintType">Print Type: </label>
+            <select name="PrintType" v-model="stationary.printType">
+                <option value="digital">Digital</option>
+                <option value="foilPress">Foil Press</option>
+                <option value="letterPress">Letter Press</option>
+            </select>
+         <br/>
+            <label for="imgURL">Image URL: </label>
+            <input type="text" name="imgURL" v-model="stationary.imgURL"/>
+         <br/>
+            <label for="isActive">Active?: </label>
+            <input type="checkbox" name="isActive" v-model="stationary.isActive"/>
+        <br/>
+            <button type="submit">Submit</button>
         </form>
     </div>
 </template>

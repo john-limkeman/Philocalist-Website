@@ -48,7 +48,8 @@ if (currentToken != null) {
         let foundItem = state.cart.find((item) => {
           return item.id === stationary.id;
       });
-      if(!foundItem){ /* check to ensure item does not already exist in cart before adding it */
+      /* checks to ensure item does not already exist in cart before adding it */
+      if(!foundItem){ 
         stationary.quantity = 1
         console.log("quantity: " + stationary.quantity)
         state.cart.push(stationary)
@@ -64,7 +65,7 @@ if (currentToken != null) {
       })
       },
 
-/* This will remove item and push it with new quantity (pushing to store causes store components to re-render) */
+      /* This will remove item and push it with new quantity (pushing to store causes store components to re-render) */
       UPDATE_CART_QUANTITY(state, payload){
           let foundItem = state.cart.find(item => {
             return item.id == payload.id; })
@@ -81,6 +82,10 @@ if (currentToken != null) {
           } else {
             console.log("ERROR - add item to cart before changing quantity")
           }
+      },
+      SET_ADMIN_CHOICE(state, stationary){
+        state.adminChoice = stationary;
+        console.log(state.adminChoice);
       }
     },
     actions: {
@@ -91,8 +96,11 @@ if (currentToken != null) {
           commit('REMOVE_FROM_CART', stationary);
         },
         updateQuantity({commit}, payload){
-          commit('UPDATE_CART_QUANTITY', payload)
+          commit('UPDATE_CART_QUANTITY', payload);
         },
+        setAdminChoice({commit}, stationary){
+          commit('SET_ADMIN_CHOICE', stationary);
+        }
     },
     getters: {
         getCartSize(state){
