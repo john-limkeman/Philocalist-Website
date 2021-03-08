@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form action="">
+        <form>
             <label for="Title">Title: </label>
             <input type="text" name="Title" v-model="stationary.title">
         <br/>
@@ -47,12 +47,16 @@
             <label for="isActive">Active?: </label>
             <input type="checkbox" name="isActive" v-model="stationary.isActive"/>
         <br/>
-            <button type="submit">Submit</button>
+            <!-- Buttons use the prop's price value to determine if the prop being passed is an existing product -->
+            <button type="submit" v-on:click="updateStationary(stationary)" v-if="this.selected.price > 0">Update Stationary</button>
+            <button type="submit" v-on:click="createStationary(stationary)" v-else >Create Stationary</button>
+
         </form>
     </div>
 </template>
 
 <script>
+import StationaryService from '../services/StationaryService';
 export default {
 data() {
     return {
@@ -60,8 +64,22 @@ data() {
     }
 },
 props: ["selected"],
+methods: {
+    updateStationary(stationary){
+        StationaryService.updateStationary(stationary);
+        this.$emit("submitted");
+    },
+    createStationary(stationary){
+        StationaryService.createStationary(stationary);
+        this.$emit("submitted");
+    },
+},
 created(){
-   this.stationary = this.selected;
+    if(this.selected != null){
+        this.stationary = this.selected;
+    }
+
+    console.log(this.selected);
 }
 }
 </script>

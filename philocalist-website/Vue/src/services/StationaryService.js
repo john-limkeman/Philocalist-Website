@@ -9,9 +9,18 @@ export default {
         return http.get('/allStationary');
     },
     getAllStationaryByCategory(category){
-        return http.get(`/allStationary/${category}`)
+        return http.get(`/allStationary/${category}`);
     },
     getStationaryById(id){
-        return http.get(`/stationary/${id}`)
+        return http.get(`/stationary/${id}`);
+    },
+    updateStationary(stationary){
+        return http.put(`/stationary/${stationary.id}`, stationary);
+    },
+    createStationary(stationary){
+        return http.post(`/stationary`, stationary);
+    },
+    deleteStationary(id){
+        return http.delete(`/stationary/${id}`);
     }
 }

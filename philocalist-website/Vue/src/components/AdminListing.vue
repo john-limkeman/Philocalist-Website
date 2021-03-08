@@ -1,15 +1,16 @@
 <template>
   <div>
-      <div id="listAllStationariesContainer">
+      <div id="listAllStationariesContainer" v-if="!formVisible">
           <div v-for="item in stationaries" v-bind:key="item.id">
               <span>{{item.id}} &nbsp;|&nbsp; {{item.title}}</span>
               <button v-on:click="toggleMenu(item)">Edit</button>
               <button>Delete</button>
           </div>
-          <button>Add New Stationary</button>
+          <button v-on:click="toggleEmptyMenu()">Add New Stationary</button>
       </div>
-      <div id="formField">
-          <StationaryForm v-bind:selected="chosen"/>
+      <div id="formField" v-if="formVisible">
+          <button v-on:click="toggleMenu()">X</button>
+          <StationaryForm v-bind:selected="chosen" v-on:submitted="toggleEmptyMenu()"/>
       </div>
   </div>
 </template>
@@ -37,7 +38,11 @@ methods: {
         //change store adminChoice
         this.$store.dispatch('setAdminChoice', stationary);
         //make form visible
-        this.formVisible = true;
+        this.formVisible = !this.formVisible;
+    },
+    toggleEmptyMenu(){
+        this.$store.dispatch('emptyAdminChoice');
+        this.formVisible = !this.formVisible;
     }
 },
 created(){

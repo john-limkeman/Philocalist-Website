@@ -86,6 +86,9 @@ if (currentToken != null) {
       SET_ADMIN_CHOICE(state, stationary){
         state.adminChoice = stationary;
         console.log(state.adminChoice);
+      },
+      EMPTY_ADMIN_CHOICE(state){
+        state.adminChoice = [];
       }
     },
     actions: {
@@ -100,6 +103,9 @@ if (currentToken != null) {
         },
         setAdminChoice({commit}, stationary){
           commit('SET_ADMIN_CHOICE', stationary);
+        },
+        emptyAdminChoice({commit}){
+          commit('EMPTY_ADMIN_CHOICE')
         }
     },
     getters: {
