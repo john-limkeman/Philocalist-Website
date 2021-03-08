@@ -3,11 +3,9 @@
 <div v-for="item in Cart" v-bind:key="item.id" class="cartItemContainer">
     <StationaryCard v-bind:isCart="true" v-bind:id="item.id"/>
     <span>Price: ${{item.price}} x </span>
-    <input class="quantityInput" name="itemQuantity" type="number" min="0" max="1000" v-bind:id='item.id'>
+    <input v-bind:value="item.quantity" class="quantityInput" name="itemQuantity" type="number" min="0" max="1000" v-bind:id='item.id'>
     <button class="updateButton" v-on:click="updateQuantity(item.id)">Update</button>
 </div>
-<!-- 
-<h3>Total Price: {{$store.getters.cartTotal}}</h3> -->
 </div>
 </template>
 

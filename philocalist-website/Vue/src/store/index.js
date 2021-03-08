@@ -49,6 +49,8 @@ if (currentToken != null) {
           return item.id === stationary.id;
       });
       if(!foundItem){ /* check to ensure item does not already exist in cart before adding it */
+        stationary.quantity = 1
+        console.log("quantity: " + stationary.quantity)
         state.cart.push(stationary)
         console.log("cart size: " + state.cart.length);
       }else{
@@ -61,18 +63,24 @@ if (currentToken != null) {
         return item.id !== stationary.id;
       })
       },
-      UPDATE_CART_QUANTITY(state, payload){
-          let foundItem = state.quantities.find(item => {
-            return item.id == payload.id;
-          })
 
-          if(foundItem){
+/* This will remove item and push it with new quantity (pushing to store causes store components to re-render) */
+      UPDATE_CART_QUANTITY(state, payload){
+          let foundItem = state.cart.find(item => {
+            return item.id == payload.id; })
+
+            if(foundItem){ 
+
+              state.cart = state.cart.filter(item => {
+              return item.id !== payload.id; })
+
             foundItem.quantity = payload.quantity;
+
+            state.cart.push(foundItem);
+            console.log("quantity updated to " + foundItem.quantity + " on: " + foundItem.title)
           } else {
-            state.quantities.push(payload
-            )
+            console.log("ERROR - add item to cart before changing quantity")
           }
-          console.log(state.quantities);
       }
     },
     actions: {
@@ -100,10 +108,8 @@ if (currentToken != null) {
           let total = 0;
 
           state.cart.forEach(item => {
-            let quan = state.quantities.filter(q => {
-              return q.id === item.id});
-              console.log(quan.quantity);
-            total += item.price * quan.quantity
+            
+            total += item.price * item.quantity
           })
           return total;
         }
