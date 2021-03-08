@@ -39,7 +39,7 @@ const routes = [
   },
   {
     path: '/wedding',
-    name: 'WeddingInvites',
+    name: 'Wedding Invites',
     component: WeddingInvites,
     meta: {
         requiresAuth: false
@@ -47,7 +47,7 @@ const routes = [
 },
 {
     path: '/save-the-dates',
-    name: 'SaveTheDates',
+    name: 'Save The Dates',
     component: SaveTheDates,
     meta: {
         requiresAuth: false
@@ -55,7 +55,7 @@ const routes = [
 },
 {
   path: '/address-labels',
-  name: 'AddressLabels',
+  name: 'Address Labels',
   component: AddressLabels,
   meta: {
       requiresAuth: false
@@ -63,7 +63,7 @@ const routes = [
 },
 {
   path: '/directions',
-  name: 'DirectionsCards',
+  name: 'Directions Cards',
   component: DirectionsCards,
   meta: {
       requiresAuth: false
@@ -79,7 +79,7 @@ const routes = [
 },
 {
   path: '/events-cards',
-  name: 'EventsCards',
+  name: 'Events Cards',
   component: EventsCards,
   meta: {
       requiresAuth: false
@@ -87,7 +87,7 @@ const routes = [
 },
 {
   path: '/bachelor',
-  name: 'BachelorInvites',
+  name: 'Bachelor Invites',
   component: BachelorInvites,
   meta: {
       requiresAuth: false
@@ -95,7 +95,7 @@ const routes = [
 },
 {
   path: '/bridal-shower',
-  name: 'BridalShowerInvites',
+  name: 'Bridal Shower Invites',
   component: BridalShowerInvites,
   meta: {
       requiresAuth: false
@@ -103,7 +103,7 @@ const routes = [
 },
 {
   path: '/engagement',
-  name: 'EngagementInvites',
+  name: 'Engagement Invites',
   component: EngagementInvites,
   meta: {
       requiresAuth: false
@@ -111,7 +111,7 @@ const routes = [
 },
 {
   path: '/rehearsal-dinner',
-  name: 'RehearsalDinnerInvites',
+  name: 'Rehearsal Dinner Invites',
   component: RehearsalDinnerInvites,
   meta: {
       requiresAuth: false
@@ -119,7 +119,7 @@ const routes = [
 },
 {
   path: '/favor-tags',
-  name: 'FavorTags',
+  name: 'Favor Tags',
   component: FavorTags,
   meta: {
       requiresAuth: false
@@ -151,7 +151,7 @@ const routes = [
 },
 {
   path: '/table-numbers',
-  name: 'TableNumbers',
+  name: 'Table Numbers',
   component: TableNumbers,
   meta: {
       requiresAuth: false
@@ -159,7 +159,7 @@ const routes = [
 },
 {
   path: '/welcome-signs',
-  name: 'WelcomeSigns',
+  name: 'Welcome Signs',
   component: WelcomeSigns,
   meta: {
       requiresAuth: false
@@ -167,7 +167,7 @@ const routes = [
 },
 {
   path: '/thank-you',
-  name: 'ThankYouCards',
+  name: 'Thank You Cards',
   component: ThankYouCards,
   meta: {
       requiresAuth: false
@@ -187,9 +187,15 @@ const router = new VueRouter({
   routes
 })
 
-//used for AUTH once we get that up and running
 
-// router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
+  document.title = `${process.env.VUE_APP_TITLE} - ${to.name}`
+  next()
+})
+
+
+
+//used for AUTH once we get that up and running
 //     // Determine if the route requires Authentication
 //     const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
 

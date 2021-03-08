@@ -32,14 +32,14 @@
       <div  v-if="this.isWeddingMenuOpen">
         <router-link
           class="navlink"
-          v-bind:to="{ name: 'WeddingInvites' }"
+          v-bind:to="{ name: 'Wedding Invites' }"
         >
           Invitation
         </router-link>
         &nbsp;|&nbsp;
         <router-link
           class="navlink"
-          v-bind:to="{ name: 'SaveTheDates' }"
+          v-bind:to="{ name: 'Save The Dates' }"
         >
           Save the Date</router-link
         >
@@ -48,14 +48,14 @@
         <div id="addOnMenu" v-if="this.isAddOnMenuOpen">
           <router-link
             class="navlink"
-            v-bind:to="{ name: 'AddressLabels' }"
+            v-bind:to="{ name: 'Address Labels' }"
           >
             Address Labels
           </router-link>
           &nbsp;|&nbsp;
           <router-link
             class="navlink"
-            v-bind:to="{ name: 'DirectionsCards' }"
+            v-bind:to="{ name: 'Directions Cards' }"
           >
             Directions Cards
           </router-link>
@@ -69,7 +69,7 @@
           &nbsp;|&nbsp;
           <router-link
             class="navlink"
-            v-bind:to="{ name: 'EventsCards' }"
+            v-bind:to="{ name: 'Events Cards' }"
           >
             Events Cards
           </router-link>
@@ -79,28 +79,28 @@
       <div id="partyMenu" v-if="this.isPartyMenuOpen">
         <router-link
           class="navlink"
-          v-bind:to="{ name: 'BachelorInvites' }"
+          v-bind:to="{ name: 'Bachelor Invites' }"
         >
           Bachelor & Bachelorette
         </router-link>
         &nbsp;|&nbsp;
         <router-link
           class="navlink"
-          v-bind:to="{ name: 'BridalShowerInvites' }"
+          v-bind:to="{ name: 'Bridal Shower Invites' }"
         >
           Bridal Shower
         </router-link>
         &nbsp;|&nbsp;
         <router-link
           class="navlink"
-          v-bind:to="{ name: 'EngagementInvites' }"
+          v-bind:to="{ name: 'Engagement Invites' }"
         >
           Engagement
         </router-link>
         &nbsp;|&nbsp;
         <router-link
           class="navlink"
-          v-bind:to="{ name: 'RehearsalDinnerInvites' }"
+          v-bind:to="{ name: 'Rehearsal Dinner Invites' }"
         >
           Rehearsal Dinner
         </router-link>
@@ -109,7 +109,7 @@
       <div id="dayOfMenu" v-if="this.isDayOfMenuOpen">
         <router-link
           class="navlink"
-          v-bind:to="{ name: 'FavorTags' }"
+          v-bind:to="{ name: 'Favor Tags' }"
         >
           Favor Tags
         </router-link>
@@ -134,14 +134,14 @@
         &nbsp;|&nbsp;
         <router-link
           class="navlink"
-          v-bind:to="{ name: 'TableNumbers' }"
+          v-bind:to="{ name: 'Table Numbers' }"
         >
           Table Numbers
         </router-link>
         &nbsp;|&nbsp;
         <router-link
           class="navlink"
-          v-bind:to="{ name: 'WelcomeSigns' }"
+          v-bind:to="{ name: 'Welcome Signs' }"
         >
           Welcome Signs
         </router-link>
