@@ -1,8 +1,8 @@
 <template>
   <div>
       <h1>Admin Tools</h1>
+      <!-- lists all with edit button and delete button  -->
       <AdminListing />
-      <!-- list all with edit button and delete button  -->
         <!-- edit about page -->
   </div>
 </template>

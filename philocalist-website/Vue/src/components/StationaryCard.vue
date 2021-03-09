@@ -2,7 +2,7 @@
 
 <!-- Visual display of each product when listed on pages. Will add pop out for details of each product-->
   <div id="cardContainer"> <!-- add on click to create pop out -->
-    <img v-bind:src="this.stationary.imgURL" alt="error"/>
+    <img v-bind:src="this.stationary.imgURL" alt="error" v-on:click="seeDetails()"/>
     <h2>{{this.stationary.title}}</h2>
    <span v-if="this.isCart" id="RemoveBtn" @click="removeFromCart()">Remove from Cart</span>
     <span v-else id="AddBtn" @click="addToCart()">Add to Cart</span>
@@ -25,6 +25,9 @@ export default {
       },
       removeFromCart(){
           this.$store.dispatch('removeStationaryFromCart', this.stationary);
+      },
+      seeDetails(){
+          this.$emit("details");
       }
   },
   props: ["id", "isCart"],
@@ -56,6 +59,7 @@ export default {
 #cardContainer img{
     height: 120px;
     margin: 5px;
+    cursor: pointer;
 }
 #cardContainer h2{
     margin: 5px;

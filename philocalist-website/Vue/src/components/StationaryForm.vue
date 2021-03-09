@@ -26,7 +26,7 @@
             </select>
         <br/>
             <label for="Price">Price: </label>
-            <input type="number" name="Price" v-model="stationary.price"/>
+            <input type="number" name="Price" step="0.01" min="0" v-model="stationary.price"/>
         <br/>
             <label for="Theme">Theme: </label>
             <input type="text" name="Theme" v-model="stationary.theme"/>
