@@ -23,7 +23,7 @@ if (currentToken != null) {
       user: currentUser || {},
       logIn: false,
       cart: [],
-      adminChoice: [],
+      adminChoice: {},
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
@@ -88,7 +88,7 @@ if (currentToken != null) {
         console.log(state.adminChoice);
       },
       EMPTY_ADMIN_CHOICE(state){
-        state.adminChoice = [];
+        state.adminChoice = {};
       }
     },
     actions: {

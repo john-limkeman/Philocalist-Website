@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div id="content">
     <div id="nav">
     <div id="primaryNav">
       <span v-on:click="toggleAllOff">
@@ -152,10 +153,12 @@
 
 
     </div>
-    <div id="hiddenNav">
-          <router-link class="navlink" to="/admin">Admin</router-link>
-    </div>
     <router-view />
+    </div>
+
+    <footer id="hiddenNav">
+          <router-link class="navlink" to="/admin">Site Maintenance</router-link>
+    </footer>
   </div>
 </template>
 
@@ -282,9 +285,30 @@ export default {
   text-decoration: none;
 }
 
-#hiddenNav{
-  position: absolute;
-  bottom: 5px;
+
+/* Sticky Footer */
+#app{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#content{
+  flex: 1;
+}
+
+footer{
+  flex-shrink: 0;
+  background-color: lightgray;
+  color: white;
+  margin-bottom: 0px;
+  padding-bottom: 0px;;
+  text-align: left;
+}
+
+footer a, footer a:visited{
+  color: white;
+  text-decoration: none;
 }
 
 </style>

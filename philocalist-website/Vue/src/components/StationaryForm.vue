@@ -48,8 +48,8 @@
             <input type="checkbox" name="isActive" v-model="stationary.isActive"/>
         <br/>
             <!-- Buttons use the prop's id value to determine if the prop being passed is an existing product -->
-            <button type="submit" v-on:click="updateStationary(stationary)" v-if="this.selected.id > 0">Update Stationary</button>
-            <button type="submit" v-on:click="createStationary(stationary)" v-else >Create Stationary</button>
+            <button type="submit" v-on:click="updateStationary()" v-if="this.selected.id > 0">Update Stationary</button>
+            <button type="submit" v-on:click="createStationary()" v-else >Create Stationary</button>
 
         </form>
     </div>
@@ -65,12 +65,14 @@ data() {
 },
 props: ["selected"],
 methods: {
-    updateStationary(stationary){
-        StationaryService.updateStationary(stationary);
+    updateStationary(){
+        console.log(this.stationary);
+        StationaryService.updateStationary(this.stationary);
         this.$emit("submitted");
     },
-    createStationary(stationary){
-        StationaryService.createStationary(stationary);
+    createStationary(){
+        console.log(this.stationary);
+        StationaryService.createStationary(this.stationary);
         this.$emit("submitted");
     },
 
@@ -79,8 +81,6 @@ created(){
     if(this.selected != null){
         this.stationary = this.selected;
     }
-
-    console.log(this.selected);
 }
 }
 </script>

@@ -29,7 +29,7 @@ data(){
         stationaries : [],
         formVisible: false,
         confirmationVisible: false,
-        itemToDelete: [],
+        itemToDelete: {},
         idToDelete: "",
     }
 },
@@ -66,6 +66,7 @@ methods: {
     },
       deleteStationary(id){
         StationaryService.deleteStationary(id);
+        this.confirmationVisible = false;
     },
 },
 created(){
