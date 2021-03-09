@@ -16,13 +16,13 @@ Modal + Overlay shows more details for each stationary item when clicked
     </transition>
     <transition>
       <div class="modal" v-if="showModal">
-        <button class="modalExitBtn" v-on:click="toggleModal()">X</button>
+        <button class="exitBtn" v-on:click="toggleModal()">X</button>
         <h2 class="modalTitle">{{modalContent.title}}</h2>
         <img v-bind:src="modalContent.imgURL" alt="error displaying image" class="modalImage">
         <p>Price: ${{modalContent.price}} <br/>
           Theme: {{modalContent.theme}} <br/>
           Print Type: {{modalContent.printType}} <br/>
-          <button class="modalAddBtn"></button>
+          <span id="modalCartBtn" v-bind:class="addBtnMethod()" v-on:click="addToCart()">{{isInCart}}</span>
         </p>
 
       </div>
@@ -45,15 +45,36 @@ export default {
     computed: {
         pageCategory(){
             return this.StationaryType;
-        }
+        },
+        isInCart(){
+          let foundItem = this.$store.state.cart.find(item => {
+            return item.id == this.modalContent.id
+          })
+          if(foundItem){
+            return "Added to Cart"
+          }
+          return "Add to Cart";
+        },
     },
       methods: {
         toggleModal(item){
           if(item){
-              this.modalContent = item;
+            this.modalContent = item;
           }
           this.showModal = !this.showModal;
+        },
+        addBtnMethod(){
+          if (this.isInCart == "Added to Cart"){
+            return "addedBtn"
+          } else {
+            return "addBtn"
+          }
+        },
+      addToCart(){
+        if(this.isInCart == "Add to Cart"){
+          this.$store.dispatch('addStationaryToCart', this.modalContent);
         }
+      }
       },
     components: {
       StationaryCard
@@ -100,17 +121,10 @@ export default {
   max-width: 70%;
 }
 
-.modalExitBtn{
-  float: right;
-  font-size: 22px;
-  border: none;
-  background: none;
-
-  }
-.modalExitBtn:hover{
-    color: red;
-  }
-
+#modalCartBtn{
+  padding-left: 30px;
+  padding-right: 30px;
+}
 
 #container{
   height: 100%;

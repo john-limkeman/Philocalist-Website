@@ -285,8 +285,53 @@ export default {
   text-decoration: none;
 }
 
+/* BUTTONS */
 
-/* Sticky Footer */
+/* Exit Button */
+.exitBtn{
+  float: right;
+  font-size: 22px;
+  border: none;
+  background: none;
+
+  }
+.exitBtn:hover{
+    color: red;
+  }
+
+/* Add to Cart, Added to Cart, and Remove From Cart Buttons */
+.addBtn{
+background-color: rgba(255, 215, 0, 0.2);
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+}
+
+.addBtn:hover{
+    background-color: rgba(255, 215, 0, 0.6);
+}
+
+.addedBtn{
+    background-color: wheat;
+    color: grey;
+    width: 100%;
+   border-radius: 5px;
+   border: none;
+}
+
+.removeBtn{
+background-color: rgba(255, 0, 0, 0.2);
+   width: 100%;
+   border-radius: 5px;
+     border: none;
+}
+
+.removeBtn:hover{
+background-color: rgba(255, 0, 0, 0.6);
+}
+
+
+/* STICKY FOOTER */
 #app{
   display: flex;
   flex-direction: column;

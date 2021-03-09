@@ -4,8 +4,8 @@
   <div id="cardContainer"> <!-- add on click to create pop out -->
     <img v-bind:src="this.stationary.imgURL" alt="error" v-on:click="seeDetails()"/>
     <h2>{{this.stationary.title}}</h2>
-   <span v-if="this.isCart" id="RemoveBtn" @click="removeFromCart()">Remove from Cart</span>
-    <span v-else id="AddBtn" @click="addToCart()">Add to Cart</span>
+   <span v-if="this.isCart" class="removeBtn" @click="removeFromCart()">Remove from Cart</span>
+    <span v-else v-bind:class="addBtnMethod()" @click="addToCart()">{{isInCart}}</span>
   </div>
 </template>
 
@@ -18,7 +18,19 @@ export default {
       stationary: [],
     };
   },
-  computed: {},
+  computed: {
+
+    //Determines if button should reflect that item in is cart
+    isInCart(){
+        let foundItem = this.$store.state.cart.find(item => {
+          return item.id == this.stationary.id
+          })
+          if(foundItem){
+            return "Added to Cart"
+          }
+          return "Add to Cart";
+    }
+  },
   methods: {
       addToCart(){
         this.$store.dispatch('addStationaryToCart', this.stationary);
@@ -28,7 +40,15 @@ export default {
       },
       seeDetails(){
           this.$emit("details");
-      }
+      },
+      //changes button class is item is in cart
+      addBtnMethod(){
+        if (this.isInCart == "Added to Cart"){
+            return "addedBtn"
+          } else {
+            return "addBtn"
+          }
+      },
   },
   props: ["id", "isCart"],
 
@@ -66,23 +86,4 @@ export default {
     font-size: 15px;
 }
 
-#cardContainer span{
-   width: 100%;
-   border-radius: 5px;
-}
-
-#AddBtn{
-background-color: rgba(255, 215, 0, 0.2);
-}
-
-#AddBtn:hover{
-    background-color: rgba(255, 215, 0, 0.6);
-}
-#RemoveBtn{
-background-color: rgba(255, 0, 0, 0.2);
-}
-
-#RemoveBtn:hover{
-background-color: rgba(255, 0, 0, 0.6);
-}
 </style>
