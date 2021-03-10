@@ -1,6 +1,6 @@
 <template>
   <div>
-       <h3>Total Price: ${{cartTotalPrice}}</h3>
+   
   </div>
 </template>
 

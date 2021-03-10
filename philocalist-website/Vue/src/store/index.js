@@ -74,8 +74,8 @@ if (currentToken != null) {
 
               // state.cart = state.cart.filter(item => {
               // return item.id !== payload.id; })
-
-            foundItem.quantity = payload.quantity;
+            Vue.set(foundItem, 'quantity', payload.quantity)
+            // foundItem.quantity = payload.quantity;
 
             // state.cart.push(foundItem);
             console.log("quantity updated to " + foundItem.quantity + " on: " + foundItem.title)
