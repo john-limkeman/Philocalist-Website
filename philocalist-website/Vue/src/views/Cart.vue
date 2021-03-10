@@ -5,9 +5,10 @@
         <div id="listingContainer" >
       <CartListing v-on:refresh="refresh()" v-bind:key="renderKey"/>
         </div>
-        <div id="paymentContainer">
+        <div id="paymentContainer" v-bind:key="renderKey">
+              <h3>Total Price: ${{cartTotalPrice}}</h3>
     <!-- add payment, etc-->
-    <Payment v-bind:key="renderKey"/>
+    <Payment />
   
         </div>
 
@@ -28,6 +29,7 @@ data() {
 },
 methods: {
   refresh(){
+        console.log("refreshed")
         this.renderKey ++;
     }
 },

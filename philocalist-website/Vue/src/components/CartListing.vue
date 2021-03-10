@@ -1,7 +1,7 @@
 <template>
   <div> 
 <div v-for="item in Cart" v-bind:key="item.id" class="cartItemContainer">
-    <StationaryCard v-bind:isCart="true" v-bind:id="item.id" v-on:refresh="refresh()" />
+    <StationaryCard v-bind:isCart="true" v-bind:id="item.id" />
     <span>Price: ${{item.price}} x </span>
     <input v-bind:value="item.quantity" class="quantityInput" name="itemQuantity" type="number" min="0" max="1000" v-bind:id='item.id'>
     <button class="updateButton" v-on:click="updateQuantity(item.id)">Update</button>
@@ -15,7 +15,7 @@ import StationaryCard from '../components/StationaryCard.vue'
 export default {
 data(){
     return{
-     
+        renderKey: 0
     }
 },
 components: {
@@ -27,7 +27,7 @@ computed: {
     },
       cartTotalPrice(){
     return this.$store.getters.cartTotal;
-  }
+  },
 
 },
 methods : {
@@ -36,7 +36,8 @@ methods : {
             id: id,
             quantity: document.getElementById(id).value
         }
-        this.$store.dispatch('updateQuantity', quantityPayload)
+        this.$store.dispatch('updateQuantity', quantityPayload);
+        this.$emit("refresh");
     },
     ItemQuantity(id){
         let returnedPayload = this.$store.getters.getQuantities.filter(item => {
@@ -51,7 +52,13 @@ methods : {
     refresh(){
         this.$emit("refresh");
     }
-}
+},
+// watch: {
+//     cartTotalPrice(oldVal, newVal){
+//         this.renderKey ++;
+//         console.log("total price was" + oldVal + ". New total is " + newVal);
+//     }
+// }
 }
 </script>
 
