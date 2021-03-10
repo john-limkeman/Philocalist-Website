@@ -3,11 +3,12 @@
       <h1>YOUR CART</h1>
       <div id="cartContainer">
         <div id="listingContainer" >
-      <CartListing />
+      <CartListing v-on:refresh="refresh()" v-bind:key="renderKey"/>
         </div>
         <div id="paymentContainer">
     <!-- add payment, etc-->
-    <h3>Total Price: ${{cartTotalPrice}}</h3>
+    <Payment v-bind:key="renderKey"/>
+  
         </div>
 
       </div>
@@ -15,17 +16,20 @@
 </template>
 
 <script>
+import Payment from '../components/Payment.vue'
 import CartListing from '../components/CartListing.vue'
 export default {
 
 
 data() {
   return{
-
+      renderKey: 0,
   }
 },
 methods: {
-
+  refresh(){
+        this.renderKey ++;
+    }
 },
 computed: {
   cartTotalPrice(){
@@ -33,7 +37,8 @@ computed: {
   }
 },
 components: {
-  CartListing
+  CartListing,
+  Payment
 },
  created() {
 

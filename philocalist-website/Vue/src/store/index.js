@@ -72,12 +72,12 @@ if (currentToken != null) {
 
             if(foundItem){ 
 
-              state.cart = state.cart.filter(item => {
-              return item.id !== payload.id; })
+              // state.cart = state.cart.filter(item => {
+              // return item.id !== payload.id; })
 
             foundItem.quantity = payload.quantity;
 
-            state.cart.push(foundItem);
+            // state.cart.push(foundItem);
             console.log("quantity updated to " + foundItem.quantity + " on: " + foundItem.title)
           } else {
             console.log("ERROR - add item to cart before changing quantity")

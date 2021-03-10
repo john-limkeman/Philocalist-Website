@@ -34,6 +34,7 @@ export default {
   methods: {
       addToCart(){
         this.$store.dispatch('addStationaryToCart', this.stationary);
+        this.$emit("refresh");
       },
       removeFromCart(){
           this.$store.dispatch('removeStationaryFromCart', this.stationary);

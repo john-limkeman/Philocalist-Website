@@ -1,11 +1,12 @@
 <template>
   <div> 
 <div v-for="item in Cart" v-bind:key="item.id" class="cartItemContainer">
-    <StationaryCard v-bind:isCart="true" v-bind:id="item.id"/>
+    <StationaryCard v-bind:isCart="true" v-bind:id="item.id" v-on:refresh="refresh()" />
     <span>Price: ${{item.price}} x </span>
     <input v-bind:value="item.quantity" class="quantityInput" name="itemQuantity" type="number" min="0" max="1000" v-bind:id='item.id'>
     <button class="updateButton" v-on:click="updateQuantity(item.id)">Update</button>
 </div>
+  <h3>Total Price: ${{cartTotalPrice}}</h3>
 </div>
 </template>
 
@@ -14,7 +15,7 @@ import StationaryCard from '../components/StationaryCard.vue'
 export default {
 data(){
     return{
-        
+     
     }
 },
 components: {
@@ -24,22 +25,12 @@ computed: {
     Cart(){
         return this.$store.state.cart;
     },
-    CartTotal(){
-        return this.$store.getters.cartTotal
-    }
+      cartTotalPrice(){
+    return this.$store.getters.cartTotal;
+  }
 
 },
 methods : {
-    // QuantifiedPrice(id){
-    //     let item = this.$store.getters.getCart.filter(item => {
-    //         return item.id === id
-    //     })
-    //     let price = item.price
-
-    //     let quantity = this.ItemQuantity(id)
-    //     let total = price * quantity;
-    //     return total;
-    // },
     updateQuantity(id){
         let quantityPayload = {
             id: id,
@@ -57,6 +48,9 @@ methods : {
             console.log("Could not find id in quanities")
         }
     },
+    refresh(){
+        this.$emit("refresh");
+    }
 }
 }
 </script>
