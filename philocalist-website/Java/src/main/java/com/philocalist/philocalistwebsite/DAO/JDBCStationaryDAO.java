@@ -31,7 +31,7 @@ public class JdbcStationaryDAO implements StationaryDAO {
     public void addStationary(Stationary stationary) {
         jdbc.update("Insert INTO Stationaries (title, category, price, theme, color, printType, HeroImageURL, isActive) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
                 stationary.getTitle(), stationary.getCategory(), stationary.getPrice(), stationary.getTheme(), stationary.getColor(), stationary.getPrintType(),
-                stationary.getHeroImageURL(), stationary.isActive());
+                stationary.getImgURL(), stationary.isActive());
     }
 
     @Override
@@ -45,7 +45,7 @@ public class JdbcStationaryDAO implements StationaryDAO {
                 " color = ?, printType = ?, HeroImageURL = ?, isActive = ? WHERE id = ?";
         jdbc.update(sql, stationary.getTitle(), stationary.getCategory(), stationary.getPrice(),
                 stationary.getTheme(), stationary.getColor(), stationary.getPrintType(),
-                stationary.getHeroImageURL(), stationary.isActive(), id);
+                stationary.getImgURL(), stationary.isActive(), id);
     }
 
     @Override
@@ -123,7 +123,7 @@ public class JdbcStationaryDAO implements StationaryDAO {
         stationary.setPrice(row.getBigDecimal("price"));
         stationary.setTheme(row.getString("theme"));
         stationary.setPrintType(row.getString("printType"));
-        stationary.setHeroImageURL(row.getString("HeroImageURL"));
+        stationary.setImgURL(row.getString("imgURL"));
         stationary.setActive(row.getBoolean("isActive"));
 
         return stationary;

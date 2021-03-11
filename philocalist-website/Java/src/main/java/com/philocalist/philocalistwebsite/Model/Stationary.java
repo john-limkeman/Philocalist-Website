@@ -13,7 +13,7 @@ public class Stationary {
     private String theme; //design theme
     private String color; // color choice within theme
     private String printType; // digital, foilPress, or letterPress
-    private String HeroImageURL; //url for display image
+    private String imgURL; //url for display image
     private boolean isActive; //currently available for purchase?
 
 
@@ -81,11 +81,11 @@ public class Stationary {
         this.printType = printType;
     }
 
-    public String getHeroImageURL() {
-        return HeroImageURL;
+    public String getImgURL() {
+        return imgURL;
     }
 
-    public void setHeroImageURL(String HeroImageURL) {
-        this.HeroImageURL = HeroImageURL;
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
     }
 }
