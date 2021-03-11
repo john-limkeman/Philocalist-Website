@@ -23,6 +23,7 @@ if (currentToken != null) {
       user: currentUser || {},
       logIn: false,
       cart: [],
+      tempCart: [],
       adminChoice: {},
     },
     mutations: {
@@ -72,12 +73,14 @@ if (currentToken != null) {
 
             if(foundItem){ 
 
-              // state.cart = state.cart.filter(item => {
-              // return item.id !== payload.id; })
             Vue.set(foundItem, 'quantity', payload.quantity)
-            // foundItem.quantity = payload.quantity;
+            state.tempCart = state.cart;
+            state.cart = [];
+            state.tempCart.forEach(item => {
+              state.cart.push(item);
+            })
 
-            // state.cart.push(foundItem);
+         
             console.log("quantity updated to " + foundItem.quantity + " on: " + foundItem.title)
           } else {
             console.log("ERROR - add item to cart before changing quantity")

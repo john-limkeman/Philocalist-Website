@@ -6,7 +6,7 @@
     <input v-bind:value="item.quantity" class="quantityInput" name="itemQuantity" type="number" min="0" max="1000" v-bind:id='item.id'>
     <button class="updateButton" v-on:click="updateQuantity(item.id)">Update</button>
 </div>
-  <h3>Total Price: ${{cartTotalPrice}}</h3>
+
 </div>
 </template>
 
@@ -15,7 +15,6 @@ import StationaryCard from '../components/StationaryCard.vue'
 export default {
 data(){
     return{
-        renderKey: 0
     }
 },
 components: {
@@ -49,9 +48,6 @@ methods : {
             console.log("Could not find id in quanities")
         }
     },
-    refresh(){
-        this.$emit("refresh");
-    }
 },
 // watch: {
 //     cartTotalPrice(oldVal, newVal){

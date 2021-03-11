@@ -3,7 +3,7 @@
       <h1>YOUR CART</h1>
       <div id="cartContainer">
         <div id="listingContainer" >
-      <CartListing v-on:refresh="refresh()" v-bind:key="renderKey"/>
+      <CartListing />
         </div>
         <div id="paymentContainer" v-bind:key="renderKey">
               <h3>Total Price: ${{cartTotalPrice}}</h3>
@@ -24,14 +24,10 @@ export default {
 
 data() {
   return{
-      renderKey: 0,
   }
 },
 methods: {
-  refresh(){
-        console.log("refreshed")
-        this.renderKey ++;
-    }
+
 },
 computed: {
   cartTotalPrice(){
