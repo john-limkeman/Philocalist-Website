@@ -56,7 +56,6 @@ public class JdbcStationaryDAO implements StationaryDAO {
         SqlRowSet result = jdbc.queryForRowSet(sql);
         while (result.next()){
             Stationary stationary = mapRowToStationary(result);
-//            stationary.setImgURL(getImagesById(stationary.getId()));
             stationaries.add(stationary);
         }
         return stationaries;
@@ -128,12 +127,6 @@ public class JdbcStationaryDAO implements StationaryDAO {
 
         return stationary;
     }
-    @Override
-    public List<String> getImagesById(int id){
-//        String sql = "SELECT imgURL FROM Stationaries WHERE id = ?";
-//        List<Map<String, Object>> result = jdbc.queryForObject(sql, id, String.class);
-//        System.out.println(result.toString());
-        return null;
-    }
+
 
 }

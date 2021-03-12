@@ -2,6 +2,8 @@ package com.philocalist.philocalistwebsite.dao;
 
 import com.philocalist.philocalistwebsite.model.Photo;
 
+import java.util.List;
+
 public interface PhotoDAO {
 
     //add a photo
@@ -14,12 +16,12 @@ public interface PhotoDAO {
     public void deletePhoto(int id);
 
     //get all photos
-    public void getAllPhotos();
+    public List<Photo> getAllPhotos();
 
     //get photos by stationary id
-    public void getPhotoByStationaryId(int id);
+    public List<Photo> getPhotoByStationaryId(int id);
 
-    //get photos by id
-    public void getPhotoById(int id);
+    //get photo by id
+    public Photo getPhotoById(int id);
 
 }
