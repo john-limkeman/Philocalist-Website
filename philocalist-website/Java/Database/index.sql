@@ -61,18 +61,9 @@ INSERT INTO Photos (stationary_id, url, title) VALUES (2, 'https://cdn3.minted.c
 
 
 INSERT INTO Photos (stationary_id, url, title) VALUES (3, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/ENP/HBZ/MIN-HBZ-ENP-002C_A_PZ.jpg', 'Backer Options');
-INSERT INTO Photos (stationary_id, url, title) VALUES (4, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/BSI/Z9V/MIN-Z9V-BSI-001J_A_PZ.jpg?mntd_prf=Pdp:HeroImage');
-INSERT INTO Photos (stationary_id, url, title) VALUES (4, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/BSI/Z9V/MIN-Z9V-BSI-001J_A_PZ.jpg?mntd_prf=Pdp:HeroImage');
-INSERT INTO Photos (stationary_id, url, title) VALUES (4, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/BSI/Z9V/MIN-Z9V-BSI-001J_A_PZ.jpg?mntd_prf=Pdp:HeroImage');
-INSERT INTO Photos (stationary_id, url, title) VALUES (4, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/BSI/Z9V/MIN-Z9V-BSI-001J_A_PZ.jpg?mntd_prf=Pdp:HeroImage');
-INSERT INTO Photos (stationary_id, url, title) VALUES (4, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/BSI/Z9V/MIN-Z9V-BSI-001J_A_PZ.jpg?mntd_prf=Pdp:HeroImage');
-INSERT INTO Photos (stationary_id, url, title) VALUES (4, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/BSI/Z9V/MIN-Z9V-BSI-001J_A_PZ.jpg?mntd_prf=Pdp:HeroImage');
-INSERT INTO Photos (stationary_id, url, title) VALUES (4, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/BSI/Z9V/MIN-Z9V-BSI-001J_A_PZ.jpg?mntd_prf=Pdp:HeroImage');
-INSERT INTO Photos (stationary_id, url, title) VALUES (4, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/BSI/Z9V/MIN-Z9V-BSI-001J_A_PZ.jpg?mntd_prf=Pdp:HeroImage');
-INSERT INTO Photos (stationary_id, url, title) VALUES (4, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/BSI/Z9V/MIN-Z9V-BSI-001J_A_PZ.jpg?mntd_prf=Pdp:HeroImage');
-INSERT INTO Photos (stationary_id, url, title) VALUES (4, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/BSI/Z9V/MIN-Z9V-BSI-001J_A_PZ.jpg?mntd_prf=Pdp:HeroImage');
-INSERT INTO Photos (stationary_id, url, title) VALUES (4, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/BSI/Z9V/MIN-Z9V-BSI-001J_A_PZ.jpg?mntd_prf=Pdp:HeroImage');
-INSERT INTO Photos (stationary_id, url, title) VALUES (4, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/BSI/Z9V/MIN-Z9V-BSI-001J_A_PZ.jpg?mntd_prf=Pdp:HeroImage');
+INSERT INTO Photos (stationary_id, url, title) VALUES (3, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/ENP/HBZ/MIN-HBZ-ENP-003_A_PZ.jpg', 'Assembled');
+INSERT INTO Photos (stationary_id, url, title) VALUES (3, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/ENP/HBZ/MIN-HBZ-ENP-004_A_PZ.jpg', 'Close-Up');
+
 
 
 
