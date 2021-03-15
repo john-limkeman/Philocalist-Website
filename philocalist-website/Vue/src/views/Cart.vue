@@ -5,7 +5,7 @@
         <div id="listingContainer" >
       <CartListing />
         </div>
-        <div id="paymentContainer" v-bind:key="renderKey">
+        <div id="paymentContainer">
               <h3>Total Price: ${{cartTotalPrice}}</h3>
     <!-- add payment, etc-->
     <Payment />

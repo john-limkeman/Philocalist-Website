@@ -55,19 +55,7 @@ export default {
             this.modalContent = item;
           }
           this.showModal = !this.showModal;
-        },
-        addBtnMethod(){
-          if (this.isInCart == "Added to Cart"){
-            return "addedBtn"
-          } else {
-            return "addBtn"
-          }
-        },
-      addToCart(){
-        if(this.isInCart == "Add to Cart"){
-          this.$store.dispatch('addStationaryToCart', this.modalContent);
         }
-      }
       },
     components: {
       StationaryCard,

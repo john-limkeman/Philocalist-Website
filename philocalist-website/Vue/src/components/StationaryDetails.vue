@@ -2,7 +2,16 @@
   <div>
       <button class="exitBtn" v-on:click="closeModal()">X</button>
         <h2 class="modalTitle">{{modalContent.title}}</h2>
-        <img v-bind:src="modalContent.imgURL" alt="error displaying image" class="modalImage">
+<div class="photoContainer">
+
+    <div class="photoSlide">
+
+
+    </div>
+
+</div>
+
+        <!-- <img v-bind:src="modalContent.imgURL" alt="error displaying image" class="modalImage"> -->
         <p>Price: ${{modalContent.price}} <br/>
           Theme: {{modalContent.theme}} <br/>
           Print Type: {{modalContent.printType}} <br/>
@@ -13,10 +22,11 @@
 </template>
 
 <script>
+import PhotoService from '../services/PhotoService.js'
 export default {
 data(){
     return{
-
+        photos: [],
     }
 },
 props: ['modalContent'],
@@ -48,6 +58,19 @@ methods: {
           this.$emit('close');
       }
       },
+created() {
+    PhotoService.getPhotosByStationaryId(this.modalContent.id).then((response) => {
+        this.photos = response.data;
+    })
+        this.photos.push({
+            id: 0,
+            url: this.modalContent.imgURL,
+            stationary_id: this.modalContent.id,
+            title: "Front"
+        })
+        console.log(this.photos);
+
+}
 }
 </script>
 
