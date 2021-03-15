@@ -43,17 +43,17 @@ methods: {
         if(this.isInCart == "Add to Cart"){
           this.$store.dispatch('addStationaryToCart', this.modalContent);
         }
-      }
       },
       closeModal(){
           this.$emit('close');
       }
+      },
 }
 </script>
 
-<style>
+<style scoped>
 
-.modal img{
+img{
   max-height: 70%;
   max-width: 70%;
 }

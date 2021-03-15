@@ -1,9 +1,9 @@
+   <!-- 
+    Lists StationaryCards based on category prop passed to it from views
+    NOT USED FOR CART, as it sets that parameter to false (use CartListing.vue)
+    -->
 <template>
   <div id="container">
-      <!-- 
-        Lists StationaryCards based on category prop passed to it from views
-        NOT USED FOR CART, as it sets that parameter to false (use CartListing for that)
-      -->
   <div v-for="item in stationaries" v-bind:key="item.id" >
       <StationaryCard  v-bind:id="item.id" v-bind:isCart="false" v-on:details="toggleModal(item)"/>
     </div>
@@ -16,7 +16,7 @@ Modal + Overlay shows more details for each stationary item when clicked
     </transition>
     <transition>
       <div class="modal" v-if="showModal">
-        <StationaryDetails v-bind:modalContent="modalContent"/> 
+        <StationaryDetails v-bind:modalContent="modalContent" v-on:close="toggleModal()"/> 
       </div>
     </transition>
   </div>
@@ -109,15 +109,6 @@ export default {
   border: 3px solid #FFD700;
   border-radius: 10px;
 
-}
-.modal img{
-  max-height: 70%;
-  max-width: 70%;
-}
-
-#modalCartBtn{
-  padding-left: 30px;
-  padding-right: 30px;
 }
 
 #container{
