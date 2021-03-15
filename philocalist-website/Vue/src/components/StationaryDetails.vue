@@ -4,10 +4,14 @@
         <h2 class="modalTitle">{{modalContent.title}}</h2>
 <div class="photoContainer">
 
-    <div class="photoSlide">
-
-
+    <!-- <div class="photoSlide" v-for="photo in photos" v-bind:key="photo.id" v-if="sliderIndex === photo"> -->
+        <div class="photoSlide" v-for="index in [sliderIndex]" v-bind:key="index">
+        <img v-bind:src="currentPhoto.url" alt="error">
+        <p class="caption">{{currentPhoto.title}}</p>
     </div>
+        <span class="sliderBtn" v-on:click="decreaseIndex()">&#10094;</span>
+        <span v-for="photo in photos" v-bind:key="photo.id" class="dot"> . </span> <!-- fix later with css -->
+        <span class="sliderBtn" v-on:click="increaseIndex()">&#10095;</span>
 
 </div>
 
@@ -27,6 +31,7 @@ export default {
 data(){
     return{
         photos: [],
+        sliderIndex: 0,
     }
 },
 props: ['modalContent'],
@@ -40,8 +45,26 @@ computed: {
           }
           return "Add to Cart";
         },
+        currentPhoto(){
+            return this.photos[this.sliderIndex];
+        }
 },
 methods: {
+        increaseIndex(){
+            if (this.sliderIndex == this.photos.length - 1){
+                this.sliderIndex = 0;
+            } else {
+                this.sliderIndex ++;
+            }
+        },
+        decreaseIndex(){
+            if (this.sliderIndex == 0){
+                this.sliderIndex = this.photos.length - 1;
+            } else {
+                this.sliderIndex --;
+            }
+        },
+
          addBtnMethod(){
           if (this.isInCart == "Added to Cart"){
             return "addedBtn"
@@ -54,22 +77,33 @@ methods: {
           this.$store.dispatch('addStationaryToCart', this.modalContent);
         }
       },
+
+
       closeModal(){
           this.$emit('close');
       }
       },
 created() {
-    PhotoService.getPhotosByStationaryId(this.modalContent.id).then((response) => {
-        this.photos = response.data;
+    //adds hero image from stationary object to photos array, id: 0 to ensure no conflicts
+    this.photos.push({
+        id: 0,
+        url: this.modalContent.imgURL,
+        stationary_id: this.modalContent.id,
+        title: "Front"
     })
-        this.photos.push({
-            id: 0,
-            url: this.modalContent.imgURL,
-            stationary_id: this.modalContent.id,
-            title: "Front"
-        })
-        console.log(this.photos);
 
+    //adds photos from Photos table that match stationary id to this.photos 
+    PhotoService.getPhotosByStationaryId(this.modalContent.id).then((response) => {
+       response.data.forEach(element => {
+           this.photos.push({
+            id: element.id,
+            url: element.url,
+            stationary_id: element.stationary_id,
+            title: element.title
+           })
+       });
+    })
+        console.log(this.photos)
 }
 }
 </script>
