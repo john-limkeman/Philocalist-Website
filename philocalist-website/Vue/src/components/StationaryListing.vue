@@ -16,21 +16,14 @@ Modal + Overlay shows more details for each stationary item when clicked
     </transition>
     <transition>
       <div class="modal" v-if="showModal">
-        <button class="exitBtn" v-on:click="toggleModal()">X</button>
-        <h2 class="modalTitle">{{modalContent.title}}</h2>
-        <img v-bind:src="modalContent.imgURL" alt="error displaying image" class="modalImage">
-        <p>Price: ${{modalContent.price}} <br/>
-          Theme: {{modalContent.theme}} <br/>
-          Print Type: {{modalContent.printType}} <br/>
-          <span id="modalCartBtn" v-bind:class="addBtnMethod()" v-on:click="addToCart()">{{isInCart}}</span>
-        </p>
-
+        <StationaryDetails v-bind:modalContent="modalContent"/> 
       </div>
     </transition>
   </div>
 </template>
 
 <script>
+import StationaryDetails from '../components/StationaryDetails.vue'
 import StationaryService from '../services/StationaryService.js';
 import StationaryCard from '../components/StationaryCard.vue'; //why this error?
 export default {
@@ -77,7 +70,8 @@ export default {
       }
       },
     components: {
-      StationaryCard
+      StationaryCard,
+      StationaryDetails
     },
       created() {
     StationaryService.getAllStationaryByCategory(this.pageCategory).then((response) => {
