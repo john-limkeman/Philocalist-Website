@@ -68,3 +68,4 @@ INSERT INTO Photos (stationary_id, url, title) VALUES (3, 'https://cdn3.minted.c
 
 
 COMMIT TRANSACTION;
+
