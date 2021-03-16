@@ -11,7 +11,7 @@
       <div class="sliderNav">
         <span class="sliderBtn" v-on:click="decreaseIndex()">&#10094;</span>
         <span v-for="photo in photos" v-bind:key="photo.id">
-          <img v-bind:src="photo.url" alt="error" />
+          <img v-bind:src="photo.url" alt="error" v-on:click="sliderIndex = photos.indexOf(photo)"/>
         </span>
         <span class="sliderBtn" v-on:click="increaseIndex()">&#10095;</span>
       </div>
@@ -111,6 +111,7 @@ export default {
         });
       }
     );
+
     console.log(this.photos);
   },
 };
