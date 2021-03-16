@@ -25,9 +25,9 @@
 
     <!-- <img v-bind:src="modalContent.imgURL" alt="error displaying image" class="modalImage"> -->
     <p class="detailsText">
-      Price: ${{ modalContent.price }} <br />
-      Theme: {{ modalContent.theme }} <br />
-      Print Type: {{ modalContent.printType }} <br />
+      <b>Price: </b>${{ modalContent.price }} <br />
+      <b>Theme: </b>{{ modalContent.theme }} <br />
+      <b>Print Type: </b>{{ modalContent.printType }} <br />
     </p>
       <span
         id="modalCartBtn"
@@ -171,7 +171,7 @@ export default {
 .modalTitle{
   grid-area: title;
   font-size: 35px;
-  margin-bottom: 0px;
+  margin-bottom:0px;
 }
 
 .exitBtn{
@@ -206,6 +206,7 @@ export default {
   height: auto;
   margin-left: 5px;
   margin-right: 5px;
+  cursor: pointer;
 }
 .active {
   border: #FFD700 2px solid;
@@ -216,6 +217,10 @@ export default {
 
 .sliderBtn{
   font-size: 25px;
+}
+.sliderBtn:hover{
+  color: gray;
+  cursor: pointer;
 }
 /* Details Text */ 
 .detailsText{

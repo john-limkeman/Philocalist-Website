@@ -14,11 +14,9 @@
       <span v-on:click="toggleWedding" class="navlink">Weddings &nbsp;|&nbsp;</span>
 
       <span v-on:click="toggleParty"  class="navlink" >Parties &nbsp;|&nbsp;</span> 
-      <span v-on:click="toggleDayOf" class="navlink">Day Of &nbsp;|&nbsp;</span>
+      <span v-on:click="toggleDayOf" class="navlink">The Day &nbsp;|&nbsp;</span> <!--Day Of, Wedding Day Materials, Day Of Materials, -->
       <span v-on:click="toggleAllOff">
-      <router-link class="navlink" to="/thank-you">
-        Thank You
-      </router-link>
+    
     <span id='rightNav'>
        <span v-on:click="toggleAllOff" v-if='isAdmin'>
          <router-link class="navlink" to="/admin" v-on:click="toggleAllOff"> Admin </router-link>
@@ -47,7 +45,12 @@
           Save the Date</router-link
         >
         &nbsp;|&nbsp;
+          <router-link class="navlink" to="/thank-you">
+        Thank You
+      </router-link>
+           &nbsp;|&nbsp;
         <span v-on:click="toggleAddOns">Add Ons</span>
+
         <div id="addOnMenu" v-if="this.isAddOnMenuOpen">
           <router-link
             class="navlink"
@@ -267,10 +270,12 @@ export default {
 #primaryNav a, #primaryNav span, #primaryNav a:visited {
   font-weight: bold;
   color: #2c3e50;
+  cursor: pointer;
 }
 #secondaryNav a, #secondaryNav span, #secondaryNav a:visited{
   font-weight: bold;
   color: white;
+  cursor: pointer;
 }
 #primaryNav a.router-link-exact-active{
   color: #FFD700;
@@ -297,6 +302,7 @@ export default {
   }
 .exitBtn:hover{
     color: red;
+    cursor: pointer;
   }
 
 /* Add to Cart, Added to Cart, and Remove From Cart Buttons */
@@ -309,6 +315,7 @@ background-color: rgba(255, 215, 0, 0.2);
 
 .addBtn:hover{
     background-color: rgba(255, 215, 0, 0.6);
+    cursor:pointer;
 }
 
 .addedBtn{
@@ -328,6 +335,7 @@ background-color: rgba(255, 0, 0, 0.2);
 
 .removeBtn:hover{
 background-color: rgba(255, 0, 0, 0.6);
+cursor: pointer;
 }
 
 
