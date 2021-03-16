@@ -11,7 +11,7 @@
       <div class="sliderNav">
         <span class="sliderBtn" v-on:click="decreaseIndex()">&#10094;</span>
         <span v-for="photo in photos" v-bind:key="photo.id">
-          <img v-bind:src="photo.url" alt="error" v-on:click="sliderIndex = photos.indexOf(photo)"/>
+          <img class="navImg" v-bind:src="photo.url" alt="error" v-on:click="sliderIndex = photos.indexOf(photo)"/>
         </span>
         <span class="sliderBtn" v-on:click="increaseIndex()">&#10095;</span>
       </div>
@@ -58,18 +58,25 @@ export default {
   },
   methods: {
     increaseIndex() {
+      let images = document.getElementsByClassName('navImg');
+      images[this.sliderIndex].className = "navImg";
       if (this.sliderIndex == this.photos.length - 1) {
         this.sliderIndex = 0;
       } else {
         this.sliderIndex++;
       }
+
+      images[this.sliderIndex].className += " active";
     },
     decreaseIndex() {
+            let images = document.getElementsByClassName('navImg');
+      images[this.sliderIndex].className = "navImg";
       if (this.sliderIndex == 0) {
         this.sliderIndex = this.photos.length - 1;
       } else {
         this.sliderIndex--;
       }
+      images[this.sliderIndex].className += " active";
     },
 
     addBtnMethod() {
@@ -133,7 +140,8 @@ img {
   flex-direction: row;
   align-items: center;
 }
-.sliderNav img {
-
+.active {
+  opacity: 50%;
 }
+
 </style>
