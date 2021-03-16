@@ -56,6 +56,10 @@ components: {
 
 #listingContainer{
   grid-area: listing;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #paymentContainer{
   grid-area: payment;

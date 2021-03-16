@@ -25,6 +25,10 @@ export default {
 }
 img{
   grid-area: photo;
+  margin: 20px;
+  height: 70vh;
+  width: auto;
+  justify-self: center;
 }
 p{
   grid-area: info;
