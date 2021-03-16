@@ -71,7 +71,7 @@ export default {
 
 <style scoped>
 
-/* Modal Styling */
+/* Overlay Styling */
 .modalOverlay{
   position: absolute;
   top: 0;
@@ -81,23 +81,7 @@ export default {
   z-index: 98;
   background-color: rgba(255,255,255,0.8);
 }
-.modal{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 99;
 
-  width: 50%;
-  max-width: 400px;
-  height: 60%;
-  padding: 15px;
-
-  background-color: white;
-  border: 3px solid #FFD700;
-  border-radius: 10px;
-
-}
 
 #container{
   height: 100%;
