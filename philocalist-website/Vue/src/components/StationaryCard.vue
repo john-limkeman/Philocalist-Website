@@ -69,6 +69,7 @@ export default {
     width: 200px;
     border-radius: 10px;
     padding: 5px;
+    
 }
 
 #cardContainer:hover{
@@ -77,7 +78,8 @@ export default {
 }
 
 #cardContainer img{
-    height: 120px;
+    height: 160px;
+    width: auto;
     margin: 5px;
     cursor: pointer;
 }

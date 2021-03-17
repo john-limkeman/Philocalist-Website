@@ -11,10 +11,10 @@
       <router-link class="navlink" to="/contact">Contact</router-link>
       &nbsp;|&nbsp;
       </span>
-      <span v-on:click="toggleWedding" class="navlink">Weddings &nbsp;|&nbsp;</span>
+      <span @mouseenter="toggleWedding" class="navlink">Weddings &nbsp;|&nbsp;</span>
 
-      <span v-on:click="toggleParty"  class="navlink" >Parties &nbsp;|&nbsp;</span> 
-      <span v-on:click="toggleDayOf" class="navlink">The Day &nbsp;|&nbsp;</span> <!--Day Of, Wedding Day Materials, Day Of Materials, -->
+      <span @mouseenter="toggleParty"  class="navlink" >Parties &nbsp;|&nbsp;</span> 
+      <span @mouseenter="toggleDayOf" class="navlink">The Day &nbsp;|&nbsp;</span> <!--Day Of, Wedding Day Materials, Day Of Materials, -->
       <span v-on:click="toggleAllOff">
     
     <span id='rightNav'>
@@ -30,7 +30,7 @@
     </div>
 
     <div id="secondaryNav">
-      <div  v-if="this.isWeddingMenuOpen">
+      <div  v-if="this.isWeddingMenuOpen" @mouseleave="toggleWedding">
         <router-link
           class="navlink"
           v-bind:to="{ name: 'Wedding Invites' }"
@@ -49,9 +49,9 @@
         Thank You
       </router-link>
            &nbsp;|&nbsp;
-        <span v-on:click="toggleAddOns">Add Ons</span>
+        <span @mouseenter="toggleAddOns">Add Ons</span>
 
-        <div id="addOnMenu" v-if="this.isAddOnMenuOpen">
+        <div id="addOnMenu" v-if="this.isAddOnMenuOpen" @mouseleave="toggleAddOns">
           <router-link
             class="navlink"
             v-bind:to="{ name: 'Address Labels' }"
@@ -82,7 +82,7 @@
         </div>
       </div>
 
-      <div id="partyMenu" v-if="this.isPartyMenuOpen">
+      <div id="partyMenu" v-if="this.isPartyMenuOpen" @mouseleave="toggleParty">
         <router-link
           class="navlink"
           v-bind:to="{ name: 'Bachelor Invites' }"
@@ -112,7 +112,7 @@
         </router-link>
       </div>
 
-      <div id="dayOfMenu" v-if="this.isDayOfMenuOpen">
+      <div id="dayOfMenu" v-if="this.isDayOfMenuOpen" @mouseleave="toggleDayOf">
         <router-link
           class="navlink"
           v-bind:to="{ name: 'Favor Tags' }"

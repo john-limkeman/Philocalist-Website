@@ -4,7 +4,7 @@
     -->
 <template>
   <div id="container">
-  <div v-for="item in stationaries" v-bind:key="item.id" >
+  <div v-for="item in stationaries" v-bind:key="item.id"  class="cardContainer">
       <StationaryCard  v-bind:id="item.id" v-bind:isCart="false" v-on:details="toggleModal(item)"/>
     </div>
 
@@ -86,5 +86,10 @@ export default {
 #container{
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.cardContainer{
+  margin: 10px;
 }
 </style>

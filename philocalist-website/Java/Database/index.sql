@@ -36,6 +36,7 @@ INSERT INTO Stationaries (title, category, price, theme, color, printType, imgUR
 INSERT INTO Stationaries (title, category, price, theme, color, printType, imgURL, isActive) VALUES ('Palm Rehearsal Dinner', 'rehearsalInvite', 5.00, 'Palm', 'Green', 'digital', 'https://cdn3.minted.com/files/mintedProductsImages/MIN/RHD/V8U/MIN-V8U-RHD-001_A_PZ.jpg?mntd_prf=Pdp:HeroImage', true);
 INSERT INTO Stationaries (title, category, price, theme, color, printType, imgURL, isActive) VALUES ('Sand & Sun Envelopes', 'envelope', 5.00, 'Sand and Sun', 'Blue', 'digital', 'https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/ZXL/MIN-ZXL-INV-008A_A_PZ.jpg', true);
 INSERT INTO Stationaries (title, category, price, theme, color, printType, imgURL, isActive) VALUES ('Butter and Cloud Skinnywrap', 'addressLabel', 5.00, 'Butter and Cloud', 'Yellow', 'digital', 'https://cdn3.minted.com/files/mintedProductsImages/MIN/KLB/AOI/MIN-AOI-KLB-001_A_PD.jpg?_=undefined&mntd_prf=OldPdp:ProductImage', true);
+INSERT INTO Stationaries (title, category, price, theme, color, printType, imgURL, isActive) VALUES ('Wedded Watercolor Wedding Bundle', 'weddingInvite', 5.00, 'Wedded Watercolor', 'Blue', 'digital', 'https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/YDX/MIN-YDX-INV-001_A_PZ.jpg?mntd_prf=Pdp:HeroImage', true);
 
 
 CREATE TABLE Photos(
@@ -64,6 +65,9 @@ INSERT INTO Photos (stationary_id, url, title) VALUES (3, 'https://cdn3.minted.c
 INSERT INTO Photos (stationary_id, url, title) VALUES (3, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/ENP/HBZ/MIN-HBZ-ENP-003_A_PZ.jpg', 'Assembled');
 INSERT INTO Photos (stationary_id, url, title) VALUES (3, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/ENP/HBZ/MIN-HBZ-ENP-004_A_PZ.jpg', 'Close-Up');
 
+INSERT INTO Photos (stationary_id, url, title) VALUES (17, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/YDX/MIN-YDX-INV-00B_A_PZ.jpg', 'Assembled');
+INSERT INTO Photos (stationary_id, url, title) VALUES (17, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/YDX/MIN-YDX-INV-002C_A_PZ.jpg', 'Backer Options');
+INSERT INTO Photos (stationary_id, url, title) VALUES (17, 'https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/YDX/MIN-YDX-INV-004_A_PZ.jpg', 'Close-Up');
 
 
 
