@@ -14,7 +14,7 @@
       <span @mouseenter="toggleWedding" class="navlink">Weddings &nbsp;|&nbsp;</span>
 
       <span @mouseenter="toggleParty"  class="navlink" >Parties &nbsp;|&nbsp;</span> 
-      <span @mouseenter="toggleDayOf" class="navlink">The Day &nbsp;|&nbsp;</span> <!--Day Of, Wedding Day Materials, Day Of Materials, -->
+      <span @mouseenter="toggleDayOf" class="navlink">Day-Of &nbsp;|&nbsp;</span> <!--Day Of, Wedding Day Materials, Day Of Materials, The Day-->
       <span v-on:click="toggleAllOff">
     
     <span id='rightNav'>
@@ -290,6 +290,9 @@ export default {
   text-decoration: none;
 }
 
+#primaryNav span:hover{
+  border-bottom: 2px, solid, black; /*not working */
+}
 /* BUTTONS */
 
 /* Exit Button */
