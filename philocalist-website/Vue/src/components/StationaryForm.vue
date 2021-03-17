@@ -72,7 +72,7 @@ import StationaryService from '../services/StationaryService';
 export default {
 data() {
     return {
-        stationary: [],
+        stationary: {},
         photos: []
     }
 },
