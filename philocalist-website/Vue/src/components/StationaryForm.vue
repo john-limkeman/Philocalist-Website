@@ -41,23 +41,28 @@
                 <option value="letterPress">Letter Press</option>
             </select>
          <br/>
-            <label for="imgURL">Image URL: </label>
+            <label for="imgURL">Hero Image URL: </label>
             <input type="text" name="imgURL" v-model="stationary.imgURL"/>
          <br/>
             <label for="isActive">Active?: </label>
             <input type="checkbox" name="isActive" v-model="stationary.isActive"/>
+        <br/>
+             <div class="photoFormContainer" v-if="this.stationary.id > 0">
+                 <div class="photoForm" v-for="photo in photos" v-bind:key="photo.url" >
+                     <label for="photoURL">URL: </label>
+                     <input type="text" name="photoURL" class="photoURL" v-model="photo.url">
+                     <label for="photoTitle">Title: </label>
+                     <input type="text" name="photoTitle" class="photoTitle" v-model=photo.title>
+                     <button @click.prevent="removePhotoForm(photo)" id="photoBtn" class="removeBtn">-</button>
+                </div>
+                <button @click.prevent="addPhotoForm()" id="photoBtn" class="addBtn">+</button>
+             </div>
         <br/>
             <!-- Buttons use the prop's id value to determine if the prop being passed is an existing product -->
             <button type="submit" v-on:click="updateStationary()" v-if="this.selected.id > 0">Update Stationary</button>
             <button type="submit" v-on:click="createStationary()" v-else >Create Stationary</button>
 
         </form>
-        <div class="photoFormContainer" v-if="this.stationary.id > 0">
-            <div class="photoForm" v-for="photo in photos" v-bind:key="photo.url" >
-
-            </div>
-
-        </div>
     </div>
 </template>
 
@@ -68,11 +73,7 @@ export default {
 data() {
     return {
         stationary: [],
-        photos: [{
-            url: null,
-            stationary_id: this.stationary.id,
-            title: null,
-        }]
+        photos: []
     }
 },
 props: ["selected"],
@@ -85,6 +86,11 @@ methods: {
     updateStationary(){
         console.log(this.stationary);
         StationaryService.updateStationary(this.stationary);
+        this.photos.forEach(photo =>{
+            if((photo.url != null) && (photo.title != null) && (!photo.id > 0)){
+                PhotoService.addPhoto(photo);
+            }
+        })
         this.$emit("submitted");
     },
     createStationary(){
@@ -92,20 +98,39 @@ methods: {
         StationaryService.createStationary(this.stationary);
         this.$emit("submitted");
     },
-
+    addPhotoForm(){
+        this.photos.push({
+             url: null,
+            stationary_id: this.stationary.id,
+            title: null,
+        })
+    }, 
+    removePhotoForm(photo){
+        let index = this.photos.indexOf(photo);
+      this.photos.splice(index, 1);
+    }
 },
 created(){
     if(this.selected != null){
         this.stationary = this.selected;
         
         PhotoService.getPhotosByStationaryId(this.selected.id).then(response => {
-            this.photos = response.id
+            this.photos = response.data;
         })
     }
 }
+
 }
 </script>
 
-<style>
+<style scoped>
+
+#photoBtn{
+    font-weight: bold;
+    font-size: 15px;
+    width: 30px;
+    height: 20px;
+    text-align: center;
+}
 
 </style>
