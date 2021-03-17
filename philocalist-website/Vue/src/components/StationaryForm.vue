@@ -52,18 +52,35 @@
             <button type="submit" v-on:click="createStationary()" v-else >Create Stationary</button>
 
         </form>
+        <div class="photoFormContainer" v-if="this.stationary.id > 0">
+            <div class="photoForm" v-for="photo in photos" v-bind:key="photo.url" >
+
+            </div>
+
+        </div>
     </div>
 </template>
 
 <script>
+import PhotoService from '../services/PhotoService';
 import StationaryService from '../services/StationaryService';
 export default {
 data() {
     return {
-        stationary: []
+        stationary: [],
+        photos: [{
+            url: null,
+            stationary_id: this.stationary.id,
+            title: null,
+        }]
     }
 },
 props: ["selected"],
+computed: {
+    getid(){
+        return this.selected.id
+    },
+},
 methods: {
     updateStationary(){
         console.log(this.stationary);
@@ -80,6 +97,10 @@ methods: {
 created(){
     if(this.selected != null){
         this.stationary = this.selected;
+        
+        PhotoService.getPhotosByStationaryId(this.selected.id).then(response => {
+            this.photos = response.id
+        })
     }
 }
 }
