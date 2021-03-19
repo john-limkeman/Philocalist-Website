@@ -15,6 +15,8 @@ public interface PhotoDAO {
     //delete a photo
     public void deletePhoto(int id);
 
+    public void deletePhotosByStationary(int id);
+
     //get all photos
     public List<Photo> getAllPhotos();
 

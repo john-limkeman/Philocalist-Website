@@ -20,5 +20,8 @@ export default {
     },
     deletePhoto(id){
         return http.delete(`/photos/${id}`);
+    },
+    deletePhotosByStationary(id){
+        return http.delete(`/photos/stationary/${id}`);
     }
 }

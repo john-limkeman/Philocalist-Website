@@ -37,6 +37,11 @@ public class JdbcPhotoDAO implements PhotoDAO{
     }
 
     @Override
+    public void deletePhotosByStationary(int id) {
+        jdbc.update("DELETE FROM Photos WHERE stationary_id = ?", id);
+    }
+
+    @Override
     public List<Photo> getAllPhotos() {
         List<Photo> photos = new ArrayList<>();
 

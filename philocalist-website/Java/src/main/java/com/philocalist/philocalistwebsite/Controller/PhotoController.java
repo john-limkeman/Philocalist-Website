@@ -50,4 +50,11 @@ public class PhotoController {
     public void deletePhoto(@PathVariable int id){
         dao.deletePhoto(id);
     }
+
+    /* DELETE ALL PHOTOS BY STATIONARY ID */
+    @RequestMapping(path = "/photos/stationary/{id}", method = RequestMethod.DELETE)
+    public void deletePhotosByStationaryId(@PathVariable int id){
+        dao.deletePhotosByStationary(id);
+    }
+
 }

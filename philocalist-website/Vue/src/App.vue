@@ -14,7 +14,7 @@
       <span @mouseenter="toggleWedding" class="navlink">Weddings &nbsp;|&nbsp;</span>
 
       <span @mouseenter="toggleParty"  class="navlink" >Parties &nbsp;|&nbsp;</span> 
-      <span @mouseenter="toggleDayOf" class="navlink">Day-Of &nbsp;|&nbsp;</span> <!--Day Of, Wedding Day Materials, Day Of Materials, The Day-->
+      <span @mouseenter="toggleDayOf" class="navlink">Day-Of</span> <!--Day Of, Wedding Day Materials, Day Of Materials, The Day-->
       <span v-on:click="toggleAllOff">
     
     <span id='rightNav'>

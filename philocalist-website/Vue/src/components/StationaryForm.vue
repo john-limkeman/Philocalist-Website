@@ -73,7 +73,7 @@ export default {
 data() {
     return {
         stationary: {},
-        photos: []
+        photos: [],
     }
 },
 props: ["selected"],
@@ -84,13 +84,15 @@ computed: {
 },
 methods: {
     updateStationary(){
-        console.log(this.stationary);
-        StationaryService.updateStationary(this.stationary);
-        this.photos.forEach(photo =>{
-            if((photo.url != null) && (photo.title != null) && (!photo.id > 0)){
+        console.log(this.photos);
+        
+        PhotoService.deletePhotosByStationary(this.stationary.id);
+        this.photos.forEach(photo => {
+            if((photo.url != null) && (photo.title != null)){
                 PhotoService.addPhoto(photo);
             }
-        })
+        });
+        StationaryService.updateStationary(this.stationary);
         this.$emit("submitted");
     },
     createStationary(){
@@ -116,7 +118,7 @@ created(){
         
         PhotoService.getPhotosByStationaryId(this.selected.id).then(response => {
             this.photos = response.data;
-        })
+                    })
     }
 }
 
