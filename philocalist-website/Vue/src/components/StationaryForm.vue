@@ -1,6 +1,7 @@
 <template>
-    <div>
+    <div class="stationaryForm">
         <form>
+            <h3>Stationary Details: </h3>
             <label for="Title">Title: </label>
             <input type="text" name="Title" v-model="stationary.title">
         <br/>
@@ -48,6 +49,7 @@
             <input type="checkbox" name="isActive" v-model="stationary.isActive"/>
         <br/>
              <div class="photoFormContainer" v-if="this.stationary.id > 0">
+                 <h3>Additional Photos: </h3>
                  <div class="photoForm" v-for="photo in photos" v-bind:key="photo.url" >
                      <label for="photoURL">URL: </label>
                      <input type="text" name="photoURL" class="photoURL" v-model="photo.url">
@@ -133,6 +135,10 @@ created(){
     width: 30px;
     height: 20px;
     text-align: center;
+}
+
+.stationaryForm{
+    text-align: left;
 }
 
 </style>

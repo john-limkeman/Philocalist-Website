@@ -1,21 +1,23 @@
 <template>
   <div>
       <div id="listAllStationariesContainer" v-if="!formVisible && !confirmationVisible">
-          <div v-for="item in stationaries" v-bind:key="item.id">
+          <div v-for="item in stationaries" v-bind:key="item.id" class="stationaryLine">
               <span>{{item.id}} &nbsp;|&nbsp; {{item.title}}</span>
-              <button v-on:click="toggleMenu(item)">Edit</button>
-              <button v-on:click="toggleDeleteConfirmation(item)">Delete</button>
+                <span>
+                     <button v-on:click="toggleMenu(item)" class="addBtn" id="neutralAddBtn">Edit</button>
+                     <button v-on:click="toggleDeleteConfirmation(item)" class="removeBtn" id="adminRemoveBtn">Delete</button>
+                </span>
           </div>
-          <button v-on:click="toggleEmptyMenu()">Add New Stationary</button>
+          <button v-on:click="toggleEmptyMenu()" class="addBtn" id="NewStationaryBtn">Add New Stationary</button>
       </div>
       <div id="formContainer" v-if="formVisible">
-          <button v-on:click="toggleMenu()">X</button>
+          <button v-on:click="toggleMenu()" class="exitBtn">X</button>
           <StationaryForm v-bind:selected="chosen" v-on:submitted="toggleEmptyMenu()"/>
       </div>
       <div id="deleteConfirmationContainer" v-if="confirmationVisible">
           <h2>Are you sure you want to delete {{itemToDelete.title}}</h2>
-          <button v-on:click="deleteStationary(itemToDelete.id)">Delete</button>
-          <button v-on:click="toggleDeleteConfirmation">Cancel</button>
+          <button v-on:click="deleteStationary(itemToDelete.id)" class="removeBtn" id="adminRemoveBtn">Delete</button>
+          <button v-on:click="toggleDeleteConfirmation" class="addBtn" id="neutralAddBtn">Cancel</button>
       </div>
   </div>
 </template>
@@ -77,6 +79,35 @@ created(){
 }
 </script>
 
-<style>
+<style scoped>
 
+.stationaryLine{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    align-items: center;
+    
+}
+#neutralAddBtn{
+    font-size: 15px;
+    padding: 5px;
+    width: 60px;
+    margin: 5px;
+    background-color: whitesmoke;
+}
+
+#neutralAddBtn:hover{
+    background-color: lightgray;
+}
+#adminRemoveBtn{
+    font-size: 15px;
+    padding: 5px;
+    width: 60px;
+    margin: 5px;
+}
+#NewStationaryBtn{
+    font-size: 15px;
+    padding: 5px;
+}
 </style>
