@@ -8,9 +8,9 @@
       <router-link class="navlink" to="/"> Home </router-link>
       </span>
       &nbsp;|&nbsp;
-      <span @mouseenter="toggleShopSuite" class="navlink">Shop By Suite </span>
+      <span @mouseenter="toggleShopSuite" class="navlink menu">Shop By Suite </span>
       &nbsp;|&nbsp;
-      <span @mouseenter="toggleShopEvent"  class="navlink" >Shop By Event</span> 
+      <span @mouseenter="toggleShopEvent"  class="navlink menu" >Shop By Event</span> 
       &nbsp;|&nbsp;
       <span v-on:click="toggleAllOff">
       <router-link class="navlink" to="/about" v-on:click="toggleAllOff">About</router-link>
@@ -40,11 +40,11 @@
         &nbsp;|&nbsp;
         <router-link class="navlink" v-bind:to="{ name: 'Wedding Invites' }"> Invitation Bundles </router-link>
         &nbsp;|&nbsp;
-        <span @mouseenter="toggleParties" class="navlink">Parties</span>
+        <span @mouseenter="toggleParties" class="navlink menu">Parties</span>
         &nbsp;|&nbsp;
-        <span @mouseenter="toggleDayOf" class="navlink">Day-of Essentials</span>
+        <span @mouseenter="toggleDayOf" class="navlink menu">Day-of Essentials</span>
         &nbsp;|&nbsp;
-        <span @mouseenter="toggleAddOns" class="navlink">Add-Ons</span>
+        <span @mouseenter="toggleAddOns" class="navlink menu">Add-Ons</span>
       </div>
 
       <div class="shopEventOption" id="partiesNav" v-if="this.partiesNav" >
