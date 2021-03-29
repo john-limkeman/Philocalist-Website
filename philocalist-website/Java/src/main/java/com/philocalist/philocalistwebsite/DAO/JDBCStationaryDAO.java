@@ -29,8 +29,8 @@ public class JdbcStationaryDAO implements StationaryDAO {
 
     @Override
     public void addStationary(Stationary stationary) {
-        jdbc.update("Insert INTO Stationaries (title, category, price, theme, color, printType, imgURL, isActive) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                stationary.getTitle(), stationary.getCategory(), stationary.getPrice(), stationary.getTheme(), stationary.getColor(), stationary.getPrintType(),
+        jdbc.update("Insert INTO Stationaries (title, category, price, theme_id, color, printType, imgURL, isActive) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                stationary.getTitle(), stationary.getCategory(), stationary.getPrice(), stationary.getTheme_id(), stationary.getColor(), stationary.getPrintType(),
                 stationary.getImgURL(), stationary.isActive());
     }
 
@@ -41,10 +41,10 @@ public class JdbcStationaryDAO implements StationaryDAO {
 
     @Override
     public void updateStationary(Stationary stationary, int id) {
-        String sql = "UPDATE Stationaries SET title = ?, category = ?, price = ?, theme = ?," +
+        String sql = "UPDATE Stationaries SET title = ?, category = ?, price = ?, theme_id = ?," +
                 " color = ?, printType = ?, imgURL = ?, isActive = ? WHERE id = ?";
         jdbc.update(sql, stationary.getTitle(), stationary.getCategory(), stationary.getPrice(),
-                stationary.getTheme(), stationary.getColor(), stationary.getPrintType(),
+                stationary.getTheme_id(), stationary.getColor(), stationary.getPrintType(),
                 stationary.getImgURL(), stationary.isActive(), id);
     }
 
@@ -77,7 +77,7 @@ public class JdbcStationaryDAO implements StationaryDAO {
 
     @Override
     public List<Stationary> getStationaryByTheme(String theme) {
-        String sql = "SELECT * FROM Stationaries WHERE theme = ?";
+        String sql = "SELECT * FROM Stationaries WHERE theme_id = ?";
 
         List<Stationary> stationaries = new ArrayList<>();
         SqlRowSet result = jdbc.queryForRowSet(sql, theme);
@@ -120,11 +120,13 @@ public class JdbcStationaryDAO implements StationaryDAO {
         stationary.setCategory(row.getString("category"));
         stationary.setColor(row.getString("color"));
         stationary.setPrice(row.getBigDecimal("price"));
-        stationary.setTheme(row.getString("theme"));
+        stationary.setTheme_id(row.getInt("theme_id"));
         stationary.setPrintType(row.getString("printType"));
         stationary.setImgURL(row.getString("imgURL"));
         stationary.setActive(row.getBoolean("isActive"));
-
+        stationary.setDescription(row.getString("description"));
+        stationary.setHeight(row.getDouble("height"));
+        stationary.setWidth(row.getDouble("width"));
         return stationary;
     }
 

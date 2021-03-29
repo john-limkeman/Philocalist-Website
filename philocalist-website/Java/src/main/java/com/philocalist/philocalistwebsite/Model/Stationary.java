@@ -5,12 +5,17 @@ import java.util.List;
 
 public class Stationary {
     private int id; //essentially an item number
-    private String category; //weddingInvite, eventCard, envelope, directionCard, addressLabel, engageInvite, showerInvite, bachInvite, rehearsalInvite,
-    // thankYou, saveTheDate, {program, menu, placeCard, tableNumber, welcomeSign, favor},
-    // bracketed = {day of items}
+    private String category; //Possible categories:
+                            // weddingInvite, eventCard, envelope, directionCard,
+                            // addressLabel, engageInvite, showerInvite, bachInvite, rehearsalInvite,
+                            // thankYou, saveTheDate, {program, menu, placeCard, tableNumber, welcomeSign, favor},
+                            // bracketed = {day of items}
     private String title; //name of product for site
-    private BigDecimal price; //cost ... may need to become a map quantity: price
-    private String theme; //design theme
+    private BigDecimal price; //price per item
+    private int theme_id; //design theme
+    private String description; //description of stationary item
+    private double height; //height in inches
+    private double width; //width in inches
     private String color; // color choice within theme
     private String printType; // digital, foilPress, or letterPress
     private String imgURL; //url for display image
@@ -57,12 +62,36 @@ public class Stationary {
         this.price = price;
     }
 
-    public String getTheme() {
-        return theme;
+    public int getTheme_id() {
+        return theme_id;
     }
 
-    public void setTheme(String theme) {
-        this.theme = theme;
+    public void setTheme_id(int theme_id) {
+        this.theme_id = theme_id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
     }
 
     public String getColor() {

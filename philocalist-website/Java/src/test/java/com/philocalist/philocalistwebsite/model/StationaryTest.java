@@ -13,7 +13,7 @@ class StationaryTest {
         BigDecimal pricey = new BigDecimal(78);
         Stationary stationary = new Stationary();
 
-        stationary.setTheme("Sample Theme");
+        stationary.setTheme_id(99);
         stationary.setColor("Purple");
         stationary.setCategory("weddingInvite");
         stationary.setPrice(pricey);
@@ -24,7 +24,7 @@ class StationaryTest {
 
         int BDCompare = pricey.compareTo(stationary.getPrice());
 
-        assertEquals("Sample Theme", stationary.getTheme());
+        assertEquals("Sample Theme", stationary.getTheme_id());
         assertEquals("Purple", stationary.getColor());
         assertEquals("weddingInvite", stationary.getCategory());
         assertEquals(0, BDCompare);

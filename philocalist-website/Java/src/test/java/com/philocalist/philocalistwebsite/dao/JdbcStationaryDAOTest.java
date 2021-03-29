@@ -39,7 +39,7 @@ class JdbcStationaryDAOTest {
         testStationary.setTitle("Sample Title");
         testStationary.setCategory("weddingInvite");
         testStationary.setPrice(new BigDecimal(10));
-        testStationary.setTheme("Sample Theme");
+        testStationary.setTheme_id(99);
         testStationary.setColor("Gray");
         testStationary.setPrintType("digital");
         testStationary.setActive(true);
@@ -96,7 +96,7 @@ class JdbcStationaryDAOTest {
        //check size of list
        assertEquals(16, returned.size());
        //check content of first item in list
-       assertEquals("Sand and Sun", returned.get(0).getTheme());
+       assertEquals(99, returned.get(0).getTheme_id());
     }
 
     @Test
@@ -115,7 +115,7 @@ class JdbcStationaryDAOTest {
 
         assertEquals(10, returned.size());
         assertEquals("Sand & Sun Wedding Bundle", returned.get(0).getTitle());
-        assertEquals("Sand and Sun", returned.get(returned.size() - 1).getTheme());
+        assertEquals(99, returned.get(returned.size() - 1).getTheme_id());
     }
 
     @Test
