@@ -45,6 +45,8 @@ if (currentToken != null) {
         axios.defaults.headers.common = {};
         state.logIn = false;
       },
+
+      
       ADD_TO_CART(state, stationary){
         let foundItem = state.cart.find((item) => {
           return item.id === stationary.id;
