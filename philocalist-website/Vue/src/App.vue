@@ -2,156 +2,84 @@
   <div id="app">
     <div id="content">
     <div id="nav">
+
     <div id="primaryNav">
       <span v-on:click="toggleAllOff">
       <router-link class="navlink" to="/"> Home </router-link>
+      </span>
       &nbsp;|&nbsp;
-      <router-link class="navlink" to="/about">About</router-link>
+      <span @mouseenter="toggleShopSuite" class="navlink">Shop By Suite </span>
+      &nbsp;|&nbsp;
+      <span @mouseenter="toggleShopEvent"  class="navlink" >Shop By Event</span> 
+      &nbsp;|&nbsp;
+      <span v-on:click="toggleAllOff">
+      <router-link class="navlink" to="/about" v-on:click="toggleAllOff">About</router-link>
       &nbsp;|&nbsp;
       <router-link class="navlink" to="/contact">Contact</router-link>
-      &nbsp;|&nbsp;
       </span>
-      <span @mouseenter="toggleWedding" class="navlink">Weddings &nbsp;|&nbsp;</span>
 
-      <span @mouseenter="toggleParty"  class="navlink" >Parties &nbsp;|&nbsp;</span> 
-      <span @mouseenter="toggleDayOf" class="navlink">Day-Of</span> <!--Day Of, Wedding Day Materials, Day Of Materials, The Day-->
-      <span v-on:click="toggleAllOff">
-    
-    <span id='rightNav'>
-       <span v-on:click="toggleAllOff" v-if='isAdmin'>
-         <router-link class="navlink" to="/admin" v-on:click="toggleAllOff"> Admin </router-link>
-         </span>
-       <span v-on:click="toggleAllOff" v-else>
-         <router-link class="navlink" to="/cart" v-on:click="toggleAllOff"> {{cartCount}} Cart </router-link>
-         </span>
+      <span id='rightNav' v-on:click="toggleAllOff">
+            <span v-if='isAdmin'>
+                <router-link class="navlink" to="/admin"> Admin </router-link>
+            </span>
+            <span v-else>
+                <router-link class="navlink" to="/cart"> {{cartCount}} Cart </router-link>
+            </span>
 
-    </span>
       </span>
     </div>
 
-    <div id="secondaryNav">
-      <div  v-if="this.isWeddingMenuOpen" @mouseleave="toggleWedding">
-        <router-link
-          class="navlink"
-          v-bind:to="{ name: 'Wedding Invites' }"
-        >
-          Invitation
-        </router-link>
-        &nbsp;|&nbsp;
-        <router-link
-          class="navlink"
-          v-bind:to="{ name: 'Save The Dates' }"
-        >
-          Save the Date</router-link
-        >
-        &nbsp;|&nbsp;
-          <router-link class="navlink" to="/thank-you">
-        Thank You
-      </router-link>
-           &nbsp;|&nbsp;
-        <span @mouseenter="toggleAddOns">Add Ons</span>
+    <div id="secondaryNav">    
 
-        <div id="addOnMenu" v-if="this.isAddOnMenuOpen" @mouseleave="toggleAddOns">
-          <router-link
-            class="navlink"
-            v-bind:to="{ name: 'Address Labels' }"
-          >
-            Address Labels
-          </router-link>
-          &nbsp;|&nbsp;
-          <router-link
-            class="navlink"
-            v-bind:to="{ name: 'Directions Cards' }"
-          >
-            Directions Cards
-          </router-link>
-          &nbsp;|&nbsp;
-          <router-link
-            class="navlink"
-            v-bind:to="{ name: 'Envelopes' }"
-          >
-            Envelopes
-          </router-link>
-          &nbsp;|&nbsp;
-          <router-link
-            class="navlink"
-            v-bind:to="{ name: 'Events Cards' }"
-          >
-            Events Cards
-          </router-link>
-        </div>
+      <div id="shopSuiteNav" v-if="this.suiteNav" >
+
       </div>
 
-      <div id="partyMenu" v-if="this.isPartyMenuOpen" @mouseleave="toggleParty">
-        <router-link
-          class="navlink"
-          v-bind:to="{ name: 'Bachelor Invites' }"
-        >
-          Bachelor & Bachelorette
-        </router-link>
+      <div id="shopEventNav" v-if="this.eventNav" >
+        <router-link class="navlink" v-bind:to="{ name: 'Save The Dates' }"> Save the Dates </router-link>
         &nbsp;|&nbsp;
-        <router-link
-          class="navlink"
-          v-bind:to="{ name: 'Bridal Shower Invites' }"
-        >
-          Bridal Shower
-        </router-link>
+        <router-link class="navlink" v-bind:to="{ name: 'Wedding Invites' }"> Invitation Bundles </router-link>
         &nbsp;|&nbsp;
-        <router-link
-          class="navlink"
-          v-bind:to="{ name: 'Engagement Invites' }"
-        >
-          Engagement
-        </router-link>
+        <span @mouseenter="toggleParties" class="navlink">Parties</span>
         &nbsp;|&nbsp;
-        <router-link
-          class="navlink"
-          v-bind:to="{ name: 'Rehearsal Dinner Invites' }"
-        >
-          Rehearsal Dinner
-        </router-link>
+        <span @mouseenter="toggleDayOf" class="navlink">Day-of Essentials</span>
+        &nbsp;|&nbsp;
+        <span @mouseenter="toggleAddOns" class="navlink">Add-Ons</span>
       </div>
 
-      <div id="dayOfMenu" v-if="this.isDayOfMenuOpen" @mouseleave="toggleDayOf">
-        <router-link
-          class="navlink"
-          v-bind:to="{ name: 'Favor Tags' }"
-        >
-          Favor Tags
-        </router-link>
+      <div class="shopEventOption" id="partiesNav" v-if="this.partiesNav" >
+        <router-link class="navlink" v-bind:to="{ name: 'Bachelor Invites' }"> Bachelor & Bachelorette </router-link>
         &nbsp;|&nbsp;
-        <router-link class="navlink" v-bind:to="{ name: 'Menus' }">
-          Menus
-        </router-link>
+        <router-link class="navlink" v-bind:to="{ name: 'Bridal Shower Invites' }"> Bridal Shower </router-link>
         &nbsp;|&nbsp;
-        <router-link
-          class="navlink"
-          v-bind:to="{ name: 'Placecards' }"
-        >
-          Place Cards
-        </router-link>
+        <router-link class="navlink" v-bind:to="{ name: 'Engagement Invites' }"> Engagement </router-link>
         &nbsp;|&nbsp;
-        <router-link
-          class="navlink"
-          v-bind:to="{ name: 'Programs' }"
-        >
-          Programs
-        </router-link>
-        &nbsp;|&nbsp;
-        <router-link
-          class="navlink"
-          v-bind:to="{ name: 'Table Numbers' }"
-        >
-          Table Numbers
-        </router-link>
-        &nbsp;|&nbsp;
-        <router-link
-          class="navlink"
-          v-bind:to="{ name: 'Welcome Signs' }"
-        >
-          Welcome Signs
-        </router-link>
+        <router-link class="navlink" v-bind:to="{ name: 'Rehearsal Dinner Invites' }"> Rehearsal Dinner </router-link>
       </div>
+      
+      <div class="shopEventOption" id="dayOfNav" v-if="this.dayOfNav" >
+        <router-link class="navlink" v-bind:to="{ name: 'Favor Tags' }"> Favor Tags </router-link>
+        &nbsp;|&nbsp;
+        <router-link class="navlink" v-bind:to="{ name: 'Menus' }"> Menus </router-link>
+        &nbsp;|&nbsp;
+        <router-link class="navlink" v-bind:to="{ name: 'Placecards' }"> Place Cards </router-link>
+        &nbsp;|&nbsp;
+        <router-link class="navlink" v-bind:to="{ name: 'Programs' }"> Programs </router-link>
+        &nbsp;|&nbsp;
+        <router-link class="navlink" v-bind:to="{ name: 'Table Numbers' }"> Table Numbers </router-link>
+        &nbsp;|&nbsp;
+        <router-link class="navlink" v-bind:to="{ name: 'Welcome Signs' }"> Welcome Signs </router-link>
+      </div>
+
+      <div class="shopEventOption" id="addOnNav" v-if="this.addOnNav" >
+          <router-link class="navlink" v-bind:to="{ name: 'Thank You Cards' }"> Thank You Cards </router-link>
+          &nbsp;|&nbsp;
+          <router-link class="navlink" v-bind:to="{ name: 'Address Labels' }"> Address Labels </router-link>
+          &nbsp;|&nbsp;
+          <router-link class="navlink" v-bind:to="{ name: 'Envelopes' }"> Envelopes </router-link>
+      </div>
+
+
     </div>
 
 
@@ -169,55 +97,99 @@
 export default {
   data() {
     return {
-      isWeddingMenuOpen: false,
-      isAddOnMenuOpen: false,
-      isPartyMenuOpen: false,
-      isDayOfMenuOpen: false,
+      suiteNav: false,
+      eventNav: false,
+      partiesNav: false,
+      dayOfNav: false,
+      addOnNav: false,
+
+
       isAdmin: false
     };
   },
   methods: {
-    toggleWedding() {
-      if (this.isWeddingMenuOpen == false) {
-        this.isWeddingMenuOpen = true;
-        this.isPartyMenuOpen = false;
-        this.isDayOfMenuOpen = false;
-      } else {
-        this.isWeddingMenuOpen = false;
-        this.isAddOnMenuOpen = false;
-      }
-    },
-    toggleAddOns() {
-      if (this.isAddOnMenuOpen == false) {
-        this.isAddOnMenuOpen = true;
-      } else {
-        this.isAddOnMenuOpen = false;
-      }
-    },
-    toggleParty() {
-      if (this.isPartyMenuOpen == false) {
-        this.isPartyMenuOpen = true;
-        this.isWeddingMenuOpen = false;
-        this.isDayOfMenuOpen = false;
-      } else {
-        this.isPartyMenuOpen = false;
-      }
-    },
-    toggleDayOf() {
-      if (this.isDayOfMenuOpen == false) {
-        this.isDayOfMenuOpen = true;
-        this.isPartyMenuOpen = false;
-        this.isWeddingMenuOpen = false;
-      } else {
-        this.isDayOfMenuOpen = false;
-      }
-    },
     toggleAllOff(){
-      this.isWeddingMenuOpen = false;
-      this.isAddOnMenuOpen = false;
-      this.isPartyMenuOpen = false;
-      this.isDayOfMenuOpen = false;
-    }
+      this.suiteNav = false;
+      this.eventNav = false;
+      this.partiesNav = false;
+      this.dayOfNav = false;
+      this.addOnNav = false;
+    },
+    toggleShopSuite(){
+      this.eventNav = false;
+      this.partiesNav = false;
+      this.dayOfNav = false;
+      this.addOnNav = false;
+      this.suiteNav = !this.suiteNav
+    },
+    toggleShopEvent(){
+      this.suiteNav = false;
+      this.eventNav = !this.eventNav;
+
+      if(this.eventNav == false){
+        this.partiesNav = false;
+        this.dayOfNav = false;
+        this.addOnNav = false;
+      }
+    },
+    toggleParties(){
+      this.dayOfNav = false;
+      this.addOnNav = false;
+      this.partiesNav = !this.partiesNav;
+    },
+    toggleDayOf(){
+      this.partiesNav = false;
+      this.addOnNav = false;
+      this.dayOfNav = !this.dayOfNav;
+    },
+    toggleAddOns(){
+      this.partiesNav = false;
+      this.dayOfNav = false;
+      this.addOnNav = !this.addOnNav;
+    },
+
+
+    // toggleWedding() {
+    //   if (this.isWeddingMenuOpen == false) {
+    //     this.isWeddingMenuOpen = true;
+    //     this.isPartyMenuOpen = false;
+    //     this.isDayOfMenuOpen = false;
+    //   } else {
+    //     this.isWeddingMenuOpen = false;
+    //     this.isAddOnMenuOpen = false;
+    //   }
+    // },
+    // toggleAddOns() {
+    //   if (this.isAddOnMenuOpen == false) {
+    //     this.isAddOnMenuOpen = true;
+    //   } else {
+    //     this.isAddOnMenuOpen = false;
+    //   }
+    // },
+    // toggleParty() {
+    //   if (this.isPartyMenuOpen == false) {
+    //     this.isPartyMenuOpen = true;
+    //     this.isWeddingMenuOpen = false;
+    //     this.isDayOfMenuOpen = false;
+    //   } else {
+    //     this.isPartyMenuOpen = false;
+    //   }
+    // },
+    // toggleDayOf() {
+    //   if (this.isDayOfMenuOpen == false) {
+    //     this.isDayOfMenuOpen = true;
+    //     this.isPartyMenuOpen = false;
+    //     this.isWeddingMenuOpen = false;
+    //   } else {
+    //     this.isDayOfMenuOpen = false;
+    //   }
+    // },
+    // toggleAllOff(){
+    //   this.isWeddingMenuOpen = false;
+    //   this.isAddOnMenuOpen = false;
+    //   this.isPartyMenuOpen = false;
+    //   this.isDayOfMenuOpen = false;
+    // }
   },
   computed: {
     cartCount(){
@@ -246,7 +218,7 @@ export default {
   /* display: flex;
   flex-direction: row; */
   width: 100%;
-  background-color: rgba(255, 215, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
   justify-content: center;
   align-items: center;
   margin: 0px;
@@ -263,7 +235,7 @@ export default {
 #secondaryNav{
   padding: 10px;
   font-size:18px;
-  background-color: #FFD700;
+  background-color: rgba(0, 0, 0, 1);
   color: white;
 }
 
@@ -282,7 +254,7 @@ export default {
 }
 
 #secondaryNav a.router-link-exact-active{
-  color: black;
+  color: #FFD700;
 }
 
 
@@ -292,6 +264,10 @@ export default {
 
 #primaryNav span:hover{
   border-bottom: 2px, solid, black; /*not working */
+}
+
+.shopEventOption{
+  margin: 10px
 }
 /* BUTTONS */
 
@@ -366,5 +342,6 @@ footer a, footer a:visited{
   color: white;
   text-decoration: none;
 }
+
 
 </style>
