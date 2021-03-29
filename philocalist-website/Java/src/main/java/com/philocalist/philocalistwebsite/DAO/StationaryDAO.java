@@ -23,7 +23,7 @@ public interface StationaryDAO {
         public List<Stationary> getStationaryByCategory(String category);
 
         //Get all by theme
-        public List<Stationary> getStationaryByTheme(String theme);
+        public List<Stationary> getStationaryByTheme(int theme_id);
 
         //Get all by printType
         public List<Stationary> getStationaryByPrintType(String printType);

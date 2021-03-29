@@ -35,7 +35,7 @@ public class StationaryController {
 
     /* GET BY THEME */
     @RequestMapping(path = "/stationary/themes/{theme}", method = RequestMethod.GET)
-    public List<Stationary> getStationaryByTheme(@PathVariable String theme){
+    public List<Stationary> getStationaryByTheme(@PathVariable int theme){
         return dao.getStationaryByTheme(theme);
     }
 

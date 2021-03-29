@@ -111,11 +111,11 @@ class JdbcStationaryDAOTest {
 
     @Test
     void getStationaryByTheme() {
-        List<Stationary> returned = dao.getStationaryByTheme("Sand and Sun");
+        List<Stationary> returned = dao.getStationaryByTheme(1);
 
         assertEquals(10, returned.size());
         assertEquals("Sand & Sun Wedding Bundle", returned.get(0).getTitle());
-        assertEquals(99, returned.get(returned.size() - 1).getTheme_id());
+        assertEquals(1, returned.get(returned.size() - 1).getTheme_id());
     }
 
     @Test

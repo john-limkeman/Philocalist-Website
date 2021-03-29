@@ -76,7 +76,7 @@ public class JdbcStationaryDAO implements StationaryDAO {
     }
 
     @Override
-    public List<Stationary> getStationaryByTheme(String theme) {
+    public List<Stationary> getStationaryByTheme(int theme) {
         String sql = "SELECT * FROM Stationaries WHERE theme_id = ?";
 
         List<Stationary> stationaries = new ArrayList<>();
