@@ -32,7 +32,8 @@
     <div id="secondaryNav">    
 
       <div id="shopSuiteNav" v-if="this.suiteNav" >
-
+           &nbsp;|&nbsp;
+          <router-link class="navlink" v-for="theme in themes" v-bind:key="theme.id" v-bind:to="{ name: 'Themes', params: {id: theme.id}}">{{theme.name}}  &nbsp;|&nbsp; </router-link>
       </div>
 
       <div id="shopEventNav" v-if="this.eventNav" >
@@ -157,14 +158,6 @@ export default {
     cartCount(){
       return this.$store.getters.getCartSize;
     },
-    // featuredTheme(){
-    //   let id = process.env.VUE_APP_FEATURED_THEME;
-    //   let theme = {};
-    //   ThemeService.getThemeById(id).then(response => {
-    //     theme = response.data;
-    //   })
-    //   return theme;
-    // }
   },
   created(){
     ThemeService.getAllThemes().then(response => {
@@ -251,6 +244,10 @@ export default {
 
 .shopEventOption{
   margin: 10px
+}
+
+.menu:hover{
+  color: #FFD700;
 }
 /* BUTTONS */
 

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Contact from '../views/Contact.vue'
+import Theme from '../views/Theme.vue'
 import WeddingInvites from '../views/WeddingInviteMenu/WeddingInvites.vue'
 import SaveTheDates from '../views/WeddingInviteMenu/SaveTheDates.vue'
 import AddressLabels from '../views/WeddingInviteMenu/Add-Ons/AddressLabels.vue'
@@ -45,6 +46,14 @@ const routes = [
     meta: {
         requiresAuth: false
     }
+},
+{
+  path: '/themes/:id',
+  name: 'Themes',
+  component: Theme,
+  meta: {
+      requiresAuth: false
+  }
 },
   {
     path: '/wedding',

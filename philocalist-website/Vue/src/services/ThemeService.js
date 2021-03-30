@@ -11,6 +11,9 @@ export default {
     getThemeById(id){
         return http.get(`/themes/${id}`);
     },
+    getFeaturedTheme(){
+        return http.get('/themes/featured');
+    },
     updateTheme(theme){
         return http.put(`/themes/${theme.id}`, theme);
     },

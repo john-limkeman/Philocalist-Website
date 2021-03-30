@@ -1,29 +1,58 @@
 <template>
   <div class="home">
-<h1>Philocalist Stationary</h1>
-  <div v-for="invite in stationaries" v-bind:key="invite.id" >
-        <h2>{{invite.theme}}</h2>
-        <img v-bind:src="invite.imgURL" alt="error">
+    <h1 class="homeTitle">Philocalist Stationary</h1>
+    <div class="welcomeContainer">
+        <h3>Welcome to Philocalist Stationary! Thanks for stopping by!</h3>
+    </div>
+    <div class="featuredThemeContainer">
+        <h3>Featured Theme: {{featuredTheme.name}}</h3>
+        <img v-bind:src="featuredTheme.hero_image" alt="">
     </div>
   </div>
 </template>
 
 <script>
-import StationaryService from "../services/StationaryService.js";
+import ThemeService from "../services/ThemeService.js";
 export default {
 data() {
     return{
-      stationaries: []
+      featuredTheme: {},
     }
   },
     created() {
-    StationaryService.getAllStationary().then((response) => {
-      this.stationaries = response.data;
-    });
+   ThemeService.getFeaturedTheme().then(response => {
+     this.featuredTheme = response.data;
+   })
   },
 }
 </script>
 
 <style scoped>
 
+.home{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+  "title title"
+  "welcome featured";
+  grid-gap: 20px;
+}
+
+.welcomeContainer{
+  grid-area: welcome;
+  border:black 3px solid;
+  height: 200px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.featuredThemeContainer{
+  grid-area: featured;
+  border:black 3px solid;
+}
+.homeTitle{
+  grid-area: title;
+}
 </style>
