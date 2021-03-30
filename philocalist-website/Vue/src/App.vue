@@ -94,6 +94,7 @@
 </template>
 
 <script>
+import ThemeService from './services/ThemeService.js'
 export default {
   data() {
     return {
@@ -103,7 +104,7 @@ export default {
       dayOfNav: false,
       addOnNav: false,
 
-
+      themes: [],
       isAdmin: false
     };
   },
@@ -149,53 +150,19 @@ export default {
     },
 
 
-    // toggleWedding() {
-    //   if (this.isWeddingMenuOpen == false) {
-    //     this.isWeddingMenuOpen = true;
-    //     this.isPartyMenuOpen = false;
-    //     this.isDayOfMenuOpen = false;
-    //   } else {
-    //     this.isWeddingMenuOpen = false;
-    //     this.isAddOnMenuOpen = false;
-    //   }
-    // },
-    // toggleAddOns() {
-    //   if (this.isAddOnMenuOpen == false) {
-    //     this.isAddOnMenuOpen = true;
-    //   } else {
-    //     this.isAddOnMenuOpen = false;
-    //   }
-    // },
-    // toggleParty() {
-    //   if (this.isPartyMenuOpen == false) {
-    //     this.isPartyMenuOpen = true;
-    //     this.isWeddingMenuOpen = false;
-    //     this.isDayOfMenuOpen = false;
-    //   } else {
-    //     this.isPartyMenuOpen = false;
-    //   }
-    // },
-    // toggleDayOf() {
-    //   if (this.isDayOfMenuOpen == false) {
-    //     this.isDayOfMenuOpen = true;
-    //     this.isPartyMenuOpen = false;
-    //     this.isWeddingMenuOpen = false;
-    //   } else {
-    //     this.isDayOfMenuOpen = false;
-    //   }
-    // },
-    // toggleAllOff(){
-    //   this.isWeddingMenuOpen = false;
-    //   this.isAddOnMenuOpen = false;
-    //   this.isPartyMenuOpen = false;
-    //   this.isDayOfMenuOpen = false;
-    // }
+    
   },
   computed: {
     cartCount(){
       return this.$store.getters.getCartSize;
     }
   },
+  created(){
+    ThemeService.getAllThemes().then(response => {
+      this.themes = response.data;
+      console.log(this.themes)
+    })
+  }
 };
 </script>
 
