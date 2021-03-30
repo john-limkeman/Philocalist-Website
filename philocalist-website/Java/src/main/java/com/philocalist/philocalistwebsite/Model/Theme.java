@@ -5,6 +5,7 @@ public class Theme {
     private String hero_image;
     private String name;
     private String description;
+    private boolean is_featured;
 
     public int getId() {
         return id;
@@ -36,5 +37,13 @@ public class Theme {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isIs_featured() {
+        return is_featured;
+    }
+
+    public void setIs_featured(boolean is_featured) {
+        this.is_featured = is_featured;
     }
 }

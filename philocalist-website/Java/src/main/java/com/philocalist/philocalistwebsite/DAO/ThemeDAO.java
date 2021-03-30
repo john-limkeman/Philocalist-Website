@@ -9,6 +9,9 @@ public interface ThemeDAO {
     //get theme by id
     public Theme getThemeById(int id);
 
+    //get featured theme
+    public Theme getFeaturedTheme();
+
     //get all themes
     public List<Theme> getAllThemes();
 
@@ -20,4 +23,6 @@ public interface ThemeDAO {
 
     //delete theme
     public void deleteTheme(int id);
+
+
 }

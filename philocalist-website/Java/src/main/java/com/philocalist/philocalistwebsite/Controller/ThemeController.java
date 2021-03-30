@@ -27,6 +27,12 @@ public class ThemeController {
         return dao.getThemeById(id);
     }
 
+    /* GET FEATURED THEME */
+    @RequestMapping(path = "/themes/featured", method = RequestMethod.GET)
+    public Theme getFeaturedTheme(){
+        return dao.getFeaturedTheme();
+    }
+
     /* ADD THEME */
     @RequestMapping(path = "/themes", method = RequestMethod.POST)
     public void addTheme(@RequestBody Theme theme){

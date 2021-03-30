@@ -10,19 +10,20 @@ id serial,
 hero_image varchar NOT NULL,
 name varchar NOT NULL,
 description varchar,
+is_featured boolean,
 
 constraint pk_Themes primary key (id)
 
 );
 
-INSERT INTO Themes (hero_image, name, description) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/ZXL/MIN-ZXL-INV-014A_A_PZ.jpg','Sand & Sun','So warm and refreshing, great for a beach or nautical themed wedding');
-INSERT INTO Themes (hero_image, name, description) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/ENP/HBZ/MIN-HBZ-ENP-003_A_PZ.jpg','Sedona','nice and laidback style, colorful yet simple');
-INSERT INTO Themes (hero_image, name, description) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/BSI/Z9V/MIN-Z9V-BSI-003_B_PZ.jpg','Sorbet','yummy');
-INSERT INTO Themes (hero_image, name, description) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/BAC/PV7/MIN-PV7-BAC-003_A_PZ.jpg','Shades','cool');
-INSERT INTO Themes (hero_image, name, description) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/TBF/ZNP/MIN-ZNP-TBF-002C_A_PZ.jpg','Vines of Green','so trendy, you are going to love it');
-INSERT INTO Themes (hero_image, name, description) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/YR9/MIN-YR9-INV-002C_A_PZ.jpg','Palm','palm sunday vibes are the perfect vibes for a wedding');
-INSERT INTO Themes (hero_image, name, description) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/KLB/AOI/MIN-AOI-KLB-001_A_PD.jpg?_=undefined&mntd_prf=OldPdp:ProductImage','Butter and Cloud','butter and cloud pretty much says it all');
-INSERT INTO Themes (hero_image, name, description) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/YDX/MIN-YDX-INV-002C_A_PZ.jpg','Wedded Watercolor','fun and abstract, like your relationship');
+INSERT INTO Themes (hero_image, name, description, is_featured) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/ZXL/MIN-ZXL-INV-014A_A_PZ.jpg','Sand & Sun','So warm and refreshing, great for a beach or nautical themed wedding', true);
+INSERT INTO Themes (hero_image, name, description, is_featured) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/ENP/HBZ/MIN-HBZ-ENP-003_A_PZ.jpg','Sedona','nice and laidback style, colorful yet simple', false);
+INSERT INTO Themes (hero_image, name, description, is_featured) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/BSI/Z9V/MIN-Z9V-BSI-003_B_PZ.jpg','Sorbet','yummy', false);
+INSERT INTO Themes (hero_image, name, description, is_featured) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/BAC/PV7/MIN-PV7-BAC-003_A_PZ.jpg','Shades','cool', false);
+INSERT INTO Themes (hero_image, name, description, is_featured) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/TBF/ZNP/MIN-ZNP-TBF-002C_A_PZ.jpg','Vines of Green','so trendy, you are going to love it', false);
+INSERT INTO Themes (hero_image, name, description, is_featured) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/YR9/MIN-YR9-INV-002C_A_PZ.jpg','Palm','palm sunday vibes are the perfect vibes for a wedding', false);
+INSERT INTO Themes (hero_image, name, description, is_featured) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/KLB/AOI/MIN-AOI-KLB-001_A_PD.jpg?_=undefined&mntd_prf=OldPdp:ProductImage','Butter and Cloud','butter and cloud pretty much says it all', false);
+INSERT INTO Themes (hero_image, name, description, is_featured) VALUES ('https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/YDX/MIN-YDX-INV-002C_A_PZ.jpg','Wedded Watercolor','fun and abstract, like your relationship', false);
 
 
 

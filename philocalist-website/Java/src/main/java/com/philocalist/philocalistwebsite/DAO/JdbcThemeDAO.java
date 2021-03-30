@@ -32,6 +32,17 @@ public class JdbcThemeDAO implements ThemeDAO{
     }
 
     @Override
+    public Theme getFeaturedTheme() {
+        Theme theme = new Theme();
+
+        SqlRowSet results = jdbc.queryForRowSet("SELECT * FROM Themes WHERE is_featured = true");
+        while(results.next()){
+            theme = mapRowToTheme(results);
+        }
+        return theme;
+    }
+
+    @Override
     public List<Theme> getAllThemes() {
         List<Theme> themes = new ArrayList<>();
 
@@ -81,6 +92,7 @@ public class JdbcThemeDAO implements ThemeDAO{
         theme.setDescription(row.getString("description"));
         theme.setName(row.getString("name"));
         theme.setHero_image(row.getString("hero_image"));
+        theme.setIs_featured(row.getBoolean("is_featured"));
         return theme;
     }
 

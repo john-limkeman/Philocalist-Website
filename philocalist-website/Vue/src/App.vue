@@ -104,6 +104,7 @@ export default {
       dayOfNav: false,
       addOnNav: false,
 
+      featuredTheme: {},
       themes: [],
       isAdmin: false
     };
@@ -155,13 +156,28 @@ export default {
   computed: {
     cartCount(){
       return this.$store.getters.getCartSize;
-    }
+    },
+    // featuredTheme(){
+    //   let id = process.env.VUE_APP_FEATURED_THEME;
+    //   let theme = {};
+    //   ThemeService.getThemeById(id).then(response => {
+    //     theme = response.data;
+    //   })
+    //   return theme;
+    // }
   },
   created(){
     ThemeService.getAllThemes().then(response => {
       this.themes = response.data;
       console.log(this.themes)
+
+   
+    this.featuredTheme = this.themes.filter(item => {
+      return item.is_featured === true
     })
+    console.log("FEATURED THEME: ")
+    console.log(this.featuredTheme)
+    });
   }
 };
 </script>
