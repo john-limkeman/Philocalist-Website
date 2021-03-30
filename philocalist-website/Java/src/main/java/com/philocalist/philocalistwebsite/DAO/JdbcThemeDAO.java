@@ -57,8 +57,22 @@ public class JdbcThemeDAO implements ThemeDAO{
 
     @Override
     public void deleteTheme(int id) {
-        String sql = "DELETE FROM Themes WHERE id = ?";
-        jdbc.update(sql, id);
+
+        /* generate list of stationaries using the to-delete theme */
+        List<Integer> ids = new ArrayList<>();
+        SqlRowSet results = jdbc.queryForRowSet("SELECT * FROM Stationaries WHERE theme_id = ?", id);
+        while(results.next()){
+            Integer stationaryId = results.getInt("id");
+            ids.add(stationaryId);
+        }
+
+        /* Iterate through stationaries to delete their photos and then the stationary itself */
+        for (int i = 0; i < ids.size(); i++){
+            jdbc.update("DELETE FROM Photos WHERE stationary_id = ?", ids.get(i));
+            jdbc.update("DELETE FROM Stationaries WHERE id = ?", ids.get(i));
+        }
+        /* Delete the theme after all dependants have been deleted */
+        jdbc.update("DELETE FROM Themes WHERE id = ?", id);
     }
 
     private Theme mapRowToTheme(SqlRowSet row){

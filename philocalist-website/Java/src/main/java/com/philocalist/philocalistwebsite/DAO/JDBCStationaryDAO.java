@@ -34,8 +34,10 @@ public class JdbcStationaryDAO implements StationaryDAO {
                 stationary.getImgURL(), stationary.isActive());
     }
 
+    //First, deletes photos dependent on stationary, then deletes stationary
     @Override
     public void deleteStationary(int id) {
+        jdbc.update("DELETE FROM Photos WHERE stationary_id = ?", id);
         jdbc.update("DELETE FROM Stationaries WHERE id = ?", id);
     }
 
