@@ -34,7 +34,7 @@ export default {
             modalContent: {},
         }
     },
-    props: ["StationaryType"],
+    props: ["StationaryType", "StationaryTheme"],
     computed: {
         pageCategory(){
             return this.StationaryType;
@@ -62,9 +62,15 @@ export default {
       StationaryDetails
     },
       created() {
-    StationaryService.getAllStationaryByCategory(this.pageCategory).then((response) => {
-      this.stationaries = response.data;
-    });
+        if(this.StationaryType != null){
+          StationaryService.getAllStationaryByCategory(this.pageCategory).then((response) => {
+            this.stationaries = response.data;
+          });
+        } else {
+           StationaryService.getStationaryByTheme(this.StationaryTheme).then((response) => {
+            this.stationaries = response.data;
+          });
+        }
   },
 }
 </script>
@@ -88,8 +94,14 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 .cardContainer{
-  margin: 10px;
+  margin: 30px;
+  height: 300px;
+  width: 300px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
 }
 </style>

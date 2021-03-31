@@ -1,18 +1,20 @@
 <template>
   <div v-if="isRendered">
      <h2> {{theme.name}} </h2>
+     <p>{{theme.description}}</p>
      
+     <StationaryListing v-bind:StationaryTheme="theme.id"/>
   </div>
 </template>
 
 <script>
-import StationaryService from '../services/StationaryService'
+import StationaryListing from '../components/StationaryListing'
 import ThemeService from '../services/ThemeService'
 export default {
+  components: { StationaryListing },
     data(){
         return{
-            stationaries: [],
-            theme: {},
+            theme: {},   
             isRendered: true,
         }
     },
@@ -23,11 +25,14 @@ export default {
             this.$store.dispatch('updateSelectedTheme', theme)
 
             this.theme = this.$store.getters.getSelectedTheme;
-
-            StationaryService.getStationaryByTheme(this.theme.id).then(response => {
-                this.stationaries = response.data;
-            })
+            this.rerender();
         })
+        },
+        rerender(){
+            this.isRendered = false;
+            this.$nextTick(() => {
+                this.isRendered = true;
+            })
         }
     },
     created(){
