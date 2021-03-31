@@ -90,6 +90,8 @@
 
     <footer id="hiddenNav">
           <router-link class="navlink" to="/admin">Site Maintenance</router-link>
+          &nbsp;|&nbsp;
+          <span>Website by John Limkeman</span>
     </footer>
   </div>
 </template>
@@ -194,7 +196,7 @@ export default {
   /* display: flex;
   flex-direction: row; */
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 50, 0.2);;
   justify-content: center;
   align-items: center;
   margin: 0px;
