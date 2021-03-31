@@ -14,6 +14,9 @@ export default {
     getStationaryById(id){
         return http.get(`/stationary/${id}`);
     },
+    getStationaryByTheme(id){
+        return http.get(`/stationary/themes/${id}`);
+    },
     updateStationary(stationary){
         return http.put(`/stationary/${stationary.id}`, stationary);
     },

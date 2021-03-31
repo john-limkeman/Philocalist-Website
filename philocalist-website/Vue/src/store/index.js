@@ -19,11 +19,16 @@ if (currentToken != null) {
 
   export default new Vuex.Store({
     state: {
+
       token: currentToken || '',
       user: currentUser || {},
       logIn: false,
+
+
       cart: [],
-      tempCart: [],
+      tempCart: [], //used to update quantities and force a rerender
+
+      selectedTheme: {},
       adminChoice: {},
     },
     mutations: {
@@ -88,6 +93,9 @@ if (currentToken != null) {
             console.log("ERROR - add item to cart before changing quantity")
           }
       },
+      UPDATE_SELECTED_THEME(state, payload){
+          state.selectedTheme = payload;
+      },
       SET_ADMIN_CHOICE(state, stationary){
         state.adminChoice = stationary;
         console.log(state.adminChoice);
@@ -105,6 +113,9 @@ if (currentToken != null) {
         },
         updateQuantity({commit}, payload){
           commit('UPDATE_CART_QUANTITY', payload);
+        },
+        updateSelectedTheme({commit}, payload){
+          commit('UPDATE_SELECTED_THEME', payload);
         },
         setAdminChoice({commit}, stationary){
           commit('SET_ADMIN_CHOICE', stationary);
@@ -131,6 +142,9 @@ if (currentToken != null) {
             total += item.price * item.quantity
           })
           return total;
+        },
+        getSelectedTheme(state){
+          return state.selectedTheme;
         }
     }
   })
