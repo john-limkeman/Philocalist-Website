@@ -65,8 +65,8 @@ export default {
 #cardContainer{
     display:flex;
     flex-direction: column;
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
     border-radius: 10px;
     padding: 5px;
     
@@ -78,7 +78,7 @@ export default {
 }
 
 #cardContainer img{
-    height: 160px;
+    height: 260px;
     width: auto;
     margin: 5px;
     cursor: pointer;
