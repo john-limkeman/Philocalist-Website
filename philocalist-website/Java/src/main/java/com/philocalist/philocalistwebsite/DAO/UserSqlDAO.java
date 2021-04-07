@@ -8,11 +8,13 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class UserSqlDAO implements UserDAO{
     RegisterUserDTO registeredUser = new RegisterUserDTO();
 
