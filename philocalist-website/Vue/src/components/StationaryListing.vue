@@ -98,12 +98,12 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.cardContainer{
+/* .cardContainer{
   margin: 30px;
   height: 300px;
   width: 300px;
   display: flex;
   justify-content:center;
   align-items: center;
-}
+} */
 </style>

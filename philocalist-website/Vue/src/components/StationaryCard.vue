@@ -1,7 +1,7 @@
 <template>
 
-<!-- Visual display of each product when listed on pages. Will add pop out for details of each product-->
-  <div id="cardContainer"> <!-- add on click to create pop out -->
+<!-- Visual display of each product when listed on pages-->
+  <div id="cardContainer"> 
     <img v-bind:src="this.stationary.imgURL" alt="error" v-on:click="seeDetails()"/>
     <h2>{{this.stationary.title}}</h2>
    <span v-if="this.isCart" class="removeBtn" @click="removeFromCart()">Remove from Cart</span>
@@ -41,7 +41,7 @@ export default {
       seeDetails(){
           this.$emit("details");
       },
-      //changes button class is item is in cart
+      //changes button class if item is in cart
       addBtnMethod(){
         if (this.isInCart == "Added to Cart"){
             return "addedBtn"
@@ -65,11 +65,13 @@ export default {
 #cardContainer{
     display:flex;
     flex-direction: column;
-    height: 300px;
-    width: 300px;
+    height: 400px;
+    width: 400px;
     border-radius: 10px;
     padding: 5px;
     
+    justify-content: center;
+    align-items: center;
 }
 
 #cardContainer:hover{

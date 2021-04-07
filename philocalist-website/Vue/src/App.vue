@@ -269,7 +269,7 @@ export default {
 /* Add to Cart, Added to Cart, and Remove From Cart Buttons */
 .addBtn{
 background-color: rgba(255, 215, 0, 0.2);
-   width: 100%;
+   width: 80%;
    border-radius: 5px;
    border: none;
 }
@@ -282,7 +282,7 @@ background-color: rgba(255, 215, 0, 0.2);
 .addedBtn{
     background-color: wheat;
     color: grey;
-    width: 100%;
+    width: 80%;
    border-radius: 5px;
    border: none;
 }
