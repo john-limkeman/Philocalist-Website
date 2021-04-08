@@ -6,8 +6,17 @@
     </div>
     <div class="featuredThemeContainer">
         <h3 class="featuredTitle">Featured Theme: {{featuredTheme.name}}</h3>
-        <img class="featuredImage" v-bind:src="featuredTheme.hero_image" alt="" v-on:click="routeToTheme()">
+        <!-- <img class="featuredImage" v-bind:src="featuredTheme.hero_image" alt="" v-on:click="routeToTheme()"> -->
         <p class="featuredDescription">{{featuredTheme.description}}</p>
+        <div>
+    <transition-group name="fade" tag="div">
+      <div v-for="i in [currentIndex]" :key="i">
+        <img :src="currentImage" class="featuredImage" v-on:click="routeToTheme()"/>
+      </div>
+    </transition-group>
+    <a class="prev" @click="prev" href="#">&#10094; </a>
+    <a class="next" @click="next" href="#">&#10095; </a>
+  </div>
         <!-- <div v-for="image in themeImages" v-bind:key="image">
           <img v-bind:src="image" alt="">
         </div> -->
@@ -23,6 +32,8 @@ data() {
     return{
       featuredTheme: {},
       themeStationaries: [],
+      timer: null,
+      currentIndex: 0,
     }
   },
   computed: {
@@ -33,11 +44,23 @@ data() {
         images.push(item.imgURL);
       });
       return images;
+    },
+    currentImage(){
+      return this.themeImages[Math.abs(this.currentIndex) % this.themeImages.length];
     }
   },
   methods: {
     routeToTheme(){
       this.$router.push({name: 'Themes', params: {id: this.featuredTheme.id}})
+    },
+    startSlide(){
+       this.timer = setInterval(this.next, 4000);
+    },
+    next(){
+      this.currentIndex += 1;
+    },
+    prev(){
+      this.currentIndex -=1;
     }
   },
     created() {
@@ -49,6 +72,9 @@ data() {
      })
    })
   },
+  mounted(){
+    this.startSlide();
+  }
 }
 </script>
 
@@ -67,8 +93,8 @@ data() {
   grid-area: welcome;
   border:black 3px solid;
   height: 200px;
-  background-color: black;
-  color:white;
+  background-color: auto;
+  color:black;
 
   display: flex;
   justify-content: center;
@@ -83,7 +109,7 @@ data() {
   grid-template-areas:
   "title title"
   "image description";
-  background-color: rgba(0, 0, 50, 0.2);
+
 }
 .homeTitle{
   grid-area: title;
@@ -104,4 +130,6 @@ data() {
 .featuredDescription{
   grid-area: description;
 }
+
+
 </style>
