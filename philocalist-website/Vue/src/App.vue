@@ -19,7 +19,14 @@
       </span>
 
       <span id='rightNav' v-on:click="toggleAllOff">
-            <span v-if='isAdmin'>
+            <span v-if="isLoggedIn()">
+              <router-link class="navlink" to="/logout"> Logout </router-link>
+            </span>
+             <span v-else>
+              <router-link class="navlink" to="/login"> Login </router-link>
+            </span>
+            &nbsp;|&nbsp;
+            <span v-if='isAdmin()'>
                 <router-link class="navlink" to="/admin"> Admin </router-link>
             </span>
             <span v-else>
@@ -89,7 +96,7 @@
     </div>
 
     <footer id="hiddenNav">
-          <router-link class="navlink" to="/admin">Site Maintenance</router-link>
+          <span class="navlink" v-on:click="pushIfAdmin()">Site Maintenance</span>
           &nbsp;|&nbsp;
           <span>Website by John Limkeman</span>
     </footer>
@@ -109,7 +116,6 @@ export default {
 
       featuredTheme: {},
       themes: [],
-      isAdmin: false
     };
   },
   methods: {
@@ -152,8 +158,33 @@ export default {
       this.dayOfNav = false;
       this.addOnNav = !this.addOnNav;
     },
-
-
+    pushIfAdmin(){
+      if(this.$store.state.logIn){
+       if (this.$store.state.user.authorities[0].name == "ROLE_ADMIN"){
+         this.$router.push({name: "Admin"});
+       }
+      } else {
+        window.alert("You must be signed in as an administrator to access this page");
+        this.$router.push({name: "login"});
+      }
+    },
+      isAdmin() {
+      if (this.$store.state.logIn) {
+        if (this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+          return true;
+        }
+      } else {
+        return false;
+      }
+    },
+    isLoggedIn(){
+      if (this.$store.state.logIn){
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
     
   },
   computed: {
@@ -289,7 +320,7 @@ background-color: rgba(255, 215, 0, 0.2);
 
 .removeBtn{
 background-color: rgba(255, 0, 0, 0.2);
-   width: 100%;
+   width: 80%;
    border-radius: 5px;
      border: none;
 }

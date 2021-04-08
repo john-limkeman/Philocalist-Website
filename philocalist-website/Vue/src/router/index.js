@@ -22,6 +22,10 @@ import WelcomeSigns from '../views/DayOfMenu/WelcomeSigns.vue'
 import ThankYouCards from '../views/ThankYouCards.vue'
 import Cart from '../views/Cart.vue'
 import Admin from '../views/Admin.vue'
+import Login from '../views/Login.vue'
+import Logout from '../views/Logout.vue'
+import Register from '../views/Register.vue'
+import store from '../store/index'
 
 Vue.use(VueRouter)
 
@@ -204,7 +208,31 @@ const routes = [
   name: 'Admin',
   component: Admin,
   meta: {
-      requiresAuth: false //will be true
+      requiresAuth: true //need admin access
+  }
+},
+{
+  path: "/login",
+  name: "login",
+  component: Login,
+  meta: {
+    requiresAuth: false
+  }
+},
+{
+  path: "/logout",
+  name: "logout",
+  component: Logout,
+  meta: {
+    requiresAuth: false
+  }
+},
+{
+  path: "/register",
+  name: "register",
+  component: Register,
+  meta: {
+    requiresAuth: false
   }
 },
 ]
@@ -216,21 +244,13 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   document.title = `${process.env.VUE_APP_TITLE} - ${to.name}`
-  next()
-})
-
-
-
-//used for AUTH once we get that up and running
-//     // Determine if the route requires Authentication
-//     const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
-
-//     // If it does and they are not logged in, send the user to "/login"
-//     if (requiresAuth && store.state.token === '') {
-//       next("/login");
-//     } else {
-//       // Else let them go to their next destination
-//       next();
-//     }
-//   });
+  // Determine if the route requires Authentication
+  const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
+  // If it does and they are not logged in, send the user to "/login"
+  if (requiresAuth && store.state.token === '') {
+    next("/login");
+  } else {
+    // Else let them go to their next destination
+    next();
+}});
 export default router
