@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class StationaryController {
 
     @Autowired
@@ -38,6 +38,13 @@ public class StationaryController {
     public List<Stationary> getStationaryByTheme(@PathVariable int theme){
         return dao.getStationaryByTheme(theme);
     }
+
+    /* GET BY THEME AND CATEGORY */
+    @RequestMapping(path = "/stationary/themes/{theme}/{category}", method = RequestMethod.GET)
+    public Stationary getStationaryByThemeAndCategory(@PathVariable int theme, @PathVariable String category){
+        return dao.getStationaryByThemeAndCategory(theme, category);
+    }
+
 
     /* GET BY PRINT TYPE */
     @RequestMapping(path = "/stationary/print/{type}", method = RequestMethod.GET)

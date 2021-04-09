@@ -90,6 +90,18 @@ public class JdbcStationaryDAO implements StationaryDAO {
     }
 
     @Override
+    public Stationary getStationaryByThemeAndCategory(int theme, String category) {
+        String sql = "SELECT * FROM Stationaries WHERE theme_id = ? AND category = ?";
+
+        Stationary stationary = new Stationary();
+        SqlRowSet result = jdbc.queryForRowSet(sql, theme, category);
+        while (result.next()){
+            stationary = mapRowToStationary(result);
+        }
+        return stationary;
+    }
+
+    @Override
     public List<Stationary> getStationaryByPrintType(String printType) {
         String sql = "SELECT * FROM Stationaries WHERE printType = ?";
 

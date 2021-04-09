@@ -25,6 +25,9 @@ public interface StationaryDAO {
         //Get all by theme
         public List<Stationary> getStationaryByTheme(int theme_id);
 
+        //Get all by theme and category
+        public Stationary getStationaryByThemeAndCategory(int theme, String category);
+
         //Get all by printType
         public List<Stationary> getStationaryByPrintType(String printType);
 

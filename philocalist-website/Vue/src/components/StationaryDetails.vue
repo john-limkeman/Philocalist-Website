@@ -37,27 +37,25 @@
    </div>
   <div class="modalCart">
       <div v-if="isBundle()">
-    <form>
       <p>Add to your bundle</p>
       <label for="directionsCard">Directions Card ($0.35 / invitation) </label>
       <input type="checkbox" v-model="directionsChosen" name="directionsCard"> <br />
       <label for="eventsCard">Weekend Events Card ($0.35 / invitation) </label>
       <input type="checkbox" v-model="eventsChosen" name="eventsCard"> <br />
-      </form>
+  
       -------------------------
-      <form>
       <label for="rsvpPrint">Print RSVPs ($0.35 / invitation) </label>
       <input type="radio" value="print" v-model="rsvp" name="rsvpPrint"> <br />
       <label for="rsvpOnline">Online RSVPs ($0.00 / invitation) </label>
       <input type="radio" value="online" v-model="rsvp" name="rsvpOnline">
-    </form>
+
 -------------------------
       </div>
 
       <span
         id="modalCartBtn"
         v-bind:class="addBtnMethod()"
-        v-on:click="addToCart()"
+        v-on:click="addToCart(modalContent)"
         >{{ isInCart }}</span>
         </div>
   </div>
@@ -68,6 +66,7 @@
 
 <script>
 import PhotoService from "../services/PhotoService.js";
+import StationaryService from '../services/StationaryService.js';
 export default {
   data() {
     return {
@@ -76,6 +75,7 @@ export default {
       directionsChosen: false,
       eventsChosen: false,
       rsvp: "online",
+      stationaries: [],
     };
   },
   props: ["modalContent"],
@@ -94,6 +94,28 @@ export default {
     },
   },
   methods: {
+    addToCart(item) {
+      if (this.isInCart == "Add to Cart") { //check to see if item already in cart
+        // if(this.isBundle == true){ //check if item is a wedding bundle
+        //   if (this.directionsChosen == true){ //if directions card desired...
+        //     StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "directionsCard").then(response => {
+        //       let stationary = response.data;
+        //       this.$store.dispatch("addStationaryToCart", stationary);
+        //     })
+        //   }
+        //   if (this.eventsChosen == true){
+        //       null
+        //   }
+        //   if (this.rsvp == "online"){
+        //       null
+        //   }
+        //   if (this.rsvp == "print"){
+        //       null
+        //   }
+        // }
+        this.$store.dispatch("addStationaryToCart", item);
+      }
+    },
     increaseIndex() {
       let images = document.getElementsByClassName('navImg');
       images[this.sliderIndex].className = "navImg";
@@ -130,11 +152,6 @@ export default {
         return "addBtn";
       }
     },
-    addToCart() {
-      if (this.isInCart == "Add to Cart") {
-        this.$store.dispatch("addStationaryToCart", this.modalContent);
-      }
-    },
 
     isBundle(){
       if (this.modalContent.category === "weddingInvite"){
@@ -168,12 +185,29 @@ export default {
             title: element.title,
           });
         });
-      }
-    );
-
     let images = document.getElementsByClassName('navImg'); //doesnt work
     images[0].className += " active";
-    console.log(this.photos);
+
+    //adds stationary objects for related add ons if item is a bundle
+    if (this.modalContent.category == "weddingInvite"){
+      StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "directionsCard").then(response => {
+        this.stationaries.push(response.data);
+        StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "eventsCard").then(response => {
+        this.stationaries.push(response.data);
+        StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "rsvpPrint").then(response => {
+        this.stationaries.push(response.data);
+        StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "rsvpOnline").then(response => {
+        this.stationaries.push(response.data);
+        console.log(this.stationaries)
+    })
+        })
+    })
+      })
+      }
+      });
+
+
+
   },
 };
 </script>
