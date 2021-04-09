@@ -10,6 +10,8 @@ public class Stationary {
                             // addressLabel, engageInvite, showerInvite, bachInvite, rehearsalInvite,
                             // thankYou, saveTheDate, {program, menu, placeCard, tableNumber, welcomeSign, favor},
                             // bracketed = {day of items}
+                            // BUNDLE ADD-ONS : directionCard, eventCard, rvspOnline, rsvpPrint
+
     private String title; //name of product for site
     private BigDecimal price; //price per item
     private int theme_id; //design theme

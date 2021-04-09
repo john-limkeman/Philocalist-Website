@@ -1,3 +1,5 @@
+<!-- MODAL activated for each stationary selected -->
+
 <template>
 <div class="container">
   <div class="modal">
@@ -24,11 +26,15 @@
       </div>
 
     <!-- <img v-bind:src="modalContent.imgURL" alt="error displaying image" class="modalImage"> -->
-    <p class="detailsText">
+   <div class="detailsText">
+<h4>{{modalContent.description}}</h4>
+    <p>
       <b>Price: </b>${{ modalContent.price }} <br />
       <b>Theme: </b>{{ modalContent.theme }} <br />
       <b>Print Type: </b>{{ modalContent.printType }} <br />
+      <b>Dimensions: </b>{{ modalContent.width }} x {{ modalContent.height }} (inches)<br />
     </p>
+   </div>
       <span
         id="modalCartBtn"
         v-bind:class="addBtnMethod()"
