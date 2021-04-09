@@ -190,7 +190,7 @@ export default {
 
     //adds stationary objects for related add ons if item is a bundle
     if (this.modalContent.category == "weddingInvite"){
-      StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "directionsCard").then(response => {
+      StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "directionCard").then(response => {
         this.stationaries.push(response.data);
         StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "eventsCard").then(response => {
         this.stationaries.push(response.data);
