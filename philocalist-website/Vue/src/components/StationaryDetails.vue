@@ -27,7 +27,7 @@
 
     <!-- <img v-bind:src="modalContent.imgURL" alt="error displaying image" class="modalImage"> -->
    <div class="detailsText">
-<h4>{{modalContent.description}}</h4>
+    <h4>{{modalContent.description}}</h4>
     <p>
       <b>Price: </b>${{ modalContent.price }} <br />
       <b>Theme: </b>{{ modalContent.theme }} <br />
@@ -35,14 +35,35 @@
       <b>Dimensions: </b>{{ modalContent.width }} x {{ modalContent.height }} (inches)<br />
     </p>
    </div>
+  <div class="modalCart">
+      <div v-if="isBundle()">
+    <form>
+      <p>Add to your bundle</p>
+      <label for="directionsCard">Directions Card ($0.35 / invitation) </label>
+      <input type="checkbox" v-model="directionsChosen" name="directionsCard"> <br />
+      <label for="eventsCard">Weekend Events Card ($0.35 / invitation) </label>
+      <input type="checkbox" v-model="eventsChosen" name="eventsCard"> <br />
+      </form>
+      -------------------------
+      <form>
+      <label for="rsvpPrint">Print RSVPs ($0.35 / invitation) </label>
+      <input type="radio" value="print" v-model="rsvp" name="rsvpPrint"> <br />
+      <label for="rsvpOnline">Online RSVPs ($0.00 / invitation) </label>
+      <input type="radio" value="online" v-model="rsvp" name="rsvpOnline">
+    </form>
+-------------------------
+      </div>
+
       <span
         id="modalCartBtn"
         v-bind:class="addBtnMethod()"
         v-on:click="addToCart()"
         >{{ isInCart }}</span>
+        </div>
+  </div>
   </div>
 
-</div>
+
 </template>
 
 <script>
@@ -52,6 +73,9 @@ export default {
     return {
       photos: [],
       sliderIndex: 0,
+      directionsChosen: false,
+      eventsChosen: false,
+      rsvp: "online",
     };
   },
   props: ["modalContent"],
@@ -109,6 +133,14 @@ export default {
     addToCart() {
       if (this.isInCart == "Add to Cart") {
         this.$store.dispatch("addStationaryToCart", this.modalContent);
+      }
+    },
+
+    isBundle(){
+      if (this.modalContent.category === "weddingInvite"){
+        return true;
+      } else {
+        return false;
       }
     },
 
@@ -171,6 +203,7 @@ export default {
   grid-template-areas:
   "photo title"
   "photo text"
+  "photo cart"
   "photo cart";
 }
 
