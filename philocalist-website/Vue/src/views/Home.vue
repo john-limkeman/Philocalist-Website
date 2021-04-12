@@ -152,8 +152,13 @@ data() {
   font-style: bold; 
   color: white;
   cursor: pointer;
-  background-color: black;
-
+  background-color: rgba(0,0,0,0.2);
+  width: 35px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
 }
 
 </style>
