@@ -111,10 +111,10 @@ export default {
               this.$store.dispatch("addStationaryToCart", this.stationaries[1]);
           }
             if (this.rsvp == "print"){ // add PRINT RSVP to cart
-                this.$store.dispatch("addStationaryToCart", this.stationaries[3]);
+                this.$store.dispatch("addStationaryToCart", this.stationaries[2]);
             }
           if (this.rsvp == "online"){ // add ONLINE RSVP to cart
-             this.$store.dispatch("addStationaryToCart", this.stationaries[4]);
+             this.$store.dispatch("addStationaryToCart", this.stationaries[3]);
           }
         }
         this.$store.dispatch("addStationaryToCart", item);
@@ -193,7 +193,7 @@ export default {
         this.stationaries.push(response.data);
         StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "rsvpPrint").then(response => {
         this.stationaries.push(response.data);
-        StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "rsvpOnline").then(response => { //THIS IS BORKEN
+        StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "rsvpOnline").then(response => {
         this.stationaries.push(response.data);
         console.log(this.stationaries)
     })

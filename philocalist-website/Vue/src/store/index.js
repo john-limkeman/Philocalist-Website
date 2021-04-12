@@ -106,7 +106,6 @@ if (currentToken != null) {
     },
     actions: {
         addStationaryToCart({commit}, stationary){
-          console.log(stationary);
           commit('ADD_TO_CART', stationary);
         },
         removeStationaryFromCart({commit}, stationary){
