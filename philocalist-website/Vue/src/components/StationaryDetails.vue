@@ -36,14 +36,14 @@
     </p>
    </div>
   <div class="modalCart">
-      <div v-if="isBundle()">
+      <div v-if="isBundle">
       <p>Add to your bundle</p>
       <label for="directionsCard">Directions Card ($0.35 / invitation) </label>
       <input type="checkbox" v-model="directionsChosen" name="directionsCard"> <br />
       <label for="eventsCard">Weekend Events Card ($0.35 / invitation) </label>
       <input type="checkbox" v-model="eventsChosen" name="eventsCard"> <br />
   
-      -------------------------
+      ------------------------- <br/>
       <label for="rsvpPrint">Print RSVPs ($0.35 / invitation) </label>
       <input type="radio" value="print" v-model="rsvp" name="rsvpPrint"> <br />
       <label for="rsvpOnline">Online RSVPs ($0.00 / invitation) </label>
@@ -92,27 +92,31 @@ export default {
     currentPhoto() {
       return this.photos[this.sliderIndex];
     },
+      isBundle(){
+        if (this.modalContent.category == "weddingInvite"){
+          return true;
+        } else {
+          return false;
+        }
+      },
   },
   methods: {
     addToCart(item) {
       if (this.isInCart == "Add to Cart") { //check to see if item already in cart
-        // if(this.isBundle == true){ //check if item is a wedding bundle
-        //   if (this.directionsChosen == true){ //if directions card desired...
-        //     StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "directionsCard").then(response => {
-        //       let stationary = response.data;
-        //       this.$store.dispatch("addStationaryToCart", stationary);
-        //     })
-        //   }
-        //   if (this.eventsChosen == true){
-        //       null
-        //   }
-        //   if (this.rsvp == "online"){
-        //       null
-        //   }
-        //   if (this.rsvp == "print"){
-        //       null
-        //   }
-        // }
+        if(this.isBundle == true){ //check if item is a wedding bundle
+          if (this.directionsChosen == true){ //Add DIRECTIONS CARRD to cart
+              this.$store.dispatch("addStationaryToCart", this.stationaries[0]);
+          }
+          if (this.eventsChosen == true){ //Add EVENTS CARD to cart
+              this.$store.dispatch("addStationaryToCart", this.stationaries[1]);
+          }
+            if (this.rsvp == "print"){ // add PRINT RSVP to cart
+                this.$store.dispatch("addStationaryToCart", this.stationaries[3]);
+            }
+          if (this.rsvp == "online"){ // add ONLINE RSVP to cart
+             this.$store.dispatch("addStationaryToCart", this.stationaries[4]);
+          }
+        }
         this.$store.dispatch("addStationaryToCart", item);
       }
     },
@@ -153,13 +157,6 @@ export default {
       }
     },
 
-    isBundle(){
-      if (this.modalContent.category === "weddingInvite"){
-        return true;
-      } else {
-        return false;
-      }
-    },
 
     closeModal() {
       this.$emit("close");
@@ -196,7 +193,7 @@ export default {
         this.stationaries.push(response.data);
         StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "rsvpPrint").then(response => {
         this.stationaries.push(response.data);
-        StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "rsvpOnline").then(response => {
+        StationaryService.getStationaryByThemeAndCategory(this.modalContent.theme_id, "rsvpOnline").then(response => { //THIS IS BORKEN
         this.stationaries.push(response.data);
         console.log(this.stationaries)
     })
