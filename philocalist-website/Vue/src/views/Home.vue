@@ -9,11 +9,11 @@
         <!-- <img class="featuredImage" v-bind:src="featuredTheme.hero_image" alt="" v-on:click="routeToTheme()"> -->
         <p class="featuredDescription">{{featuredTheme.description}}</p>
         <div class="featuredImages">
-    <a class="prev" @click="prev" href="#">&#10094; </a>
+    <span id="arrowBtn" @click="prev" href="#">&#10094; </span>
       <span v-for="i in [currentIndex]" :key="i">
         <img :src="currentImage" class="featuredImage" v-on:click="routeToTheme()"/>
       </span>
-    <a class="next" @click="next" href="#">&#10095; </a>
+    <span id="arrowBtn" @click="next" href="#">&#10095; </span>
   </div>
         <!-- <div v-for="image in themeImages" v-bind:key="image">
           <img v-bind:src="image" alt="">
@@ -81,16 +81,21 @@ data() {
 .home{
   display: grid;
   grid-template-columns: 1fr 2fr;
+  grid-template-rows: 20% 80%;
   grid-template-areas:
   "title title"
   "welcome featured";
-  grid-gap: 20px;
+  column-gap: 20px;;
   height: 100vh;
   background-image: url('https://smhttp-ssl-39245-greenbox.nexcesscdn.net/media/catalog/product/cache/4/image/9df78eab33525d08d6e5fb8d27136e95/b/e/beach-please_41.jpg');
+
   background-size: 100%;
 }
 .homeTitle{
   grid-area: title;
+  display:flex;
+  align-items: center;
+  justify-self: center;
 }
 
 .welcomeContainer{
@@ -102,21 +107,20 @@ data() {
 
   display: flex;
   justify-content: center;
-  align-items: center;
 
-  padding: 3px;
+  padding: 15px 10px 10px 10px;
 }
 
 .featuredThemeContainer{
   grid-area: featured;
   /* border:black 3px solid; */
   background-color: rgba(255,255,255,0.2);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-  "title title"
-  "image description";
+  display: flex;
+  flex-direction: column;
   height: 100%;
+
+  padding: 15px 10px 10px 10px;
+
 }
 
 .featuredTitle{
@@ -139,11 +143,17 @@ data() {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+    margin-top:20px;
+
 }
 
-.prev .next{
+#arrowBtn{
   font-size: 30px;
-  font-style: bold;
+  font-style: bold; 
+  color: white;
+  cursor: pointer;
+  background-color: black;
+
 }
 
 </style>
