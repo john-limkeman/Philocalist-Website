@@ -22,9 +22,9 @@
             <span v-if="isLoggedIn()">
               <router-link class="navlink" to="/logout"> Logout </router-link>
             </span>
-             <span v-else>
+             <!-- <span v-else> // TO BE USED WHEN CUSTOMER LOGIN IS DEPLOYED
               <router-link class="navlink" to="/login"> Login </router-link>
-            </span>
+            </span> -->
             &nbsp;|&nbsp;
             <span v-if='isAdmin()'>
                 <router-link class="navlink" to="/admin"> Admin </router-link>
@@ -92,7 +92,7 @@
 
 
     </div>
-    <router-view />
+    <router-view class="routerView"/>
     </div>
 
     <footer id="hiddenNav">
@@ -213,19 +213,19 @@ export default {
 
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Courier New', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
 
-
+.routerView{
+margin: 0px;
+}
 /*  NAVIGATION BAR  */
 
 #nav{
-  /* display: flex;
-  flex-direction: row; */
   width: 100%;
   background-color: rgba(0, 0, 50, 0.2);;
   justify-content: center;

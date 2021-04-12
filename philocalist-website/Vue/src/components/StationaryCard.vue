@@ -33,7 +33,11 @@ export default {
   },
   methods: {
       addToCart(){
-        this.$store.dispatch('addStationaryToCart', this.stationary);
+        if (this.stationary.category == "weddingInvite"){
+          this.seeDetails();
+        } else {
+          this.$store.dispatch('addStationaryToCart', this.stationary);
+        }
       },
       removeFromCart(){
           this.$store.dispatch('removeStationaryFromCart', this.stationary);

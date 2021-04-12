@@ -37,26 +37,25 @@
    </div>
   <div class="modalCart">
       <div v-if="isBundle">
-      <p>Add to your bundle</p>
+      <h4>Add-ons available for this bundle</h4>
       <label for="directionsCard">Directions Card ($0.35 / invitation) </label>
       <input type="checkbox" v-model="directionsChosen" name="directionsCard"> <br />
       <label for="eventsCard">Weekend Events Card ($0.35 / invitation) </label>
       <input type="checkbox" v-model="eventsChosen" name="eventsCard"> <br />
-  
-      ------------------------- <br/>
+
       <label for="rsvpPrint">Print RSVPs ($0.35 / invitation) </label>
-      <input type="radio" value="print" v-model="rsvp" name="rsvpPrint"> <br />
+      <input type="radio" value="print" v-model="rsvp" name="rsvpPrint"> <br /> 
       <label for="rsvpOnline">Online RSVPs ($0.00 / invitation) </label>
       <input type="radio" value="online" v-model="rsvp" name="rsvpOnline">
 
--------------------------
+
       </div>
 
-      <span
+      <div
         id="modalCartBtn"
         v-bind:class="addBtnMethod()"
         v-on:click="addToCart(modalContent)"
-        >{{ isInCart }}</span>
+        >{{ isInCart }}</div>
         </div>
   </div>
   </div>
@@ -226,11 +225,11 @@ export default {
   padding: 25px;
 
   background-color: white;
-  border: 3px solid #FFD700;
-  border-radius: 10px;
+  border: 2px solid black;
+
 
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1.4fr 1fr;
   grid-template-areas:
   "photo title"
   "photo text"
@@ -305,9 +304,18 @@ export default {
   font-size: 20px;
   height: 30px;
   align-self: end;
-  margin-bottom: 10px;
+  margin: 15px;
+  text-align: center;
+  align-self: center;
 }
 
+.modalCart{
+  text-align: left;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
 
 
 </style>
