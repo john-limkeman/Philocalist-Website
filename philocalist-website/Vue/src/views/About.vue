@@ -1,12 +1,20 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>About Beth Schuurman</h1>
     <div id="aboutContainer">
 
-    <img src="../assets/Beth-Ethan-Wedding.jpg" alt="Beth's Photo">
-    <p v-if="!this.$store.state.logIn">{{message}}</p>
-    <div v-else>
-    <textarea cols="40" rows="5" class="adminForm" v-model="message"> </textarea>
+    <img src="../assets/Beth-Ethan-Wedding.jpg" alt="Beth's Photo"> <!-- CHANGE WHEN PHOTO UPLOADED -->
+    <p class="adminForm" v-if="!this.$store.state.logIn">{{webInfo.aboutMessage}}</p>
+    <div v-else class="adminForm">
+      EDIT ABOUT PAGE
+      <div class="formItem">
+      <label for="aboutMessage">About Message: </label>
+    <textarea id="aboutMessage" cols="40" rows="5"  name="aboutMessage" v-model="webInfo.aboutMessage"> </textarea>
+      </div>
+      <div class="formItem">
+    <label for="aboutImageURL">Image URL: </label>
+    <input id="aboutImageURL" type="text" name="aboutImageURL" v-model="webInfo.aboutImageURL">
+      </div>
     <button v-on:click="saveChanges()">Save</button>
     </div>
     </div>
@@ -14,20 +22,29 @@
 </template>
 
 <script>
+import WebsiteInformationService from '../services/WebsiteInformationService.js'
 export default {
   data(){
     return{
-      //change to a db sourced string
-      message: "Beth Schuurman is a wedding stationary designer. There are lots of facts about her that exist. Some will be listed here."
+      //placeholder for DB generated website information
+      webInfo: {}
     }
   },
   methods: {
     saveChanges(){
         //commit to database
+        console.log(this.webInfo);
+        WebsiteInformationService.updateInformation(this.webInfo).then( 
+        this.$router.push("/admin")
+        )
     }
   },
   created(){
     //grab message from DB
+    WebsiteInformationService.getInformation().then(response => {
+      this.webInfo = response.data;
+      console.log(this.webInfo)
+    })
   }
 }
 </script>
@@ -42,7 +59,7 @@ export default {
 }
 img{
   grid-area: photo;
-  margin: 20px;
+  margin: 30px;
   height: 70vh;
   width: auto;
   justify-self: center;
@@ -51,6 +68,21 @@ p{
   grid-area: info;
 }
 .adminForm{
-  height: 300px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  }
+.formItem{
+  margin: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 500px;
+}
+
+#aboutMessage, #aboutImageURL{
+  width: 100%;
 }
 </style>

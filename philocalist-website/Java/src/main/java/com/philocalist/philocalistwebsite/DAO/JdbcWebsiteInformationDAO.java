@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 
 @Component
 public class JdbcWebsiteInformationDAO implements WebsiteInformationDAO{
+
     private JdbcTemplate jdbc;
 
     public JdbcWebsiteInformationDAO(DataSource dataSource){

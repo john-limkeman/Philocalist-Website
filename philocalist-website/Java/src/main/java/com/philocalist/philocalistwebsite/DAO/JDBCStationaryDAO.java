@@ -1,22 +1,13 @@
 package com.philocalist.philocalistwebsite.dao;
 
 import com.philocalist.philocalistwebsite.model.Stationary;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import javax.sql.RowSet;
-import javax.sql.rowset.serial.SerialArray;
-import javax.sql.rowset.serial.SerialException;
-import java.sql.Array;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 @Component
 public class JdbcStationaryDAO implements StationaryDAO {
