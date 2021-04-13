@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS Stationaries;
 DROP TABLE IF EXISTS Themes;
 DROP TABLE IF EXISTS users;
 DROP SEQUENCE IF EXISTS seq_user_id;
-DROP TABLE IF EXISTS websiteInformation
+DROP TABLE IF EXISTS websiteInformation;
 
 CREATE TABLE websiteInformation (
         id serial,
