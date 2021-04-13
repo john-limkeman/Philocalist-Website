@@ -6,6 +6,27 @@ DROP TABLE IF EXISTS Stationaries;
 DROP TABLE IF EXISTS Themes;
 DROP TABLE IF EXISTS users;
 DROP SEQUENCE IF EXISTS seq_user_id;
+DROP TABLE IF EXISTS websiteInformation
+
+CREATE TABLE websiteInformation (
+        id serial,
+        aboutMessage varchar NOT NULL,
+        aboutImageURL varchar NOT NULL,
+        email varchar NOT NULL,
+        phone varchar NOT NULL,
+        contactMessage varchar NOT NULL,
+        homeMessage varchar NOT NULL,
+
+        CONSTRAINT pk_info PRIMARY KEY (id)
+);
+
+INSERT INTO websiteInformation (id, aboutMessage, aboutImageURL, email, phone, contactMessage, homeMessage) VALUES (1,
+'Beth Schuurman is a wedding stationary designer. There are lots of facts about her that exist. Some will be listed here.',
+'/Users/johnlimkeman/Desktop/Projects/Philocalist/Philocalist-Website - git repo/philocalist-website/Vue/src/assets/Beth-Ethan-Wedding.jpg',
+'philocalist@gmail.com',
+'555-555-5555',
+'Reach out if you have any questions!',
+'Welcome to Philocalist Stationary! Thanks for stopping by!');
 
 CREATE SEQUENCE seq_user_id
   INCREMENT BY 1
@@ -13,9 +34,9 @@ CREATE SEQUENCE seq_user_id
   NO MINVALUE
   CACHE 1;
   
- CREATE TABLE users (
-	user_id int DEFAULT nextval('seq_user_id'::regclass) NOT NULL,
-	username varchar(50) NOT NULL,
+CREATE TABLE users (
+        user_id int DEFAULT nextval('seq_user_id'::regclass) NOT NULL,
+        username varchar(50) NOT NULL,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
@@ -24,13 +45,13 @@ CREATE SEQUENCE seq_user_id
 INSERT INTO users (username,password_hash,role) VALUES ('beth','$2a$10$ZgjBSuT4iByZtiPDX0cAteqpEDsfsEGFnrjpjMqebxsDyWhrA9ckG','ROLE_ADMIN');
 
 CREATE Table Themes(
-id serial,
-hero_image varchar NOT NULL,
-name varchar NOT NULL,
-description varchar,
-is_featured boolean,
+        id serial,
+        hero_image varchar NOT NULL,
+        name varchar NOT NULL,
+        description varchar,
+        is_featured boolean,
 
-constraint pk_Themes primary key (id)
+        constraint pk_Themes primary key (id)
 
 );
 
@@ -48,21 +69,21 @@ INSERT INTO Themes (hero_image, name, description, is_featured) VALUES ('https:/
 
 CREATE Table Stationaries(
 
-id serial,
-title varchar NOT NULL, 
-category varchar NOT NULL,
-price decimal NOT NULL,
-theme_id int NOT NULL, -- fk
-description varchar,
-height decimal NOT NULL,
-width decimal NOT NULL,
-color varchar,
-printType varchar NOT NULL,
-imgURL varchar,
-isActive boolean NOT NULL,
+        id serial,
+        title varchar NOT NULL, 
+        category varchar NOT NULL,
+        price decimal NOT NULL,
+        theme_id int NOT NULL, -- fk
+        description varchar,
+        height decimal NOT NULL,
+        width decimal NOT NULL,
+        color varchar,
+        printType varchar NOT NULL,
+        imgURL varchar,
+        isActive boolean NOT NULL,
 
-constraint pk_Stationaries primary key (id),
-constraint fk_Stationaries_theme foreign key (theme_id) references Themes (id)
+        constraint pk_Stationaries primary key (id),
+        constraint fk_Stationaries_theme foreign key (theme_id) references Themes (id)
 );
 
 INSERT INTO Stationaries (title, category, price, theme_id, color, printType, imgURL, isActive, description, height, width) VALUES ('Sand & Sun Wedding Bundle', 'weddingInvite', 5.00, 1, 'Blue', 'digital', 'https://cdn3.minted.com/files/mintedProductsImages/MIN/INV/ZXL/MIN-ZXL-INV-001_A_PZ.jpg?mntd_prf=Pdp:HeroImage', true, 'description of the item here is very cool and nice and its a description', 5.8, 9.2);
@@ -89,13 +110,13 @@ INSERT INTO Stationaries (title, category, price, theme_id, color, printType, im
 
 CREATE TABLE Photos(
 
-id serial,
-stationary_id int,
-url varchar,
-title varchar,
+        id serial,
+        stationary_id int,
+        url varchar,
+        title varchar,
 
-constraint pk_Photos primary key (id),
-constraint fk_Photos_Stationary foreign key (stationary_id) references Stationaries (id)
+        constraint pk_Photos primary key (id),
+        constraint fk_Photos_Stationary foreign key (stationary_id) references Stationaries (id)
 
 );
 
@@ -120,4 +141,6 @@ INSERT INTO Photos (stationary_id, url, title) VALUES (17, 'https://cdn3.minted.
 
 
 COMMIT TRANSACTION;
+
+
 
