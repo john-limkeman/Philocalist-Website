@@ -21,7 +21,7 @@ CREATE TABLE websiteInformation (
 );
 
 INSERT INTO websiteInformation (id, aboutMessage, aboutImageURL, email, phone, contactMessage, homeMessage) VALUES (1,
-'Beth Schuurman is a wedding stationary designer. There are lots of facts about her that exist. Some will be listed here.',
+'Beth Schuurman is the founder and owner of Philocalist Stationary. After graduating Wheaton College with a B.A. in Art, she fell in love with the wedding stationary industry. After designing her own wedding materials, as well as her friends weddings, she decided to start a business around her passion. She lives in Madison, WI with her husband Ethan.',
 '/Users/johnlimkeman/Desktop/Projects/Philocalist/Philocalist-Website - git repo/philocalist-website/Vue/src/assets/Beth-Ethan-Wedding.jpg',
 'philocalist@gmail.com',
 '555-555-5555',
