@@ -32,8 +32,8 @@ public class JdbcWebsiteInformationDAO implements WebsiteInformationDAO{
 
     @Override
     public void updateInformation(WebsiteInformation info) {
-        String sql = "UPDATE websiteInformation SET aboutMessage = ?, aboutImageURL = ?, email = ?, phone = ?, contactMessage = ?, homeMessage = ? WHERE id = ?";
-        jdbc.update(sql, info.getAboutMessage(), info.getAboutImageURL(), info.getEmail(), info.getPhone(), info.getContactMessage(), info.getHomeMessage(), info.getId());
+        String sql = "UPDATE websiteInformation SET aboutMessage = ?, aboutImageURL = ?, email = ?, phone = ?, contactMessage = ?, homeMessage = ? WHERE id = 1";
+        jdbc.update(sql, info.getAboutMessage(), info.getAboutImageURL(), info.getEmail(), info.getPhone(), info.getContactMessage(), info.getHomeMessage());
     }
     private WebsiteInformation mapInfoToRow(SqlRowSet result) {
         WebsiteInformation info = new WebsiteInformation();

@@ -33,17 +33,14 @@ export default {
   methods: {
     saveChanges(){
         //commit to database
-        console.log(this.webInfo);
-        WebsiteInformationService.updateInformation(this.webInfo).then( 
+        WebsiteInformationService.updateInformation(this.webInfo);
         this.$router.push("/admin")
-        )
     }
   },
   created(){
     //grab message from DB
     WebsiteInformationService.getInformation().then(response => {
       this.webInfo = response.data;
-      console.log(this.webInfo)
     })
   }
 }
