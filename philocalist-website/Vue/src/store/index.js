@@ -59,7 +59,6 @@ if (currentToken != null) {
       /* checks to ensure item does not already exist in cart before adding it */
       if(!foundItem){ 
         stationary.quantity = 1
-        console.log("quantity: " + stationary.quantity)
         state.cart.push(stationary)
         console.log("cart size: " + state.cart.length);
       }else{
@@ -68,7 +67,6 @@ if (currentToken != null) {
       },
       REMOVE_FROM_CART(state, stationary){
       state.cart = state.cart.filter(item => {
-        console.log(stationary.id);
         return item.id !== stationary.id;
       })
       },
@@ -98,7 +96,6 @@ if (currentToken != null) {
       },
       SET_ADMIN_CHOICE(state, stationary){
         state.adminChoice = stationary;
-        console.log(state.adminChoice);
       },
       EMPTY_ADMIN_CHOICE(state){
         state.adminChoice = {};
